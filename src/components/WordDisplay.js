@@ -5,6 +5,8 @@ const LetterSpace = styled.span`
   color: black;
   font-size: 2rem;
   margin: 0 0.5rem;
+  width: 1rem;
+  display: inline-block;
 `
 
 export default class WordDisplay extends Component {

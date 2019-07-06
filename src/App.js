@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -6,6 +6,20 @@ import LetterSelector from './components/LetterSelector'
 import WordDisplay from './components/WordDisplay'
 
 function App() {
+  const [guessedLetters, setGuessedLetters] = useState([])
+
+  const handleUpdateGuessedLetters = ({ newLetter }) => {
+    console.log('hit', guessedLetters)
+    if (guessedLetters.find(guessedLetter => guessedLetter === newLetter) !== undefined) {
+      return
+    }
+
+    setGuessedLetters(guessedLetters => [
+      ...guessedLetters,
+      newLetter
+    ])
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -24,9 +38,12 @@ function App() {
       </header>
       <WordDisplay
         word="fishsticks"
-        guessedLetters={['i', 'e', 's']}
+        guessedLetters={guessedLetters}
       />
-      <LetterSelector/>
+      <LetterSelector
+        guessedLetters={guessedLetters}
+        onUpdateGuessedLetters={handleUpdateGuessedLetters}
+      />
     </div>
   );
 }
