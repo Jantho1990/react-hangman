@@ -16,9 +16,11 @@ export default class LetterSelector extends Component {
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         flex-wrap: wrap;
         font-size: 1.5rem;
+        list-style: none;
+        text-transform: capitalize;
       `
 
       const ListItem = styled.li`
@@ -34,12 +36,14 @@ export default class LetterSelector extends Component {
       </ListContainer>
     }
 
-    const Wrapper = styled.div`
+    const LetterWrapper = styled.div`
       background-color: red;
+      max-width: 50rem;
+      margin: auto;
     `
 
-    return <Wrapper>
+    return <LetterWrapper>
       { renderLetterButtons() }
-    </Wrapper>
+    </LetterWrapper>
   }
 }
