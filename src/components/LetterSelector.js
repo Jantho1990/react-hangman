@@ -26,6 +26,7 @@ const ListItem = styled.li`
   height: 1em;
   background-color: hsl(0, 0%, 65%);
   user-select: none;
+  transition: all ease-in 0.125s;
   &.guessed {
     color: hsl(0, 0%, 90%);
   }
