@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 
 export default class LetterSelector extends Component {
   constructor() {
@@ -11,17 +12,34 @@ export default class LetterSelector extends Component {
     const { letters } = this
 
     let renderLetterButtons = () => {
-      return <ul className="letter-list">
+      const ListContainer = styled.ul`
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        font-size: 1.5rem;
+      `
+
+      const ListItem = styled.li`
+        cursor: pointer;
+        color: white;
+        margin: 1em;
+      `
+
+      return <ListContainer>
         { letters.map((letter, i) => {
-          return <li className="letter" onClick={() => alert(letter)}>{letter}</li>
+          return <ListItem className="letter" onClick={() => alert(letter)}>{letter}</ListItem>
         }) }
-      </ul>
+      </ListContainer>
     }
 
-    return (
-      <div className="letter-selector">
-        { renderLetterButtons() }
-      </div>
-    )
+    const Wrapper = styled.div`
+      background-color: red;
+    `
+
+    return <Wrapper>
+      { renderLetterButtons() }
+    </Wrapper>
   }
 }
