@@ -7,6 +7,7 @@ const LetterSpace = styled.span`
   margin: 0 0.5rem;
   width: 1rem;
   display: inline-block;
+  text-transform: capitalize;
 `
 
 export default class WordDisplay extends Component {
