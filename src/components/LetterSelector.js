@@ -83,6 +83,7 @@ export default class LetterSelector extends Component {
         : 'wrongly'
       : ''
 
+    let ct = 0
     let renderLetterButtons = () => {
       return (
         <ListContainer>
@@ -92,6 +93,7 @@ export default class LetterSelector extends Component {
                 className={`letter ${guessedClass(letter)} ${guessedStatusClass(letter)}`}
                 guessed={isLetterGuessed(letter)}
                 onClick={() => handleLetterGuess(letter, onUpdateGuessedLetters)}
+                key={`key-letter-${ct++}`}
               >
                 {letter}
               </ListItem>

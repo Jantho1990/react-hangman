@@ -23,11 +23,13 @@ export default class WordDisplay extends Component {
     guessedLetters: []
   }
 
+  ct = 0
+
   renderLetterSpace(letter) {
     const { guessedLetters } = this.props
-
+    
     if (guessedLetters.find(guessedLetter => guessedLetter === letter) === undefined) {
-      return <LetterSpace>&#95;</LetterSpace>
+      return <LetterSpace key={`key-letterspace-${this.ct++}`}>&#95;</LetterSpace>
     }
 
     return <LetterSpace>{letter}</LetterSpace>

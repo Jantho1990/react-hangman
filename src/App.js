@@ -4,11 +4,16 @@ import './App.css';
 
 import LetterSelector from './components/LetterSelector'
 import WordDisplay from './components/WordDisplay'
+import CounterView from './components/views/CounterView'
 
 import randomWord from './lib/randomWord'
 
+import config from './config'
+
 function App() {
   const [guessedLetters, setGuessedLetters] = useState([])
+
+  const { guesses: maxGuesses } = config
 
   const handleUpdateGuessedLetters = ({ newLetter }) => {
     if (guessedLetters.find(guessedLetter => guessedLetter === newLetter) !== undefined) {
@@ -21,15 +26,39 @@ function App() {
     ])
   }
 
+  const wrongGuesses = guessedLetters.reduce((carry, letter) => {
+    return randomWord.indexOf(letter) === -1 ? carry + 1 : carry
+  }, 0)
+
+  const guessesRemaining = maxGuesses - wrongGuesses
+
+  const wordGuessed = guessedLetters.length >= randomWord.length
+    ? randomWord.split('')
+      .reduce((carry, letter) => {
+        return carry
+          ? guessedLetters.indexOf(letter) !== -1
+          : false
+      }, true)
+    : false
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>React Hangman</h1>
       </header>
+
+      <CounterView
+        wrongGuesses={wrongGuesses}
+        maxGuesses={maxGuesses}
+        gameOver={guessesRemaining <= 0 || wordGuessed}
+        victory={wordGuessed}
+      />
+
       <WordDisplay
         word={randomWord}
         guessedLetters={guessedLetters}
       />
+
       <LetterSelector
         guessedLetters={guessedLetters}
         onUpdateGuessedLetters={handleUpdateGuessedLetters}
