@@ -25,11 +25,7 @@ const ListItem = styled.li`
 `
 
 export default class LetterSelector extends Component {
-  constructor() {
-    super()
-
-    this.letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
-  }
+  letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
 
   render() {
     const { letters } = this
