@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import LetterSelector from './components/LetterSelector'
+import WordDisplay from './components/WordDisplay'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <WordDisplay word="fishsticks"/>
       <LetterSelector/>
     </div>
   );
