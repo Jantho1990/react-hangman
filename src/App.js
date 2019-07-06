@@ -22,7 +22,10 @@ function App() {
           Learn React
         </a>
       </header>
-      <WordDisplay word="fishsticks"/>
+      <WordDisplay
+        word="fishsticks"
+        guessedLetters={['i', 'e', 's']}
+      />
       <LetterSelector/>
     </div>
   );
