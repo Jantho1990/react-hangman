@@ -5,6 +5,8 @@ import './App.css';
 import LetterSelector from './components/LetterSelector'
 import WordDisplay from './components/WordDisplay'
 
+import randomWord from './lib/randomWord'
+
 function App() {
   const [guessedLetters, setGuessedLetters] = useState([])
 
@@ -37,7 +39,7 @@ function App() {
         </a>
       </header>
       <WordDisplay
-        word="fishsticks"
+        word={randomWord}
         guessedLetters={guessedLetters}
       />
       <LetterSelector
