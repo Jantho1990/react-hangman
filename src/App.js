@@ -11,7 +11,6 @@ function App() {
   const [guessedLetters, setGuessedLetters] = useState([])
 
   const handleUpdateGuessedLetters = ({ newLetter }) => {
-    console.log('hit', guessedLetters)
     if (guessedLetters.find(guessedLetter => guessedLetter === newLetter) !== undefined) {
       return
     }
@@ -45,6 +44,7 @@ function App() {
       <LetterSelector
         guessedLetters={guessedLetters}
         onUpdateGuessedLetters={handleUpdateGuessedLetters}
+        word={randomWord}
       />
     </div>
   );
