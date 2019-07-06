@@ -41,6 +41,8 @@ function App() {
       }, true)
     : false
 
+  const gameOver = guessesRemaining <= 0 || wordGuessed
+
   return (
     <div className="App">
       <header className="App-header">
@@ -50,7 +52,7 @@ function App() {
       <CounterView
         wrongGuesses={wrongGuesses}
         maxGuesses={maxGuesses}
-        gameOver={guessesRemaining <= 0 || wordGuessed}
+        gameOver={gameOver}
         victory={wordGuessed}
       />
 
@@ -62,6 +64,7 @@ function App() {
       <LetterSelector
         guessedLetters={guessedLetters}
         onUpdateGuessedLetters={handleUpdateGuessedLetters}
+        gameOver={gameOver}
         word={randomWord}
       />
     </div>

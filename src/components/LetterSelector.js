@@ -73,7 +73,7 @@ export default class LetterSelector extends Component {
       letters,
       isLetterGuessed,
       isLetterGuessedCorrectly,
-      props: { onUpdateGuessedLetters }
+      props: { onUpdateGuessedLetters, gameOver }
     } = this
 
     const guessedClass = letter => isLetterGuessed(letter) ? 'guessed' : ''
@@ -92,7 +92,7 @@ export default class LetterSelector extends Component {
               <ListItem
                 className={`letter ${guessedClass(letter)} ${guessedStatusClass(letter)}`}
                 guessed={isLetterGuessed(letter)}
-                onClick={() => handleLetterGuess(letter, onUpdateGuessedLetters)}
+                onClick={() => !gameOver ? handleLetterGuess(letter, onUpdateGuessedLetters) : null}
                 key={`key-letter-${ct++}`}
               >
                 {letter}
