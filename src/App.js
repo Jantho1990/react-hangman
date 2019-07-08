@@ -32,14 +32,12 @@ function App() {
 
   const guessesRemaining = maxGuesses - wrongGuesses
 
-  const wordGuessed = guessedLetters.length >= randomWord.length
-    ? randomWord.split('')
-      .reduce((carry, letter) => {
-        return carry
+  const wordGuessed = randomWord.split('')
+    .reduce((carry, letter) => {
+       return carry
           ? guessedLetters.indexOf(letter) !== -1
           : false
-      }, true)
-    : false
+    }, true)
 
   const gameOver = guessesRemaining <= 0 || wordGuessed
 
