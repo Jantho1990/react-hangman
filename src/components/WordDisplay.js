@@ -8,6 +8,9 @@ const LetterSpace = styled.span`
   width: 1rem;
   display: inline-block;
   text-transform: capitalize;
+  &.not-guessed {
+    color: hsl(0, 65%, 60%);
+  }
 `
 
 export default class WordDisplay extends Component {
@@ -26,13 +29,17 @@ export default class WordDisplay extends Component {
   ct = 0
 
   renderLetterSpace(letter) {
-    const { guessedLetters } = this.props
+    const { guessedLetters, gameOver } = this.props
     
     if (guessedLetters.find(guessedLetter => guessedLetter === letter) === undefined) {
-      return <LetterSpace key={`key-letterspace-${this.ct++}`}>&#95;</LetterSpace>
+      if (gameOver) {
+        return <LetterSpace className="not-guessed" key={`key-letterspace-${this.ct++}`}>{letter}</LetterSpace>
+      } else {
+        return <LetterSpace key={`key-letterspace-${this.ct++}`}>&#95;</LetterSpace>
+      }
     }
 
-    return <LetterSpace>{letter}</LetterSpace>
+    return <LetterSpace key={`key-letterspace-${this.ct++}`}>{letter}</LetterSpace>
   }
 
   renderLetterSpaces(word) {

@@ -57,6 +57,7 @@ function App() {
       <WordDisplay
         word={randomWord}
         guessedLetters={guessedLetters}
+        gameOver={gameOver}
       />
 
       <LetterSelector
