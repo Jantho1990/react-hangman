@@ -8,6 +8,7 @@ const LetterSpace = styled.span`
   width: 1rem;
   display: inline-block;
   text-transform: capitalize;
+  user-select: none;
   &.not-guessed {
     color: hsl(0, 65%, 60%);
   }
