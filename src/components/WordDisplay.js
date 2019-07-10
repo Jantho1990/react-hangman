@@ -4,8 +4,8 @@ import styled from 'styled-components'
 const LetterSpace = styled.span`
   color: black;
   font-size: 2rem;
-  margin: 0 0.5rem;
-  width: 1rem;
+  margin: 0 0rem;
+  width: 2rem;
   display: inline-block;
   text-transform: capitalize;
   user-select: none;
