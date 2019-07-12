@@ -4,6 +4,11 @@ import styled from 'styled-components'
 const LetterWrapper = styled.div`
   max-width: 50rem;
   margin: auto;
+  margin-top: 3rem;
+  height: 50vh;
+  border-top: 1px solid hsl(0, 0%, 50%);
+  background-color: hsl(0, 0%, 90%);
+  overflow-y: scroll;
 `
 
 const ListContainer = styled.ul`
@@ -15,6 +20,9 @@ const ListContainer = styled.ul`
   font-size: 1.5rem;
   list-style: none;
   text-transform: capitalize;
+  margin: 0;
+  padding: 0;
+  height: 100%;
 `
 
 const ListItem = styled.li`
