@@ -6,6 +6,8 @@ import LetterSelector from './components/LetterSelector'
 import WordDisplay from './components/WordDisplay'
 import CounterView from './components/views/CounterView'
 import MenuButton from './components/buttons/MenuButton'
+import AppHeader from './components/AppHeader'
+import AppTitle from './components/AppTitle'
 
 import randomWord from './lib/randomWord'
 
@@ -44,10 +46,10 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>React Hangman</h1>
+      <AppHeader className="App-header">
+        <AppTitle>React Hangman</AppTitle>
         <MenuButton>Menu</MenuButton>
-      </header>
+      </AppHeader>
 
       <CounterView
         wrongGuesses={wrongGuesses}
