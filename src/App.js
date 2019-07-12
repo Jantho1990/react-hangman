@@ -10,12 +10,13 @@ import AppHeader from './components/AppHeader'
 import AppTitle from './components/AppTitle'
 import PauseMenu from './components/menus/PauseMenu'
 
-import randomWord from './lib/randomWord'
+import { createRandomWord } from './lib/randomWord'
 
 import config from './config'
 
 function App() {
   const [guessedLetters, setGuessedLetters] = useState([])
+  const [randomWord, setRandomWord] = useState(createRandomWord())
   const [paused, setPaused] = useState(false)
 
   const { guesses: maxGuesses } = config
@@ -26,6 +27,15 @@ function App() {
 
   const handleCloseMenu = () => {
     setPaused(false)
+  }
+
+  const resetGame = () => {
+    setGuessedLetters([])
+    setRandomWord(createRandomWord())
+  }
+
+  const handleRestart = () => {
+    resetGame()
   }
 
   const handleUpdateGuessedLetters = ({ newLetter }) => {
@@ -92,6 +102,7 @@ function App() {
       <PauseMenu
         show={paused}
         onCloseMenu={handleCloseMenu}
+        onRestartGame={handleRestart}
       />
     </div>
   );
