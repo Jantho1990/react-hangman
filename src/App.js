@@ -21,8 +21,11 @@ function App() {
   const { guesses: maxGuesses } = config
 
   const showPauseMenu = () => {
-    console.log('pausing')
     setPaused(true)
+  }
+
+  const handleCloseMenu = () => {
+    setPaused(false)
   }
 
   const handleUpdateGuessedLetters = ({ newLetter }) => {
@@ -86,7 +89,10 @@ function App() {
           word={randomWord}
         />
       </div>
-      <PauseMenu show={paused}></PauseMenu>
+      <PauseMenu
+        show={paused}
+        onCloseMenu={handleCloseMenu}
+      />
     </div>
   );
 }
