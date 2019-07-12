@@ -5,9 +5,11 @@ const LetterWrapper = styled.div`
   max-width: 50rem;
   margin: auto;
   margin-top: 3rem;
-  border-top: 1px solid hsl(0, 0%, 50%);
-  background-color: hsl(0, 0%, 90%);
   overflow-y: scroll;
+  border-top: 1px solid hsl(0, 0%, 50%);
+  @media screen and (min-width: 768px) {
+    overflow-y: auto;
+  }
 `
 
 const ListContainer = styled.ul`
@@ -20,8 +22,11 @@ const ListContainer = styled.ul`
   list-style: none;
   text-transform: capitalize;
   margin: 0;
-  padding: 0;
-  height: 100%;
+  padding: 0 1rem;
+  background-color: hsl(0, 0%, 90%);
+  @media screen and (min-width: 768px) {
+    padding: 0;
+  }
 `
 
 const ListItem = styled.li`
@@ -80,7 +85,7 @@ export default class LetterSelector extends Component {
       letters,
       isLetterGuessed,
       isLetterGuessedCorrectly,
-      props: { onUpdateGuessedLetters, gameOver }
+      props: { className, onUpdateGuessedLetters, gameOver }
     } = this
 
     const guessedClass = letter => isLetterGuessed(letter) ? 'guessed' : ''
@@ -110,6 +115,6 @@ export default class LetterSelector extends Component {
       )
     }
 
-    return <LetterWrapper>{renderLetterButtons()}</LetterWrapper>
+    return <LetterWrapper className={className}>{renderLetterButtons()}</LetterWrapper>
   }
 }
