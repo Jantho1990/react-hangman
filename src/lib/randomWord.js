@@ -1,4 +1,4 @@
-import words from '../assets/clean_words'
+import words from '../assets/word_list_combined'
 
 function randomInt(max) {
   return Math.floor(Math.random() * Math.floor(max))
