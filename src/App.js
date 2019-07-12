@@ -8,6 +8,7 @@ import CounterView from './components/views/CounterView'
 import MenuButton from './components/buttons/MenuButton'
 import AppHeader from './components/AppHeader'
 import AppTitle from './components/AppTitle'
+import PauseMenu from './components/menus/PauseMenu'
 
 import randomWord from './lib/randomWord'
 
@@ -15,8 +16,14 @@ import config from './config'
 
 function App() {
   const [guessedLetters, setGuessedLetters] = useState([])
+  const [paused, setPaused] = useState(false)
 
   const { guesses: maxGuesses } = config
+
+  const showPauseMenu = () => {
+    console.log('pausing')
+    setPaused(true)
+  }
 
   const handleUpdateGuessedLetters = ({ newLetter }) => {
     if (guessedLetters.find(guessedLetter => guessedLetter === newLetter) !== undefined) {
@@ -46,33 +53,40 @@ function App() {
 
   return (
     <div className="App">
-      <AppHeader className="App-header">
-        <AppTitle>React Hangman</AppTitle>
-        <MenuButton>Menu</MenuButton>
-      </AppHeader>
+      <div className="App-main">
+        <AppHeader className="App-header">
+          <AppTitle>React Hangman</AppTitle>
+          <MenuButton
+            onClick={() => showPauseMenu()}
+          >
+            Menu
+          </MenuButton>
+        </AppHeader>
 
-      <div className="App-center">
-        <CounterView
-          wrongGuesses={wrongGuesses}
-          maxGuesses={maxGuesses}
-          gameOver={gameOver}
-          victory={wordGuessed}
-        />
+        <div className="App-center">
+          <CounterView
+            wrongGuesses={wrongGuesses}
+            maxGuesses={maxGuesses}
+            gameOver={gameOver}
+            victory={wordGuessed}
+          />
 
-        <WordDisplay
-          word={randomWord}
+          <WordDisplay
+            word={randomWord}
+            guessedLetters={guessedLetters}
+            gameOver={gameOver}
+          />
+        </div>
+
+        <LetterSelector
+          className="App-bottom"
           guessedLetters={guessedLetters}
+          onUpdateGuessedLetters={handleUpdateGuessedLetters}
           gameOver={gameOver}
+          word={randomWord}
         />
       </div>
-
-      <LetterSelector
-        className="App-bottom"
-        guessedLetters={guessedLetters}
-        onUpdateGuessedLetters={handleUpdateGuessedLetters}
-        gameOver={gameOver}
-        word={randomWord}
-      />
+      <PauseMenu show={paused}></PauseMenu>
     </div>
   );
 }

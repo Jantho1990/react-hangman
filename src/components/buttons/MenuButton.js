@@ -8,5 +8,5 @@ const Button = styled.button`
 `
 
 export default function (props) {
-  return <Button>{props.children}</Button>
+  return <Button onClick={props.onClick}>{props.children}</Button>
 }

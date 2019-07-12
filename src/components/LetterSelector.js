@@ -5,7 +5,6 @@ const LetterWrapper = styled.div`
   max-width: 50rem;
   margin: auto;
   margin-top: 3rem;
-  height: 50vh;
   border-top: 1px solid hsl(0, 0%, 50%);
   background-color: hsl(0, 0%, 90%);
   overflow-y: scroll;
