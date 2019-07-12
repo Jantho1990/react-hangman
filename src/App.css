@@ -23,6 +23,15 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  flex: 1;
+}
+
+.App-center {
+  flex: 3;
+}
+
+.App-bottom {
+  flex: 3;
 }
 
 .App-link {

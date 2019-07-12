@@ -51,20 +51,23 @@ function App() {
         <MenuButton>Menu</MenuButton>
       </AppHeader>
 
-      <CounterView
-        wrongGuesses={wrongGuesses}
-        maxGuesses={maxGuesses}
-        gameOver={gameOver}
-        victory={wordGuessed}
-      />
+      <div className="App-center">
+        <CounterView
+          wrongGuesses={wrongGuesses}
+          maxGuesses={maxGuesses}
+          gameOver={gameOver}
+          victory={wordGuessed}
+        />
 
-      <WordDisplay
-        word={randomWord}
-        guessedLetters={guessedLetters}
-        gameOver={gameOver}
-      />
+        <WordDisplay
+          word={randomWord}
+          guessedLetters={guessedLetters}
+          gameOver={gameOver}
+        />
+      </div>
 
       <LetterSelector
+        className="App-bottom"
         guessedLetters={guessedLetters}
         onUpdateGuessedLetters={handleUpdateGuessedLetters}
         gameOver={gameOver}
