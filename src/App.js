@@ -5,6 +5,7 @@ import './App.css';
 import LetterSelector from './components/LetterSelector'
 import WordDisplay from './components/WordDisplay'
 import CounterView from './components/views/CounterView'
+import MenuButton from './components/buttons/MenuButton'
 
 import randomWord from './lib/randomWord'
 
@@ -45,6 +46,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>React Hangman</h1>
+        <MenuButton>Menu</MenuButton>
       </header>
 
       <CounterView
