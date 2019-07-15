@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import Button from '../buttons/MenuButton'
 
-const Wrapper = styled.div`
+const MainMenuWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-item: center;
@@ -24,11 +24,11 @@ export default function MainMenuScreen (props) {
   }
 
   return (
-    <Wrapper>
+    <MainMenuWrapper>
       <GameTitle>React Hangman</GameTitle>
       <Button onClick={onStartGame}>Start</Button>
       <Button>Options</Button>
       <Button>Quit</Button>
-    </Wrapper>
+    </MainMenuWrapper>
   )
 }
