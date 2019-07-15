@@ -7,6 +7,6 @@ const Button = styled.button`
   padding: 0.5rem 1rem;
 `
 
-export default function (props) {
+export default function MenuButton (props) {
   return <Button onClick={props.onClick}>{props.children}</Button>
 }

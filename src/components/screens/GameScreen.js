@@ -13,7 +13,7 @@ import { createRandomWord } from '../../lib/randomWord'
 
 import config from '../../config'
 
-function GameScreen() {
+function GameScreen(props) {
   const [guessedLetters, setGuessedLetters] = useState([])
   const [randomWord, setRandomWord] = useState(createRandomWord())
   const [paused, setPaused] = useState(false)
@@ -101,6 +101,7 @@ function GameScreen() {
       <PauseMenu
         show={paused}
         onCloseMenu={handleCloseMenu}
+        onSwitchScreen={props.onSwitchScreen}
         onRestartGame={handleRestart}
       />
     </div>

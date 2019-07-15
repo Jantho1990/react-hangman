@@ -1,10 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 import MenuContainer from './MenuContainer'
+import MenuButton from '../buttons/MenuButton'
 
 export default function PauseMenu(props) {
   const { show, onCloseMenu, onRestartGame } = props
-  console.log(show)
+
+  const onQuit = () => {
+    const { onSwitchScreen } = props
+    onSwitchScreen('MainMenuScreen')
+  }
 
   const onRestart = () => {
     onRestartGame()
@@ -16,8 +21,9 @@ export default function PauseMenu(props) {
       className={show ? 'visible' : ''}
     >
       <h2>Paused</h2>
-      <button onClick={onRestart}>Restart</button>
-      <button onClick={onCloseMenu}>Return to Game</button>
+      <MenuButton onClick={onRestart}>Restart</MenuButton>
+      <MenuButton onClick={onQuit}>Quit</MenuButton>
+      <MenuButton onClick={onCloseMenu}>Return to Game</MenuButton>
     </MenuContainer>
   )
 }
