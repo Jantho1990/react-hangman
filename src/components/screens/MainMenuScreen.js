@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Button from '../buttons/MenuButton'
+import MenuButton from '../buttons/MenuButton'
 
 const MainMenuWrapper = styled.div`
   display: flex;
@@ -26,9 +26,9 @@ export default function MainMenuScreen (props) {
   return (
     <MainMenuWrapper>
       <GameTitle>React Hangman</GameTitle>
-      <Button onClick={onStartGame}>Start</Button>
-      <Button>Options</Button>
-      <Button>Quit</Button>
+      <MenuButton onClick={onStartGame}>Start</MenuButton>
+      <MenuButton>Options</MenuButton>
+      <MenuButton>Quit</MenuButton>
     </MainMenuWrapper>
   )
 }
