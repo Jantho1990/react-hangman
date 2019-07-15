@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
-import './App.css';
+import styled from 'styled-components'
+// import './App.css';
 
 import MainMenuScreen from './components/screens/MainMenuScreen'
 import GameScreen from './components/screens/GameScreen'
 
 import config from './config'
+
+const AppWrapper = styled.div`
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  ${'' /* background-color: hsl(220, 13%, 18%); */}
+  ${'' /* color: hsl(0, 0%, 90%); */}
+`
 
 function App() {
   const screens = [
@@ -31,9 +41,9 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <AppWrapper className="App">
       {renderActiveScreen(activeScreen)}
-    </div>
+    </AppWrapper>
   );
 }
 

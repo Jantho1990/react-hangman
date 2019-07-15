@@ -3,8 +3,9 @@ import styled from 'styled-components'
 
 const LetterWrapper = styled.div`
   max-width: 50rem;
+  height: 100%;
   margin: auto;
-  margin-top: 3rem;
+  ${'' /* margin-top: 3rem; */}
   overflow-y: scroll;
   border-top: 1px solid hsl(0, 0%, 50%);
   @media screen and (min-width: 768px) {

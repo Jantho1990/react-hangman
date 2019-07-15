@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import '../../GameScreen.css';
+import React, { useState } from 'react'
+import styled from 'styled-components'
+// import '../../GameScreen.css'
 
 import LetterSelector from '../../components/LetterSelector'
 import WordDisplay from '../../components/WordDisplay'
@@ -12,6 +13,39 @@ import PauseMenu from '../../components/menus/PauseMenu'
 import { createRandomWord } from '../../lib/randomWord'
 
 import config from '../../config'
+
+const GameScreenWrapper = styled.div`
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+`
+
+const GameScreenMain = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+`
+
+const GameScreenCenter = styled.div`
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+`
+
+const GameScreenBottom = styled.div`
+  flex: 3 3;
+  overflow: hidden;
+  margin-top: 3rem;
+`
 
 function GameScreen(props) {
   const [guessedLetters, setGuessedLetters] = useState([])
@@ -64,8 +98,8 @@ function GameScreen(props) {
   const gameOver = guessesRemaining <= 0 || wordGuessed
 
   return (
-    <div className="GameScreen">
-      <div className="GameScreen-main">
+    <GameScreenWrapper className="GameScreen">
+      <GameScreenMain className="GameScreen-main">
         <AppHeader className="GameScreen-header">
           <AppTitle>React Hangman</AppTitle>
           <MenuButton
@@ -75,7 +109,7 @@ function GameScreen(props) {
           </MenuButton>
         </AppHeader>
 
-        <div className="GameScreen-center">
+        <GameScreenCenter className="GameScreen-center">
           <FancyCounterView
             wrongGuesses={wrongGuesses}
             maxGuesses={maxGuesses}
@@ -88,23 +122,25 @@ function GameScreen(props) {
             guessedLetters={guessedLetters}
             gameOver={gameOver}
           />
-        </div>
+        </GameScreenCenter>
 
-        <LetterSelector
-          className="GameScreen-bottom"
-          guessedLetters={guessedLetters}
-          onUpdateGuessedLetters={handleUpdateGuessedLetters}
-          gameOver={gameOver}
-          word={randomWord}
-        />
-      </div>
+        <GameScreenBottom>
+          <LetterSelector
+            className="GameScreen-bottom"
+            guessedLetters={guessedLetters}
+            onUpdateGuessedLetters={handleUpdateGuessedLetters}
+            gameOver={gameOver}
+            word={randomWord}
+          />
+        </GameScreenBottom>
+      </GameScreenMain>
       <PauseMenu
         show={paused}
         onCloseMenu={handleCloseMenu}
         onSwitchScreen={props.onSwitchScreen}
         onRestartGame={handleRestart}
       />
-    </div>
+    </GameScreenWrapper>
   );
 }
 
