@@ -1,3 +1,4 @@
 {
-  "guesses": 10
+  "guesses": 10,
+  "theme": "light"
 }

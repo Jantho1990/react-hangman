@@ -6,14 +6,15 @@ import MainMenuScreen from './components/screens/MainMenuScreen'
 import GameScreen from './components/screens/GameScreen'
 
 import config from './config'
+import themes from './themes'
 
 const AppWrapper = styled.div`
   text-align: center;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  ${'' /* background-color: hsl(220, 13%, 18%); */}
-  ${'' /* color: hsl(0, 0%, 90%); */}
+  background-color: ${themes[config.theme].primaryBackgroundColor};
+  color: ${themes[config.theme].primaryFontColor};
 `
 
 function App() {
