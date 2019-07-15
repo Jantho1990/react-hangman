@@ -5,7 +5,7 @@ const LetterSpace = styled.span.attrs(props => ({
   fontSize: `calc(50vw / ${props.wordLength})`,
   fontSizeMobile: `calc(90vw / ${props.wordLength})`
 }))`
-  color: black;
+  color: hsl(0%, 0%, 90%);
   font-size: 2rem;
   font-size: ${({ fontSizeMobile }) => fontSizeMobile};
   margin: 0 0rem;

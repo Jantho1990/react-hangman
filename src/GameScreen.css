@@ -1,19 +1,13 @@
-.App {
+.GameScreen {
   text-align: center;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
   /* background-color: hsl(0, 0%, 20%); */
   /* color: hsl(0, 0%, 90%); */
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-main {
+.GameScreen-main {
   width: 100%;
   height: 100%;
   display: flex;
@@ -21,7 +15,7 @@
   justify-content: space-around;
 }
 
-.App-header {
+.GameScreen-header {
   background-color: #282c34;
   background-color: hsl(220, 13%, 18%);
   /* min-height: 100vh; */
@@ -34,7 +28,7 @@
   flex: 1;
 }
 
-.App-center {
+.GameScreen-center {
   flex: 3;
   display: flex;
   flex-direction: column;
@@ -43,16 +37,16 @@
 }
 
 @media screen and (min-width: 768px) {
-  .App-center {
+  .GameScreen-center {
     flex-direction: row;
   }
 }
 
-.App-bottom {
+.GameScreen-bottom {
   flex: 3;
 }
 
-.App-link {
+.GameScreen-link {
   color: #61dafb;
 }
 
