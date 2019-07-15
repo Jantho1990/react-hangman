@@ -7,12 +7,22 @@ const MainMenuWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-item: center;
-  justify-content: space-around;
+  justify-content: center;
+  height: 100%;
 `
 
 const GameTitle = styled.h1`
   font-size: 10vmin;
   font-weight: bold;
+`
+
+const MenuButtonContainer = styled.div`
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  max-height: 10rem;
 `
 
 export default function MainMenuScreen (props) {
@@ -26,9 +36,11 @@ export default function MainMenuScreen (props) {
   return (
     <MainMenuWrapper>
       <GameTitle>React Hangman</GameTitle>
-      <MenuButton onClick={onStartGame}>Start</MenuButton>
-      <MenuButton>Options</MenuButton>
-      <MenuButton>Quit</MenuButton>
+      <MenuButtonContainer>
+        <MenuButton onClick={onStartGame}>Start</MenuButton>
+        <MenuButton>Options</MenuButton>
+        <MenuButton>Quit</MenuButton>
+      </MenuButtonContainer>
     </MainMenuWrapper>
   )
 }
