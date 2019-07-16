@@ -65,7 +65,7 @@ export default function MainMenuScreen (props) {
 
   const onShowOptions = () => {
     console.log('Showing options...')
-
+    onSwitchScreen('OptionsScreen')
   }
 
   return (

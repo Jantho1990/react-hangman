@@ -16,6 +16,7 @@ const useGameState = () => {
   }
 
   return {
+    theme: state.theme,
     changeTheme
   }
 }

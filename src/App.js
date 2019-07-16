@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import MainMenuScreen from './components/screens/MainMenuScreen'
 import GameScreen from './components/screens/GameScreen'
+import OptionsScreen from './components/screens/OptionsScreen'
 
 // import DataStore, { DataConsumer } from './DataStore'
 import { GameStateProvider } from './components/game-state/GameStateContext'
@@ -23,7 +24,8 @@ const AppWrapper = styled.div`
 function App() {
   const screens = [
     'MainMenuScreen',
-    'GameScreen'
+    'GameScreen',
+    'OptionsScreen'
   ]
 
   const [activeScreen, setActiveScreen] = useState(screens[0])
@@ -39,6 +41,8 @@ function App() {
         return <MainMenuScreen onSwitchScreen={switchActiveScreen}/>
       case screens[1]:
         return <GameScreen onSwitchScreen={switchActiveScreen}/>
+      case screens[2]:
+        return <OptionsScreen onSwitchScreen={switchActiveScreen}/>
       default:
         return <div>Screen "{screen}" not found.</div>
     }

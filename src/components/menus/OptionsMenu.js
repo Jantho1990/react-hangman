@@ -1,9 +1,28 @@
 import React from 'react'
 import styled from 'styled-components'
-import MenuContainer from './MenuContainer'
+import MenuDisplay from './MenuDisplay'
 import MenuButton from '../buttons/MenuButton'
 import MenuSelect from '../buttons/MenuSelect'
 import MenuOption from '../buttons/MenuOption'
+
+const OptionsMenuWrapper = styled.div`
+  background-color: pink;
+`
+
+const SubmenuTheme = () => {
+  return (
+    <MenuSelect label={'Themes'}>
+      <MenuOption>Light</MenuOption>
+      <MenuOption>Dark</MenuOption>
+    </MenuSelect>
+  )
+}
+
+const SubmenuVolume = () => {
+  return (
+    <MenuButton>Volume</MenuButton>
+  )
+}
 
 export default function OptionsMenu(props) {
   const { show, onCloseMenu, onRestartGame } = props
@@ -13,14 +32,10 @@ export default function OptionsMenu(props) {
   }
 
   return (
-    <MenuContainer
-      className={show ? 'visible' : ''}
-    >
-      <h2>Paused</h2>
-      <MenuSelect label={'Themes'}>
-        <MenuOption>Light</MenuOption>
-        <MenuOption>Dark</MenuOption>
-      </MenuSelect>
-    </MenuContainer>
+    <OptionsMenuWrapper>
+      <h4>Options</h4>
+      <SubmenuTheme/>
+      <SubmenuVolume/>
+    </OptionsMenuWrapper>
   )
 }
