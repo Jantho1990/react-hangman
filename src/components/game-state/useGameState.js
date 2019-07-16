@@ -4,15 +4,16 @@ import themes from '../../themes'
 
 const useGameState = () => {
   const [state, setState] = useContext(GameStateContext)
+  console.log('state', state)
 
-  changeTheme (themeName) {
+  function changeTheme(themeName) {
     setState(state => ({
       ...state,
       theme: {
         name: themeName,
         ...themes[themeName]
       }
-    })
+    }))
   }
 
   return {

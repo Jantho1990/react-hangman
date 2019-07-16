@@ -12,8 +12,8 @@ const OptionsMenuWrapper = styled.div`
 const SubmenuTheme = () => {
   return (
     <MenuSelect label={'Themes'}>
-      <MenuOption>Light</MenuOption>
-      <MenuOption>Dark</MenuOption>
+      <MenuOption value="light">Light</MenuOption>
+      <MenuOption value="dark">Dark</MenuOption>
     </MenuSelect>
   )
 }

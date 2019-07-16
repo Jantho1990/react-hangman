@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const MenuSelectWrapper = styled.div`
+import useGameState from '../game-state/useGameState'
+
+const MenuSelectWrapper = styled.form`
   color: white;
 `
 
@@ -14,8 +16,13 @@ const Select = styled.select`
 `
 
 export default function MenuSelect(props) {
+  const handleSubmit = event => {
+    const value = event.target.value
+    useGameState.changeTheme(value)
+  }
+
   return (
-    <MenuSelectWrapper>
+    <MenuSelectWrapper onSubmit={handleSubmit}>
       <MenuSelectLabel>{props.label}</MenuSelectLabel>
       <Select {...props}></Select>
     </MenuSelectWrapper>

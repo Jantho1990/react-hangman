@@ -7,7 +7,10 @@ import MenuButton from '../buttons/MenuButton'
 import { theme as currentTheme } from '../../config.json'
 import themes from '../../themes'
 
-const theme = themes[currentTheme]
+import useGameState from '../game-state/useGameState'
+
+// const theme = themes[currentTheme]
+// const { theme } = useGameState()
 
 const MainMenuWrapper = styled.div`
   display: flex;
@@ -46,17 +49,18 @@ const MenuButtonContainer = styled.div`
 `
 
 const MainMenuButton = styled(MenuButton)`
-  background-color: ${theme.primaryButtonColor};
-  color: ${theme.primaryButtonFontColor};
-  border: 1px solid ${theme.primaryButtonColor};
+  background-color: ${props => props.theme.primaryButtonColor};
+  color: ${props => props.theme.primaryButtonFontColor};
+  border: 1px solid ${props => props.theme.primaryButtonColor};
   transition: all ease-in 0.125s;
   &:hover {
-    background-color: ${theme.primaryButtonHoverColor};
+    background-color: ${props => props.theme.primaryButtonHoverColor};
   }
 `
 
 export default function MainMenuScreen (props) {
   const { onSwitchScreen } = props
+  const { theme } = useGameState()
 
   const onStartGame = () => {
     console.log('Starting game...')
@@ -72,9 +76,9 @@ export default function MainMenuScreen (props) {
     <MainMenuWrapper>
       <GameTitle>React Hangman</GameTitle>
       <MenuButtonContainer>
-        <MainMenuButton onClick={onStartGame}>Start</MainMenuButton>
-        <MainMenuButton onClick={onShowOptions}>Options</MainMenuButton>
-        <MainMenuButton>Quit</MainMenuButton>
+        <MainMenuButton theme={theme} onClick={onStartGame}>Start</MainMenuButton>
+        <MainMenuButton theme={theme} onClick={onShowOptions}>Options</MainMenuButton>
+        <MainMenuButton theme={theme}>Quit</MainMenuButton>
       </MenuButtonContainer>
     </MainMenuWrapper>
   )

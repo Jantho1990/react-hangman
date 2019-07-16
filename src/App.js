@@ -8,17 +8,21 @@ import OptionsScreen from './components/screens/OptionsScreen'
 
 // import DataStore, { DataConsumer } from './DataStore'
 import { GameStateProvider } from './components/game-state/GameStateContext'
+import useGameState from './components/game-state/useGameState'
 
 import config from './config'
-import themes from './themes'
+// import themes from './themes'
+
+const theme = useGameState.theme
+console.log(theme)
 
 const AppWrapper = styled.div`
   text-align: center;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background-color: ${themes[config.theme].primaryBackgroundColor};
-  color: ${themes[config.theme].primaryFontColor};
+  ${'' /* background-color: ${theme.primaryBackgroundColor};
+  color: ${theme.primaryFontColor}; */}
 `
 
 function App() {
