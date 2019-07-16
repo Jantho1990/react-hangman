@@ -4,14 +4,15 @@ import MenuDisplay from './MenuDisplay'
 import MenuButton from '../buttons/MenuButton'
 import MenuSelect from '../buttons/MenuSelect'
 import MenuOption from '../buttons/MenuOption'
+import useGameState from '../game-state/useGameState'
 
 const OptionsMenuWrapper = styled.div`
   background-color: pink;
 `
 
-const SubmenuTheme = () => {
+const SubmenuTheme = (props) => {
   return (
-    <MenuSelect label={'Themes'}>
+    <MenuSelect label={'Themes'} {...props}>
       <MenuOption value="light">Light</MenuOption>
       <MenuOption value="dark">Dark</MenuOption>
     </MenuSelect>
@@ -26,15 +27,17 @@ const SubmenuVolume = () => {
 
 export default function OptionsMenu(props) {
   const { show, onCloseMenu, onRestartGame } = props
+  const { changeTheme } = useGameState()
 
-  const onChangeTheme = () => {
-    console.log('trigger theme change')
+  const handleChangeTheme = (value) => {
+    console.log('trigger theme change', value)
+    changeTheme(value)
   }
 
   return (
     <OptionsMenuWrapper>
       <h4>Options</h4>
-      <SubmenuTheme/>
+      <SubmenuTheme onsubmit={handleChangeTheme}/>
       <SubmenuVolume/>
     </OptionsMenuWrapper>
   )

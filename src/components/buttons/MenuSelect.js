@@ -16,13 +16,15 @@ const Select = styled.select`
 `
 
 export default function MenuSelect(props) {
+  const { onsubmit } = props
+
   const handleSubmit = event => {
     const value = event.target.value
-    useGameState.changeTheme(value)
+    onsubmit(value)
   }
 
   return (
-    <MenuSelectWrapper onSubmit={handleSubmit}>
+    <MenuSelectWrapper onChange={handleSubmit}>
       <MenuSelectLabel>{props.label}</MenuSelectLabel>
       <Select {...props}></Select>
     </MenuSelectWrapper>
