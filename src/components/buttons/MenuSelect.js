@@ -16,7 +16,7 @@ const Select = styled.select`
 `
 
 export default function MenuSelect(props) {
-  const { onsubmit } = props
+  const { onsubmit, currentValue } = props
 
   const handleSubmit = event => {
     const value = event.target.value
@@ -26,7 +26,7 @@ export default function MenuSelect(props) {
   return (
     <MenuSelectWrapper onChange={handleSubmit}>
       <MenuSelectLabel>{props.label}</MenuSelectLabel>
-      <Select {...props}></Select>
+      <Select {...props} defaultValue={currentValue}></Select>
     </MenuSelectWrapper>
   )
 }

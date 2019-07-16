@@ -27,7 +27,7 @@ const SubmenuVolume = () => {
 
 export default function OptionsMenu(props) {
   const { show, onCloseMenu, onRestartGame } = props
-  const { changeTheme } = useGameState()
+  const { theme, changeTheme } = useGameState()
 
   const handleChangeTheme = (value) => {
     console.log('trigger theme change', value)
@@ -37,7 +37,7 @@ export default function OptionsMenu(props) {
   return (
     <OptionsMenuWrapper>
       <h4>Options</h4>
-      <SubmenuTheme onsubmit={handleChangeTheme}/>
+      <SubmenuTheme onsubmit={handleChangeTheme} currentValue={theme.name}/>
       <SubmenuVolume/>
     </OptionsMenuWrapper>
   )
