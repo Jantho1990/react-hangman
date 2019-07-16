@@ -1,6 +1,6 @@
 {
   "primaryBackgroundColor": "hsl(0, 0, 90%)",
-  "primaryFontColor": "hsl(0, 0, 5%)",
+  "primaryFontColor": "hsl(0, 0%, 5%)",
   "primaryButtonColor": "hsl(220, 13%, 18%)",
   "primaryButtonFontColor": "hsl(0, 0%, 90%)",
   "primaryButtonHoverColor": "hsl(220, 13%, 28%)"

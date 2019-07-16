@@ -18,11 +18,14 @@ const MainMenuWrapper = styled.div`
   align-item: center;
   justify-content: center;
   height: 100%;
+  background-color: ${ props => props.theme.primaryBackgroundColor };
+  color: ${ props => props.theme.primaryFontColor };
 `
 
 const GameTitle = styled.h1`
   font-size: 10vmin;
   font-weight: bold;
+  color: ${ props => props.theme.primaryFontColor };
 `
 
 const MenuButtonContainer = styled.div`
@@ -73,8 +76,8 @@ export default function MainMenuScreen (props) {
   }
 
   return (
-    <MainMenuWrapper>
-      <GameTitle>React Hangman</GameTitle>
+    <MainMenuWrapper theme={theme}>
+      <GameTitle theme={theme}>React Hangman</GameTitle>
       <MenuButtonContainer>
         <MainMenuButton theme={theme} onClick={onStartGame}>Start</MainMenuButton>
         <MainMenuButton theme={theme} onClick={onShowOptions}>Options</MainMenuButton>
