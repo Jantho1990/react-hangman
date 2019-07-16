@@ -63,12 +63,17 @@ export default function MainMenuScreen (props) {
     onSwitchScreen('GameScreen')
   }
 
+  const onShowOptions = () => {
+    console.log('Showing options...')
+
+  }
+
   return (
     <MainMenuWrapper>
       <GameTitle>React Hangman</GameTitle>
       <MenuButtonContainer>
         <MainMenuButton onClick={onStartGame}>Start</MainMenuButton>
-        <MainMenuButton>Options</MainMenuButton>
+        <MainMenuButton onClick={onShowOptions}>Options</MainMenuButton>
         <MainMenuButton>Quit</MainMenuButton>
       </MenuButtonContainer>
     </MainMenuWrapper>

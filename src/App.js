@@ -5,6 +5,9 @@ import styled from 'styled-components'
 import MainMenuScreen from './components/screens/MainMenuScreen'
 import GameScreen from './components/screens/GameScreen'
 
+// import DataStore, { DataConsumer } from './DataStore'
+import { GameStateProvider } from './components/game-state/GameStateContext'
+
 import config from './config'
 import themes from './themes'
 
@@ -42,9 +45,11 @@ function App() {
   }
 
   return (
-    <AppWrapper className="App">
-      {renderActiveScreen(activeScreen)}
-    </AppWrapper>
+    <GameStateProvider>
+      <AppWrapper className="App">
+        {renderActiveScreen(activeScreen)}
+      </AppWrapper>
+    </GameStateProvider>
   );
 }
 
