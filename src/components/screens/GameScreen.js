@@ -47,6 +47,10 @@ const GameScreenBottom = styled.div`
   margin-top: 3rem;
 `
 
+const PauseMenuButton = styled(MenuButton)`
+  width: auto;
+`
+
 function GameScreen(props) {
   const [guessedLetters, setGuessedLetters] = useState([])
   const [randomWord, setRandomWord] = useState(createRandomWord())
@@ -102,11 +106,11 @@ function GameScreen(props) {
       <GameScreenMain className="GameScreen-main">
         <AppHeader className="GameScreen-header">
           <AppTitle>React Hangman</AppTitle>
-          <MenuButton
+          <PauseMenuButton
             onClick={() => showPauseMenu()}
           >
             Menu
-          </MenuButton>
+          </PauseMenuButton>
         </AppHeader>
 
         <GameScreenCenter className="GameScreen-center">
