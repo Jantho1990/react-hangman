@@ -58,6 +58,9 @@ const SelectWrapper = styled.div`
     pointer-events: none;
     color: ${props => props.theme.primaryButtonFontColor};
   }
+  @media screen and (min-width: 768px) {
+    width: 25%;
+  }
 `
 
 export default function MenuSelect(props) {
