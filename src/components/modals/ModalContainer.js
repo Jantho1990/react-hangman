@@ -18,9 +18,6 @@ const ModalContainerWrapper = styled.div`
   &.visible {
     display: flex;
   }
-  * {
-    margin: 0.5rem auto;
-  }
 `
 
 export default function ModalContainer(props) {
