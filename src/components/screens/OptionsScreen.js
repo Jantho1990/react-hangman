@@ -20,9 +20,7 @@ export default function OptionsScreen(props) {
 
   return (
     <OptionsScreenWrapper>
-      <MenuDisplay activeMenu={'OptionsMenu'} onBackClick={onBackClick}>
-        <OptionsMenu onExitMenu={onBackClick}/>
-      </MenuDisplay>
+      <OptionsMenu onExitMenu={onBackClick}/>
     </OptionsScreenWrapper>
   )
 }
