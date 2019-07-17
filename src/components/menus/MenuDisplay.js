@@ -21,9 +21,10 @@ export default function MenuDisplay(props) {
     getSubMenu(activeMenuName)
   )
 
+  console.log('RENDER TRIGGERED', activeMenuName, activeMenu)
+
   function getSubMenu(menuName) {
     return subMenuComponents.reduce((carry, subMenuComponent) => {
-      console.log(subMenuComponent)
       return carry === undefined
         ? subMenuComponent.type.name === menuName
           ? subMenuComponent
@@ -37,23 +38,20 @@ export default function MenuDisplay(props) {
    */
   function handleChangeActiveMenu(newMenuName) {
     const menuName = subMenuNames.reduce((carry, subMenuName) => {
-      return carry !== ''
+      return carry === ''
         ? subMenuName === newMenuName
           ? subMenuName
           : ''
-        : ''
+        : carry
     }, '')
 
-    if (menuName !== '') {
-      setActiveMenuName(menuName)
-      setActiveMenu(getSubMenu(activeMenuName))
-    } else {
+    if (menuName === '') {
       throw new Error(`${newMenuName} is not a submenu of this MenuDisplay.`)
     }
-  }
 
-  console.log(subMenuComponents, subMenuNames)
-  console.log(React.isValidElement(activeMenu))
+    setActiveMenuName(menuName)
+    setActiveMenu(getSubMenu(menuName))
+  }
 
   /**
    * Renders the active menu. Doing it this way so we can add new props.
