@@ -6,10 +6,8 @@ export default styled.header`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: #282c34;
-  background-color: hsl(220, 13%, 18%);
-  /* min-height: 100vh; */
+  background-color: ${props => props.theme.gameScreen.headerBackgroundColor};
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: ${props => props.theme.gameScreen.headerFontColor};
   flex: 1;
 `

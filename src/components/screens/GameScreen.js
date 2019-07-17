@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-// import '../../GameScreen.css'
-
+import useGameState from '../game-state/useGameState'
 import LetterSelector from '../../components/LetterSelector'
 import WordDisplay from '../../components/WordDisplay'
 import FancyCounterView from '../../components/views/FancyCounterView'
@@ -27,6 +26,8 @@ const GameScreenMain = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  background-color: ${({ theme }) => theme.gameScreen.backgroundColor};
+  color: ${({ theme }) => theme.gameScreen.fontColor};
 `
 
 const GameScreenCenter = styled.div`
@@ -55,6 +56,8 @@ function GameScreen(props) {
   const [guessedLetters, setGuessedLetters] = useState([])
   const [randomWord, setRandomWord] = useState(createRandomWord())
   const [paused, setPaused] = useState(false)
+
+  const { theme } = useGameState()
 
   const { guesses: maxGuesses } = config
 
@@ -103,8 +106,8 @@ function GameScreen(props) {
 
   return (
     <GameScreenWrapper className="GameScreen">
-      <GameScreenMain className="GameScreen-main">
-        <AppHeader className="GameScreen-header">
+      <GameScreenMain theme={theme} className="GameScreen-main">
+        <AppHeader theme={theme} className="GameScreen-header">
           <AppTitle>React Hangman</AppTitle>
           <PauseModalButton
             onClick={() => showPauseModal()}

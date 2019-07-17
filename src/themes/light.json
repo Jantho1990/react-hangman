@@ -3,5 +3,11 @@
   "primaryFontColor": "hsl(0, 0%, 5%)",
   "primaryButtonColor": "hsl(220, 13%, 18%)",
   "primaryButtonFontColor": "hsl(0, 0%, 90%)",
-  "primaryButtonHoverColor": "hsl(220, 13%, 28%)"
+  "primaryButtonHoverColor": "hsl(220, 13%, 28%)",
+  "gameScreen": {
+    "headerBackgroundColor": "hsl(220, 13%, 18%)",
+    "headerFontColor": "hsl(0, 0%, 90%)",
+    "backgroundColor": "hsl(0, 0%, 90%)",
+    "fontColor": "hsl(0, 0%, 5%)"
+  }
 }
