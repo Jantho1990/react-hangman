@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import useGameState from '../game-state/useGameState'
 
 const Button = styled.button`
   border: none;
@@ -7,8 +8,16 @@ const Button = styled.button`
   padding: 0.5rem 1rem;
   width: 100%;
   cursor: pointer;
+  background-color: ${props => props.theme.primaryButtonColor};
+  color: ${props => props.theme.primaryButtonFontColor};
+  &:hover {
+    background-color: ${props => props.theme.primaryButtonHoverColor};
+    color: ${props => props.theme.primaryButtonFontHoverColor};
+  }
 `
 
 export default function MenuButton (props) {
-  return <Button {...props} onClick={props.onClick}>{props.children}</Button>
+  const { theme } = useGameState()
+
+  return <Button theme={theme} {...props} onClick={props.onClick}>{props.children}</Button>
 }
