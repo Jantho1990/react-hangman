@@ -4,7 +4,7 @@ import MenuContainer from './MenuContainer'
 import MenuButton from '../buttons/MenuButton'
 
 export default function PauseMenu(props) {
-  const { show, onCloseMenu, onRestartGame } = props
+  const { onCloseMenu, onRestartGame } = props
 
   const onQuit = () => {
     const { onSwitchScreen } = props
@@ -17,9 +17,7 @@ export default function PauseMenu(props) {
   }
 
   return (
-    <MenuContainer
-      className={show ? 'visible' : ''}
-    >
+    <MenuContainer>
       <h2>Paused</h2>
       <MenuButton onClick={onRestart}>Restart</MenuButton>
       <MenuButton onClick={onQuit}>Quit</MenuButton>

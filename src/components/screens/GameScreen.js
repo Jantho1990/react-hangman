@@ -8,7 +8,7 @@ import FancyCounterView from '../../components/views/FancyCounterView'
 import MenuButton from '../../components/buttons/MenuButton'
 import AppHeader from '../../components/AppHeader'
 import AppTitle from '../../components/AppTitle'
-import PauseMenu from '../../components/menus/PauseMenu'
+import PauseModal from '../../components/modals/PauseModal'
 
 import { createRandomWord } from '../../lib/randomWord'
 
@@ -47,7 +47,7 @@ const GameScreenBottom = styled.div`
   margin-top: 3rem;
 `
 
-const PauseMenuButton = styled(MenuButton)`
+const PauseModalButton = styled(MenuButton)`
   width: auto;
 `
 
@@ -58,7 +58,7 @@ function GameScreen(props) {
 
   const { guesses: maxGuesses } = config
 
-  const showPauseMenu = () => {
+  const showPauseModal = () => {
     setPaused(true)
   }
 
@@ -106,11 +106,11 @@ function GameScreen(props) {
       <GameScreenMain className="GameScreen-main">
         <AppHeader className="GameScreen-header">
           <AppTitle>React Hangman</AppTitle>
-          <PauseMenuButton
-            onClick={() => showPauseMenu()}
+          <PauseModalButton
+            onClick={() => showPauseModal()}
           >
             Menu
-          </PauseMenuButton>
+          </PauseModalButton>
         </AppHeader>
 
         <GameScreenCenter className="GameScreen-center">
@@ -138,7 +138,7 @@ function GameScreen(props) {
           />
         </GameScreenBottom>
       </GameScreenMain>
-      <PauseMenu
+      <PauseModal
         show={paused}
         onCloseMenu={handleCloseMenu}
         onSwitchScreen={props.onSwitchScreen}

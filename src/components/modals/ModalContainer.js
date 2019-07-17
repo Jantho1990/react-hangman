@@ -3,9 +3,9 @@ import styled from 'styled-components'
 
 import config from '../../config.json'
 
-export default styled.div`
+const ModalContainerWrapper = styled.div`
   background-color: ${config.menuBackgroundColor || 'hsla(0, 0%, 50%, 95%)'};
-  display: flex;
+  display: none;
   position: fixed;
   left: 0;
   top: 0;
@@ -15,7 +15,20 @@ export default styled.div`
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  &.visible {
+    display: flex;
+  }
   * {
     margin: 0.5rem auto;
   }
 `
+
+export default function ModalContainer(props) {
+  const { visible } = props
+  
+  return (
+    <ModalContainerWrapper className={visible ? 'visible' : ''}>
+      {props.children}
+    </ModalContainerWrapper>
+  )
+}
