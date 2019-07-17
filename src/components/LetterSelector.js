@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
+import useGameState from './game-state/useGameState'
 
 const LetterWrapper = styled.div`
   max-width: 50rem;
@@ -25,6 +26,7 @@ const ListContainer = styled.ul`
   margin: 0;
   padding: 0 1rem;
   background-color: hsl(0, 0%, 90%);
+  background-color: ${({ theme: { gameScreen: { keyboard }} }) => keyboard.backgroundColor};
   @media screen and (min-width: 768px) {
     padding: 0;
   }
@@ -51,71 +53,57 @@ const ListItem = styled.li`
   }
 `
 
-const handleLetterGuess = (letter, updateFunc) => {
-  updateFunc({ newLetter: letter })
-}
 
-export default class LetterSelector extends Component {
-  constructor(props) {
-    super(props)
-
-    this.isLetterGuessed = this.isLetterGuessed.bind(this)
-    this.isLetterGuessedCorrectly = this.isLetterGuessedCorrectly.bind(this)
+export default function LetterSelector(props) {
+  // const isLetterGuessed = this.isLetterGuessed.bind(this)
+  // const isLetterGuessedCorrectly = this.isLetterGuessedCorrectly.bind(this)
+  const { word, className, gameOver, onUpdateGuessedLetters, guessedLetters } = props
+  
+  const { theme } = useGameState()
+  
+  const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
+  
+  const handleLetterGuess = (letter, updateFunc) => {
+    updateFunc({ newLetter: letter })
   }
 
-  letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
-
-  static defaultProps = {
-    guessedLetters: []
-  }
-
-  isLetterGuessed(letter) {
-    const { guessedLetters } = this.props
-    
+  const isLetterGuessed = letter => {
     return guessedLetters.find(guessedLetter => guessedLetter === letter) !== undefined
   }
 
-  isLetterGuessedCorrectly(letter) {
-    const { word } = this.props
-
+  const isLetterGuessedCorrectly = letter => {
     return word.indexOf(letter) !== -1 ? true : false
   }
 
-  render() {
-    const {
-      letters,
-      isLetterGuessed,
-      isLetterGuessedCorrectly,
-      props: { className, onUpdateGuessedLetters, gameOver }
-    } = this
-
-    const guessedClass = letter => isLetterGuessed(letter) ? 'guessed' : ''
-    const guessedStatusClass = letter => isLetterGuessed(letter)
-      ? isLetterGuessedCorrectly(letter)
-        ? 'correctly'
-        : 'wrongly'
-      : ''
-
-    let ct = 0
-    let renderLetterButtons = () => {
-      return (
-        <ListContainer>
-          {letters.map((letter, i) => {
-            return (
-              <ListItem
-                className={`letter ${guessedClass(letter)} ${guessedStatusClass(letter)}`}
-                guessed={isLetterGuessed(letter)}
-                onClick={() => !gameOver ? handleLetterGuess(letter, onUpdateGuessedLetters) : null}
-                key={`key-letter-${ct++}`}
-              >
-                {letter}
-              </ListItem>
-            )
-          })}
-        </ListContainer>
-      )
-    }
-
-    return <LetterWrapper className={className}>{renderLetterButtons()}</LetterWrapper>
+  const renderLetterButtons = () => {
+    console.log('render list buttons')
+    return (
+      <ListContainer theme={theme}>
+        {letters.map((letter, i) => {
+          console.log(letter)
+          return (
+            <ListItem
+              className={`letter ${guessedClass(letter)} ${guessedStatusClass(letter)}`}
+              guessed={isLetterGuessed(letter)}
+              onClick={() => !gameOver ? handleLetterGuess(letter, onUpdateGuessedLetters) : null}
+              key={`key-letter-${i}`}
+            >
+              {letter}
+            </ListItem>
+          )
+        })}
+      </ListContainer>
+    )
   }
+  
+  const guessedClass = letter => isLetterGuessed(letter) ? 'guessed' : ''
+  const guessedStatusClass = letter => isLetterGuessed(letter)
+    ? isLetterGuessedCorrectly(letter)
+      ? 'correctly'
+      : 'wrongly'
+    : ''
+
+  return (
+    <LetterWrapper className={className}>{renderLetterButtons()}</LetterWrapper>
+  )
 }

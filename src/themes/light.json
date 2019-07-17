@@ -8,6 +8,9 @@
     "headerBackgroundColor": "hsl(220, 13%, 18%)",
     "headerFontColor": "hsl(0, 0%, 90%)",
     "backgroundColor": "hsl(0, 0%, 100%)",
-    "fontColor": "hsl(0, 0%, 5%)"
+    "fontColor": "hsl(0, 0%, 5%)",
+    "keyboard": {
+      "backgroundColor": "hsl(0, 0%, 90%)"
+    }
   }
 }
