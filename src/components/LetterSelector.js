@@ -1,6 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import useGameState from './game-state/useGameState'
+import KeyEnter1 from '../sounds/KeyEnter1.wav'
+import SoundPool from '../sounds/SoundPool'
+
+const keySound = new SoundPool(KeyEnter1)
 
 const LetterWrapper = styled.div`
   max-width: 50rem;
@@ -64,6 +68,7 @@ export default function LetterSelector(props) {
   const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
   
   const handleLetterGuess = (letter, updateFunc) => {
+    keySound.play()
     updateFunc({ newLetter: letter })
   }
 
