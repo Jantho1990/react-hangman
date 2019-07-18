@@ -81,7 +81,6 @@ export default function MainMenuScreen (props) {
       <MenuButtonContainer>
         <MainMenuButton theme={theme} onClick={onStartGame}>Start</MainMenuButton>
         <MainMenuButton theme={theme} onClick={onShowOptions}>Options</MainMenuButton>
-        <MainMenuButton theme={theme}>Quit</MainMenuButton>
       </MenuButtonContainer>
     </MainMenuWrapper>
   )
