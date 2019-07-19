@@ -1,3 +1,5 @@
+import Assets from '../assets/Assets'
+
 class Sound {
   constructor(src, options = {}) {
     this.playing = false
@@ -5,17 +7,20 @@ class Sound {
     this.options = Object.assign({ volume: 1 }, options)
 
     // Configure audio element
-    const audio = new Audio(src)
-    if (options.loop) {
-      audio.loop = true
-    }
-    audio.addEventListener('error', () => {
-      throw new Error(`Error loading audio source: ${audio.src}`)
-    }, false)
-    audio.addEventListener('ended', () => {
-      this.playing = false
-    }, false)
-    this.audio = audio
+    console.log('shark', src)
+    Assets.sound(src).then(audio => {
+      debugger
+      if (options.loop) {
+        audio.loop = true
+      }
+      audio.addEventListener('error', () => {
+        throw new Error(`Error loading audio source: ${audio.src}`)
+      }, false)
+      audio.addEventListener('ended', () => {
+        this.playing = false
+      }, false)
+      this.audio = audio
+    })
   }
 
   play(overrides) {

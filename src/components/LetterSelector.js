@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import useGameState from './game-state/useGameState'
-import KeyEnter1 from '../sounds/KeyEnter1.wav'
+// import KeyEnter1 from '../assets/sounds/KeyEnter1.wav'
 import SoundPool from '../sounds/SoundPool'
 
-const keySound = new SoundPool(KeyEnter1)
+// console.log('rabbit', KeyEnter1)
+// const keySound = new SoundPool('assets/sounds/KeyEnter1.wav')
 
 const LetterWrapper = styled.div`
   max-width: 50rem;
