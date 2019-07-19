@@ -29,9 +29,7 @@ const PauseMenuTitle = styled.h2`
   }
 `
 
-export default function PauseMenu(props) {
-  const { onChangeActiveMenu, onCloseMenu, onRestartGame } = props
-
+export default function PauseMenu({ onChangeActiveMenu, onCloseMenu, onRestartGame, onSwitchScreen }) {
   const { theme } = useGameState()
 
   const onOptions = () => {
@@ -39,7 +37,6 @@ export default function PauseMenu(props) {
   }
 
   const onQuit = () => {
-    const { onSwitchScreen } = props
     onSwitchScreen('MainMenuScreen')
   }
 
@@ -49,7 +46,7 @@ export default function PauseMenu(props) {
   }
 
   return (
-    <PauseMenuWrapper theme={theme} {...props}>
+    <PauseMenuWrapper theme={theme}>
       <PauseMenuTitle theme={theme}>Paused</PauseMenuTitle>
       <PauseMenuButton theme={theme} onClick={onRestart}>Restart</PauseMenuButton>
       <PauseMenuButton theme={theme} onClick={onOptions}>Options</PauseMenuButton>
