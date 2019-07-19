@@ -19,4 +19,4 @@ const GameStateProvider = (props) => {
   )
 }
 
-export default { GameStateContext, GameStateProvider }
+export { GameStateContext, GameStateProvider }

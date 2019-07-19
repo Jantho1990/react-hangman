@@ -8,6 +8,7 @@ import OptionsScreen from './components/screens/OptionsScreen'
 
 // import DataStore, { DataConsumer } from './DataStore'
 import { GameStateProvider } from './components/game-state/GameStateContext'
+import { AssetsProvider } from './assets/AssetsContext'
 import useGameState from './components/game-state/useGameState'
 
 import config from './config'
@@ -53,11 +54,13 @@ function App() {
   }
 
   return (
-    <GameStateProvider>
-      <AppWrapper className="App">
-        {renderActiveScreen(activeScreen)}
-      </AppWrapper>
-    </GameStateProvider>
+    <AssetsProvider>  
+      <GameStateProvider>
+        <AppWrapper className="App">
+          {renderActiveScreen(activeScreen)}
+        </AppWrapper>
+      </GameStateProvider>
+    </AssetsProvider>
   );
 }
 

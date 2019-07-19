@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import useGameState from './game-state/useGameState'
 // import KeyEnter1 from '../assets/sounds/KeyEnter1.wav'
-import SoundPool from '../sounds/SoundPool'
+// import SoundPool from '../sounds/SoundPool'
 
 // console.log('rabbit', KeyEnter1)
 // const keySound = new SoundPool('assets/sounds/KeyEnter1.wav')
@@ -69,7 +69,7 @@ export default function LetterSelector(props) {
   const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
   
   const handleLetterGuess = (letter, updateFunc) => {
-    keySound.play()
+    // keySound.play()
     updateFunc({ newLetter: letter })
   }
 
