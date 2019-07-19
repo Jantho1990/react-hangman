@@ -1,16 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-
-import MenuContainer from '../menus/MenuContainer'
 import MenuButton from '../buttons/MenuButton'
-
-import { theme as currentTheme } from '../../config.json'
-import themes from '../../themes'
-
 import useGameState from '../game-state/useGameState'
-
-// const theme = themes[currentTheme]
-// const { theme } = useGameState()
 
 const MainMenuWrapper = styled.div`
   display: flex;

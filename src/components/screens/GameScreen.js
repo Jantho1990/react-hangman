@@ -8,9 +8,6 @@ import MenuButton from '../../components/buttons/MenuButton'
 import AppHeader from '../../components/AppHeader'
 import AppTitle from '../../components/AppTitle'
 import PauseModal from '../../components/modals/PauseModal'
-
-import { createRandomWord } from '../../lib/randomWord'
-
 import config from '../../config'
 
 const GameScreenWrapper = styled.div`
@@ -55,9 +52,7 @@ const PauseModalButton = styled(MenuButton)`
 function GameScreen(props) {
   const { theme, word: randomWord, changeWord } = useGameState()
   const [guessedLetters, setGuessedLetters] = useState([])
-  // const [randomWord, setRandomWord] = useState(word)
   const [paused, setPaused] = useState(false)
-
   const { guesses: maxGuesses } = config
 
   const showPauseModal = () => {
@@ -147,7 +142,7 @@ function GameScreen(props) {
         onRestartGame={handleRestart}
       />
     </GameScreenWrapper>
-  );
+  )
 }
 
-export default GameScreen;
+export default GameScreen

@@ -16,7 +16,7 @@ onLoaded(assets => {
 const callbacks = []
 
 const useAssets = () => {
-  const [state, setState] = useContext(AssetsContext)
+  const [state] = useContext(AssetsContext)
 
   const isReady = key => {
     if (ready) return true

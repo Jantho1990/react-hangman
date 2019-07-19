@@ -53,7 +53,7 @@ const loadData = async path => {
     .then(text => text)
     .catch(e => { throw e })
 }
-let dbg = 0
+
 /**
  * Takes an asset manifest and returns an object with the loaded assets.
  *
@@ -62,7 +62,6 @@ let dbg = 0
  * @return {Promise} A promise resolving to an object with the loaded assets.
  */
 const loadFromManifest = async manifest => {
-  let dbg2 = 0
   const loadedManifest = Object.entries(manifest).map(async ([assetType, assetTypeList]) => {
     let loaderFunc
 

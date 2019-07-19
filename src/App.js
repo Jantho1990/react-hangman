@@ -7,7 +7,6 @@ import OptionsScreen from './components/screens/OptionsScreen'
 
 import { GameStateProvider } from './components/game-state/GameStateContext'
 import { AssetsProvider } from './assets/AssetsContext'
-import useGameState from './components/game-state/useGameState'
 
 const AppWrapper = styled.div`
   text-align: center;

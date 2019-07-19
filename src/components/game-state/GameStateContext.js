@@ -1,14 +1,10 @@
 import React, { useState } from 'react'
-import useAssets from '../../assets/useAssets'
 import config from '../../config.json'
 import themes from '../../themes'
-import { createRandomWord } from '../../lib/randomWord'
 
 const GameStateContext = React.createContext([{}, () => {}])
 
 const GameStateProvider = (props) => {
-  const { data } = useAssets()
-
   const word = ''
 
   const [state, setState] = useState({

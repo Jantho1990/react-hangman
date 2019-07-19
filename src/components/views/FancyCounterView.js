@@ -5,10 +5,6 @@ const GuessCounter = styled.span`
   font-size: 10rem;
 `
 
-const svgCircle = styled.svg`
-
-`
-
 const GameOverText = styled.span`
   font-size: 3rem;
 `

@@ -1,6 +1,5 @@
 import { useContext } from 'react'
 import { GameStateContext } from './GameStateContext'
-import { onLoaded } from '../../assets/AssetsContext'
 import useAssets from '../../assets/useAssets'
 import { createRandomWord } from '../../lib/randomWord'
 import themes from '../../themes'
