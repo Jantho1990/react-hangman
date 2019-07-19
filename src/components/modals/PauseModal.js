@@ -12,7 +12,6 @@ export default function PauseModal({ show, onCloseMenu, onRestartGame, onSwitchS
   const [ currentMenu, setCurrentMenu ] = useState('PauseMenu')
 
   const handleChangeCurrentMenu = newMenu => {
-    console.log('hit', newMenu)
     setCurrentMenu(newMenu)
   }
 

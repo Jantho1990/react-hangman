@@ -66,12 +66,10 @@ export default function MainMenuScreen (props) {
   const { theme } = useGameState()
 
   const onStartGame = () => {
-    console.log('Starting game...')
     onSwitchScreen('GameScreen')
   }
 
   const onShowOptions = () => {
-    console.log('Showing options...')
     onSwitchScreen('OptionsScreen')
   }
 

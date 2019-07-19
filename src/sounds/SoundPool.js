@@ -2,7 +2,6 @@ import Sound from './Sound'
 
 class SoundPool {
   constructor(src, options = {}, poolSize = 3) {
-    console.log('fish', src)
     this.count = 0
     this.sounds = [...Array(poolSize)]
       .map(() => new Sound(src, options))

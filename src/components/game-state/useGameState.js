@@ -5,7 +5,6 @@ import themes from '../../themes'
 
 const useGameState = () => {
   const [state, setState] = useContext(GameStateContext)
-  console.log('state', state)
 
   function changeTheme(themeName) {
     setState(state => ({

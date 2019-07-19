@@ -21,8 +21,6 @@ export default function MenuDisplay(props) {
     getSubMenu(activeMenuName)
   )
 
-  console.log('RENDER TRIGGERED', activeMenuName, activeMenu)
-
   function getSubMenu(menuName) {
     return subMenuComponents.reduce((carry, subMenuComponent) => {
       return carry === undefined

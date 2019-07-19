@@ -81,11 +81,9 @@ export default function LetterSelector(props) {
   }
 
   const renderLetterButtons = () => {
-    console.log('render list buttons')
     return (
       <ListContainer theme={theme}>
         {letters.map((letter, i) => {
-          console.log(letter)
           return (
             <ListItem
               className={`letter ${guessedClass(letter)} ${guessedStatusClass(letter)}`}

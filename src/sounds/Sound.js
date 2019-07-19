@@ -7,7 +7,6 @@ class Sound {
     this.options = Object.assign({ volume: 1 }, options)
 
     // Configure audio element
-    console.log('shark', src)
     Assets.sound(src).then(audio => {
       debugger
       if (options.loop) {

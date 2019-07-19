@@ -1,21 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
-// import './App.css';
 
 import MainMenuScreen from './components/screens/MainMenuScreen'
 import GameScreen from './components/screens/GameScreen'
 import OptionsScreen from './components/screens/OptionsScreen'
 
-// import DataStore, { DataConsumer } from './DataStore'
 import { GameStateProvider } from './components/game-state/GameStateContext'
 import { AssetsProvider } from './assets/AssetsContext'
 import useGameState from './components/game-state/useGameState'
-
-import config from './config'
-// import themes from './themes'
-
-const theme = useGameState.theme
-console.log(theme)
 
 const AppWrapper = styled.div`
   text-align: center;
@@ -36,7 +28,6 @@ function App() {
   const [activeScreen, setActiveScreen] = useState(screens[0])
 
   const switchActiveScreen = screen => {
-    console.log('Switching to screen', screen)
     setActiveScreen(screen)
   }
 

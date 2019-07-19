@@ -50,7 +50,6 @@ const loadFromManifest = async manifest => {
   let dbg2 = 0
   const loadedManifest = Object.entries(manifest).map(async ([assetType, assetTypeList]) => {
     let loaderFunc
-    console.log(manifest, assetType, dbg++, dbg2++)
 
     switch (assetType) {
       case 'sound':
@@ -67,11 +66,9 @@ const loadFromManifest = async manifest => {
       const result = await loaderFunc(path)
         .then(res => res)
         .catch(e => {throw e})
-      console.log(name, path)
+
       return [name, result]
     })
-    // debugger
-    // const la = loadedAssets.then(res => res)
 
     return await Promise.all(loadedAssets)
       .then(result => {

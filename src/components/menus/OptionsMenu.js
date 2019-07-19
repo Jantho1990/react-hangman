@@ -40,10 +40,7 @@ const SubmenuVolume = () => {
 export default function OptionsMenu({ onExitMenu }) {
   const { theme, changeTheme } = useGameState()
 
-  console.log('exit', onExitMenu)
-
   const handleChangeTheme = (value) => {
-    console.log('trigger theme change', value)
     changeTheme(value)
   }
 
