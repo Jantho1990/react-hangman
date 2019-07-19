@@ -4,8 +4,8 @@ function randomInt(max) {
   return Math.floor(Math.random() * Math.floor(max))
 }
 
-export const createRandomWord = () => {
-  return words[randomInt(words.length - 1)]
+export const createRandomWord = (wordList = words) => {
+  return wordList[randomInt(words.length - 1)]
 }
 
 export default createRandomWord()

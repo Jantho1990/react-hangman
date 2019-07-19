@@ -28,9 +28,20 @@ const useAssets = () => {
     return state.sound[key]
   }
 
+  const data = key => {
+    if (!isReady(key)) return
+
+    if (state.data[key] === undefined) {
+      throw new Error(`Data "${key} is not a loaded asset.`)
+    }
+
+    return state.data[key]
+  }
+
   return {
     isLoaded,
-    sound
+    sound,
+    data
   }
 }
 

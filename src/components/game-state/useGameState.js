@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { GameStateContext } from './GameStateContext'
+import { createRandomWord } from '../../lib/randomWord'
 import themes from '../../themes'
 
 const useGameState = () => {
@@ -16,9 +17,18 @@ const useGameState = () => {
     }))
   }
 
+  const changeWord = () => {
+    setState(state => ({
+      ...state,
+      word: createRandomWord()
+    }))
+  }
+
   return {
     theme: state.theme,
-    changeTheme
+    changeTheme,
+    word: state.word,
+    changeWord
   }
 }
 

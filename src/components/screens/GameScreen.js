@@ -53,11 +53,12 @@ const PauseModalButton = styled(MenuButton)`
 `
 
 function GameScreen(props) {
+  const { theme, word, changeWord } = useGameState()
   const [guessedLetters, setGuessedLetters] = useState([])
-  const [randomWord, setRandomWord] = useState(createRandomWord())
+  // const [randomWord, setRandomWord] = useState(word)
   const [paused, setPaused] = useState(false)
+  const randomWord = word
 
-  const { theme } = useGameState()
 
   const { guesses: maxGuesses } = config
 
@@ -71,7 +72,7 @@ function GameScreen(props) {
 
   const resetGame = () => {
     setGuessedLetters([])
-    setRandomWord(createRandomWord())
+    changeWord()
   }
 
   const handleRestart = () => {
