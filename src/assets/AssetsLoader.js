@@ -81,7 +81,7 @@ const loadFromManifest = async manifest => {
 
   return await Promise.all(loadedManifest)
     .then(result => {
-      objectFromEntries(result)
+      return objectFromEntries(result)
     })
 }
 

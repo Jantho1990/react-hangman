@@ -23,8 +23,8 @@ let loading = false
  */
 const AssetsProvider = (props) => {
   const [state, setState] = useState({
-    'sound': {},
-    'data': {}
+    sound: {},
+    data: {}
   })
 
   if (!loaded && !loading) {
