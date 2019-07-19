@@ -1,9 +1,12 @@
 import { useContext } from 'react'
 import { GameStateContext } from './GameStateContext'
+import { onLoaded } from '../../assets/AssetsContext'
+import useAssets from '../../assets/useAssets'
 import { createRandomWord } from '../../lib/randomWord'
 import themes from '../../themes'
 
 const useGameState = () => {
+  const { isLoaded, data, onReady } = useAssets()
   const [state, setState] = useContext(GameStateContext)
 
   function changeTheme(themeName) {
@@ -19,8 +22,18 @@ const useGameState = () => {
   const changeWord = () => {
     setState(state => ({
       ...state,
-      word: createRandomWord()
+      word: createRandomWord(data('wordList'))
     }))
+  }
+
+  // Set the random word once data is loaded.
+  if (!isLoaded()) {
+    onReady(assets => {
+      setState(state => ({
+        ...state,
+        word: createRandomWord(assets.data['wordList']) // Accessed as an array here because assets is just the whole list of assets, not the access functions.
+      }))
+    })
   }
 
   return {

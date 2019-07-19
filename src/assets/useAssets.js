@@ -5,7 +5,15 @@ import { AssetsContext, onLoaded } from './AssetsContext'
  * Signifies if assets are ready to be used.
  */
 let ready = false
-onLoaded(() => ready = true)
+onLoaded(assets => {
+  ready = true
+  callbacks.forEach(callback => callback(assets))
+})
+
+/**
+ * Callbacks to run once assets are ready.
+ */
+const callbacks = []
 
 const useAssets = () => {
   const [state, setState] = useContext(AssetsContext)
@@ -17,6 +25,10 @@ const useAssets = () => {
   }
 
   const isLoaded = () => ready
+
+  const onReady = callback => {
+    callbacks.push(callback)
+  }
 
   const sound = key => {
     if (!isReady(key)) return
@@ -40,6 +52,7 @@ const useAssets = () => {
 
   return {
     isLoaded,
+    onReady,
     sound,
     data
   }

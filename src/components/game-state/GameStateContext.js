@@ -9,7 +9,7 @@ const GameStateContext = React.createContext([{}, () => {}])
 const GameStateProvider = (props) => {
   const { data } = useAssets()
 
-  const word = createRandomWord(data('wordList'))
+  const word = ''
 
   const [state, setState] = useState({
     theme: {

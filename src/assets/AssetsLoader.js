@@ -34,8 +34,23 @@ const loadSound = path => {
  * @return {Promise} A promise resolving to the loaded resource.
  */
 const loadData = async path => {
+  // File extension
+  let contentType = ''
+  const ext = path.split('.')
+  if (ext[ext.length - 1] === 'json') {
+    contentType = 'json'
+  }
+
   return await fetch(path)
-    .then(response => response.body)
+    .then(response => {
+      switch (contentType) {
+        case 'json':
+          return response.json()
+        default:
+          return response.text()
+      }
+    })
+    .then(text => text)
     .catch(e => { throw e })
 }
 let dbg = 0
