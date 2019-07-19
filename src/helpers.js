@@ -12,3 +12,14 @@ export function objectFromEntries(arr) {
 
   return obj
 }
+
+/**
+ * Creates a random integer.
+ *
+ * @param {number} max The maximum allowed value of the randomly generated integer.
+ *
+ * @return {number} The random integer.
+ */
+export function randomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max))
+}
