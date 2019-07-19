@@ -11,6 +11,9 @@ const assetManifest = new AssetManifest(
   [ 'data', dataList ]
 )
 
+let loaded = false
+let loading = false
+
 /**
  * Provider for game assets.
  *
@@ -24,11 +27,15 @@ const AssetsProvider = (props) => {
     'data': {}
   })
 
-  loadFromManifest(assetManifest)
-    .then(assets => {
-      setState(assets)
-      onLoadedCallbacks.forEach(callback => callback(assets))
-    })
+  if (!loaded && !loading) {
+    loading = true
+    loadFromManifest(assetManifest)
+      .then(assets => {
+        setState(assets)
+        loaded = true
+        onLoadedCallbacks.forEach(callback => callback(assets))
+      })
+  }
 
   return (
     <AssetsContext.Provider value={[state, setState]}>

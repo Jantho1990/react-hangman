@@ -7,7 +7,7 @@ import { objectFromEntries } from '../helpers'
  *
  * @return {Promise} A promise resolving to the loaded HTMLAudioElement.
  */
-const loadSound = async path => {
+const loadSound = path => {
   const sound = new Audio(path)
 
   return new Promise((resolve, reject) => {
@@ -15,8 +15,14 @@ const loadSound = async path => {
       sound.removeEventListener('canplay', onLoad, false)
       resolve(sound)
     }
+
+    const onError = e => {
+      sound.removeEventListener('error', onError, false)
+      reject(e)
+    }
   
     sound.addEventListener('canplay', onLoad, false)
+    sound.addEventListener('error', onError, false)
   })
 }
 
@@ -32,7 +38,7 @@ const loadData = async path => {
     .then(response => response.body)
     .catch(e => { throw e })
 }
-
+let dbg = 0
 /**
  * Takes an asset manifest and returns an object with the loaded assets.
  *
@@ -41,8 +47,10 @@ const loadData = async path => {
  * @return {Promise} A promise resolving to an object with the loaded assets.
  */
 const loadFromManifest = async manifest => {
-  const loadedManifest = await Object.entries(manifest).map(async ([assetType, assetTypeList]) => {
+  let dbg2 = 0
+  const loadedManifest = Object.entries(manifest).map(async ([assetType, assetTypeList]) => {
     let loaderFunc
+    console.log(manifest, assetType, dbg++, dbg2++)
 
     switch (assetType) {
       case 'sound':
@@ -55,15 +63,26 @@ const loadFromManifest = async manifest => {
         throw new Error(`Unknown asset type "${assetType}`)
     }
 
-    const loadedAssets = await Object.entries(assetTypeList).map(async ([name, path]) => {
-      return await [name, loaderFunc(path)]
+    const loadedAssets = Object.entries(assetTypeList).map(async ([name, path]) => {
+      const result = await loaderFunc(path)
+        .then(res => res)
+        .catch(e => {throw e})
+      console.log(name, path)
+      return [name, result]
     })
-    debugger
+    // debugger
+    // const la = loadedAssets.then(res => res)
 
-    return [assetType, objectFromEntries(loadedAssets)]
+    return await Promise.all(loadedAssets)
+      .then(result => {
+        return [assetType, objectFromEntries(result)]
+      })
   })
 
-  return objectFromEntries(loadedManifest)
+  return await Promise.all(loadedManifest)
+    .then(result => {
+      objectFromEntries(result)
+    })
 }
 
 export {
