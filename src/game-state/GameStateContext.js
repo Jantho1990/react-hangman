@@ -12,7 +12,8 @@ const GameStateProvider = (props) => {
       name: config.theme,
       ...themes[config.theme]
     },
-    word
+    word,
+    guessedLetters: []
   })
 
   return (

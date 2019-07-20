@@ -8,6 +8,13 @@ const useGameState = () => {
   const { isLoaded, data, onReady } = useAssets()
   const [state, setState] = useContext(GameStateContext)
 
+  /**
+   * Change the application visual theme.
+   *
+   * @param {string} themeName The theme to change to.
+   *
+   * @return {void}
+   */
   function changeTheme(themeName) {
     setState(state => ({
       ...state,
@@ -18,12 +25,19 @@ const useGameState = () => {
     }))
   }
 
+  /**
+   * Create a new random word.
+   *
+   * @return {void}
+   */
   const changeWord = () => {
     setState(state => ({
       ...state,
       word: createRandomWord(data('wordList'))
     }))
   }
+
+
 
   // Set the random word once data is loaded.
   if (!isLoaded()) {
