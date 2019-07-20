@@ -1,25 +1,19 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import LetterSpace from './LetterSpace'
+import useGameState from '../../game-state/useGameState'
 
-export default class WordDisplay extends Component {
-  constructor(props) {
-    super(props)
+const WordDisplayWrapper = styled.div`
 
-    this.renderLetterSpace = this.renderLetterSpace.bind(this)
-    this.renderLetterSpaces = this.renderLetterSpaces.bind(this)
-  }
+`
+
+export default function WordDisplay(props) {
+  const { word, guessedLetters } = useGameState()
+  const { gameOver } = props
   
-  static defaultProps = {
-    word: 'testing',
-    guessedLetters: []
-  }
+  let ct = 0
 
-  ct = 0
-
-  renderLetterSpace(letter) {
-    const { guessedLetters, gameOver, word } = this.props
-
+  const renderLetterSpace = letter => {
     const wordLength = word.length
     
     let letterGuessed = true
@@ -32,22 +26,18 @@ export default class WordDisplay extends Component {
       } */
     }
 
-    return <LetterSpace wordLength={wordLength} letterGuessed={letterGuessed} gameOver={gameOver} key={`key-letterspace-${this.ct++}`}>{letter}</LetterSpace>
+    return <LetterSpace wordLength={wordLength} letterGuessed={letterGuessed} gameOver={gameOver} key={`key-letterspace-${ct++}`}>{letter}</LetterSpace>
   }
 
-  renderLetterSpaces(word) {
+  const renderLetterSpaces = word => {
     const letters = word.split('')
 
-    return letters.map(letter => this.renderLetterSpace(letter))
+    return letters.map(letter => renderLetterSpace(letter))
   }
 
-  render() {
-    const { renderLetterSpaces, props: {word} } = this
-
-    return (
-      <div>
-        {renderLetterSpaces(word)}
-      </div>
-    )
-  }
+  return (
+    <WordDisplayWrapper>
+      {renderLetterSpaces(word)}
+    </WordDisplayWrapper>
+  )
 }

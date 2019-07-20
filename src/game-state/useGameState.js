@@ -74,7 +74,9 @@ const useGameState = () => {
     theme: state.theme,
     changeTheme,
     word: state.word,
-    changeWord
+    changeWord,
+    guessedLetters: state.guessedLetters,
+    changeGuessedLetters
   }
 }
 
