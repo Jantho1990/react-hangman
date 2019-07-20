@@ -50,8 +50,7 @@ const PauseModalButton = styled(MenuButton)`
 `
 
 function GameScreen(props) {
-  const { theme, word: randomWord, changeWord } = useGameState()
-  const [guessedLetters, setGuessedLetters] = useState([])
+  const { theme, word: randomWord, changeWord, guessedLetters, resetGuessedLetters } = useGameState()
   const [paused, setPaused] = useState(false)
   const { guesses: maxGuesses } = config
 
@@ -64,23 +63,12 @@ function GameScreen(props) {
   }
 
   const resetGame = () => {
-    setGuessedLetters([])
+    resetGuessedLetters()
     changeWord()
   }
 
   const handleRestart = () => {
     resetGame()
-  }
-
-  const handleUpdateGuessedLetters = ({ newLetter }) => {
-    if (guessedLetters.find(guessedLetter => guessedLetter === newLetter) !== undefined) {
-      return
-    }
-
-    setGuessedLetters(guessedLetters => [
-      ...guessedLetters,
-      newLetter
-    ])
   }
 
   const wrongGuesses = guessedLetters.reduce((carry, letter) => {
@@ -129,7 +117,6 @@ function GameScreen(props) {
           <LetterSelector
             className="GameScreen-bottom"
             guessedLetters={guessedLetters}
-            onUpdateGuessedLetters={handleUpdateGuessedLetters}
             gameOver={gameOver}
             word={randomWord}
           />

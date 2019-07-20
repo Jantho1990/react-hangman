@@ -60,6 +60,18 @@ const useGameState = () => {
     }))
   }
 
+  /**
+   * Reset the guessed letters array to empty.
+   *
+   * @return {void}
+   */
+  const resetGuessedLetters = () => {
+    setState({
+      ...state,
+      guessedLetters: []
+    })
+  }
+
   // Set the random word once data is loaded.
   if (!isLoaded()) {
     onReady(assets => {
@@ -76,7 +88,8 @@ const useGameState = () => {
     word: state.word,
     changeWord,
     guessedLetters: state.guessedLetters,
-    changeGuessedLetters
+    changeGuessedLetters,
+    resetGuessedLetters
   }
 }
 

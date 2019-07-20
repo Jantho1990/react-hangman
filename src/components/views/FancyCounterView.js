@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import useGameState from '../../game-state/useGameState'
 
 const GuessCounter = styled.span`
   font-size: 10rem;
@@ -19,45 +20,29 @@ const Container = styled.div`
   }
 `
 
-export default class FancyCounterView extends Component {
-  static defaultProps = {
-    maxGuesses: 8,
-    wrongGuesses: 0,
-    gameOver: false,
-    victory: false
-  }
+export default function FancyCounterView(props) {
+  const { maxGuesses, wrongGuesses, gameOver, victory } = props
 
-  remainingGuesses = () => {
-    const { maxGuesses, wrongGuesses } = this.props
+  const remainingGuesses = () => maxGuesses - wrongGuesses
 
-    return maxGuesses - wrongGuesses
-  }
-
-  render () {
-    const {
-      remainingGuesses,
-      props: { gameOver, victory }
-    } = this
-
-    const wrongGuessesRemaining = () => !gameOver
-      ? `${remainingGuesses()}`
-      : ''
-    
-    const gameOverText = gameOver
-      ? victory
-        ? 'You win!'
-        : 'Game over!'
-      : ''
-
-    return (
-      <Container>
-        <GuessCounter>
-          {wrongGuessesRemaining()}
-        </GuessCounter>
-        <GameOverText>
-          {gameOverText}
-        </GameOverText>
-      </Container>
-    )
-  }
+  const wrongGuessesRemaining = () => !gameOver
+    ? `${remainingGuesses()}`
+    : ''
+  
+  const gameOverText = gameOver
+    ? victory
+      ? 'You win!'
+      : 'Game over!'
+    : ''
+  
+  return (
+    <Container>
+      <GuessCounter>
+        {wrongGuessesRemaining()}
+      </GuessCounter>
+      <GameOverText>
+        {gameOverText}
+      </GameOverText>
+    </Container>
+  )
 }
