@@ -56,20 +56,18 @@ const ListItem = styled.li`
 
 
 export default function LetterSelector(props) {
-  // const isLetterGuessed = this.isLetterGuessed.bind(this)
-  // const isLetterGuessedCorrectly = this.isLetterGuessedCorrectly.bind(this)
-  const { word, className, gameOver, onUpdateGuessedLetters, guessedLetters } = props
+  const { className, gameOver } = props
   
-  const { theme } = useGameState()
+  const { word, theme, guessedLetters, changeGuessedLetters } = useGameState()
 
   const { sound } = useAssets()
   
   const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
   
-  const handleLetterGuess = (letter, updateFunc) => {
+  const handleLetterGuess = (letter) => {
     // keySound.play()
     sound('KeyEnter1').play()
-    updateFunc({ newLetter: letter })
+    changeGuessedLetters(letter)
   }
 
   const isLetterGuessed = letter => {
@@ -88,7 +86,7 @@ export default function LetterSelector(props) {
             <ListItem
               className={`letter ${guessedClass(letter)} ${guessedStatusClass(letter)}`}
               guessed={isLetterGuessed(letter)}
-              onClick={() => !gameOver ? handleLetterGuess(letter, onUpdateGuessedLetters) : null}
+              onClick={() => !gameOver ? handleLetterGuess(letter) : null}
               key={`key-letter-${i}`}
             >
               {letter}
