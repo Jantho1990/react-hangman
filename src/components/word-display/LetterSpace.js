@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, Fragment } from 'react'
 import styled from 'styled-components'
 import { useSpring, animated } from 'react-spring'
 import useGameState from '../game-state/useGameState'
@@ -14,14 +14,37 @@ const LetterVisibleWrapper = styled.span`
 `
 
 const LetterVisible = ({ children, guessed = true }) => {
+  const [animationDone, setAnimationDone] = useState(false)
+  console.log('MARGE', animationDone)
+  const finishAnimation = () => {
+    console.log('yeet', animationDone)
+    setAnimationDone(true)
+  }
+
   const spring = useSpring({
     from: { opacity: 0 },
-    to: { opacity: 1 }
+    to: { opacity: 1 },
+    onRest: finishAnimation
   })
+
+  const renderLetterVisible = () => {
+    if (animationDone) {
+      console.log('baleeted', animationDone)
+      return <LetterVisibleWrapper className={guessed ? '' : 'not-guessed'}>{children}</LetterVisibleWrapper>
+    }
+    console.log('barf', animationDone)
+
+    return (
+      <animated.span style={spring}>
+        <LetterVisibleWrapper className={guessed ? '' : 'not-guessed'}>{children}</LetterVisibleWrapper>
+      </animated.span>
+    )
+  }
+
   return (
-    <animated.span style={spring}>
-      <LetterVisibleWrapper className={guessed ? '' : 'not-guessed'}>{children}</LetterVisibleWrapper>
-    </animated.span>
+    <Fragment>
+      { renderLetterVisible() }
+    </Fragment>
   )
 }
 

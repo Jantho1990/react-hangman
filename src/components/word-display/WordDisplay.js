@@ -22,15 +22,17 @@ export default class WordDisplay extends Component {
 
     const wordLength = word.length
     
+    let letterGuessed = true
     if (guessedLetters.find(guessedLetter => guessedLetter === letter) === undefined) {
-      if (gameOver) {
+      letterGuessed = false
+      /* if (gameOver) {
         return <LetterSpace wordLength={wordLength} letterGuessed={false} key={`key-letterspace-${this.ct++}`}>{letter}</LetterSpace>
       } else {
         return <LetterSpace wordLength={wordLength} key={`key-letterspace-${this.ct++}`}>&#95;</LetterSpace>
-      }
+      } */
     }
 
-    return <LetterSpace wordLength={wordLength} letterGuessed={true} key={`key-letterspace-${this.ct++}`}>{letter}</LetterSpace>
+    return <LetterSpace wordLength={wordLength} letterGuessed={letterGuessed} gameOver={gameOver} key={`key-letterspace-${this.ct++}`}>{letter}</LetterSpace>
   }
 
   renderLetterSpaces(word) {
