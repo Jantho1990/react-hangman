@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import MenuButton from '../buttons/MenuButton'
-import useGameState from '../game-state/useGameState'
+import useGameState from '../../game-state/useGameState'
 
 const MainMenuWrapper = styled.div`
   display: flex;

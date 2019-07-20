@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from 'react'
 import styled from 'styled-components'
 import { useSpring, animated } from 'react-spring'
-import useGameState from '../game-state/useGameState'
+import useGameState from '../../game-state/useGameState'
 
 const LetterBlank = () => {
   return <span>&#95;</span>

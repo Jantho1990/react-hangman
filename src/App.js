@@ -5,7 +5,7 @@ import MainMenuScreen from './components/screens/MainMenuScreen'
 import GameScreen from './components/screens/GameScreen'
 import OptionsScreen from './components/screens/OptionsScreen'
 
-import { GameStateProvider } from './components/game-state/GameStateContext'
+import { GameStateProvider } from './game-state/GameStateContext'
 import { AssetsProvider } from './assets/AssetsContext'
 
 const AppWrapper = styled.div`

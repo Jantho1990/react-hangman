@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import useGameState from '../game-state/useGameState'
+import useGameState from '../../game-state/useGameState'
 import LetterSelector from '../../components/LetterSelector'
 import WordDisplay from '../../components/word-display/WordDisplay'
 import FancyCounterView from '../../components/views/FancyCounterView'

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import config from '../../config.json'
-import themes from '../../themes'
+import config from '../config.json'
+import themes from '../themes'
 
 const GameStateContext = React.createContext([{}, () => {}])
 

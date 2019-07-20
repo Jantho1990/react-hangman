@@ -4,7 +4,7 @@ import MenuContainer from './MenuContainer'
 import MenuButton from '../buttons/MenuButton'
 import MenuSelect from '../buttons/MenuSelect'
 import MenuOption from '../buttons/MenuOption'
-import useGameState from '../game-state/useGameState'
+import useGameState from '../../game-state/useGameState'
 
 const OptionsMenuWrapper = styled(MenuContainer)`
   width: 85%;
