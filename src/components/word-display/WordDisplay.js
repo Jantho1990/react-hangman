@@ -1,27 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-
-const LetterSpace = styled.span.attrs(props => ({
-  fontSize: `calc(50vw / ${props.wordLength})`,
-  fontSizeMobile: `calc(90vw / ${props.wordLength})`
-}))`
-  color: hsl(0%, 0%, 90%);
-  font-size: 2rem;
-  font-size: ${({ fontSizeMobile }) => fontSizeMobile};
-  margin: 0 0rem;
-  width: 2rem;
-  width: ${({ fontSizeMobile }) => fontSizeMobile};
-  display: inline-block;
-  text-transform: capitalize;
-  user-select: none;
-  &.not-guessed {
-    color: hsl(0, 65%, 60%);
-  }
-  @media screen and (min-width: 768px) {
-    font-size: ${({ fontSize }) => fontSize};
-    width: ${({ fontSize }) => fontSize};
-  }
-`
+import LetterSpace from './LetterSpace'
 
 export default class WordDisplay extends Component {
   constructor(props) {
@@ -45,13 +24,13 @@ export default class WordDisplay extends Component {
     
     if (guessedLetters.find(guessedLetter => guessedLetter === letter) === undefined) {
       if (gameOver) {
-        return <LetterSpace wordLength={wordLength} className="not-guessed" key={`key-letterspace-${this.ct++}`}>{letter}</LetterSpace>
+        return <LetterSpace wordLength={wordLength} letterGuessed={false} key={`key-letterspace-${this.ct++}`}>{letter}</LetterSpace>
       } else {
         return <LetterSpace wordLength={wordLength} key={`key-letterspace-${this.ct++}`}>&#95;</LetterSpace>
       }
     }
 
-    return <LetterSpace wordLength={wordLength} key={`key-letterspace-${this.ct++}`}>{letter}</LetterSpace>
+    return <LetterSpace wordLength={wordLength} letterGuessed={true} key={`key-letterspace-${this.ct++}`}>{letter}</LetterSpace>
   }
 
   renderLetterSpaces(word) {
