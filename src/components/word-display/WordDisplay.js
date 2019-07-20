@@ -19,11 +19,6 @@ export default function WordDisplay(props) {
     let letterGuessed = true
     if (guessedLetters.find(guessedLetter => guessedLetter === letter) === undefined) {
       letterGuessed = false
-      /* if (gameOver) {
-        return <LetterSpace wordLength={wordLength} letterGuessed={false} key={`key-letterspace-${this.ct++}`}>{letter}</LetterSpace>
-      } else {
-        return <LetterSpace wordLength={wordLength} key={`key-letterspace-${this.ct++}`}>&#95;</LetterSpace>
-      } */
     }
 
     return <LetterSpace wordLength={wordLength} letterGuessed={letterGuessed} gameOver={gameOver} key={`key-letterspace-${ct++}`}>{letter}</LetterSpace>
