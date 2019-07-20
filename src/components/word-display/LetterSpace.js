@@ -92,6 +92,7 @@ const LetterVisible = ({ children, guessed = true }) => {
 
 const LetterSpaceWrapper = styled.span.attrs(props => ({
   fontSize: `calc(50vw / ${props.wordLength})`,
+  fontSizeTablet: `calc(60vw / ${props.wordLength})`,
   fontSizeMobile: `calc(90vw / ${props.wordLength})`
 }))`
   color: hsl(0%, 0%, 90%);
@@ -110,6 +111,11 @@ const LetterSpaceWrapper = styled.span.attrs(props => ({
   text-transform: capitalize;
   user-select: none;
   position: relative;
+  @media screen and (min-width: 568px) {
+    font-size: ${({ fontSizeTablet }) => fontSizeTablet};
+    width: ${({ fontSizeTablet }) => fontSizeTablet};
+    height: ${({ fontSizeTablet }) => fontSizeTablet};
+  }
   @media screen and (min-width: 768px) {
     font-size: ${({ fontSize }) => fontSize};
     width: ${({ fontSize }) => fontSize};

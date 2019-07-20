@@ -20,14 +20,37 @@ const GameScreenWrapper = styled.div`
 const GameScreenMain = styled.div`
   width: 100%;
   height: 100%;
-  display: flex;
+  ${'' /* display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-around; */}
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 1fr 3fr 3fr;
+  grid-template-areas:
+    "header"
+    "center"
+    "footer";
   background-color: ${({ theme }) => theme.gameScreen.backgroundColor};
   color: ${({ theme }) => theme.gameScreen.fontColor};
+  @media screen and (min-width: 568px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 4fr;
+    grid-template-areas:
+      "header header"
+      "center footer";
+  }
+  @media screen and (min-width: 768px) {
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 3fr 3fr;
+    grid-template-areas:
+      "header"
+      "center"
+      "footer";
+  }
 `
 
 const GameScreenCenter = styled.div`
+  grid-area: center;
   flex: 3;
   display: flex;
   flex-direction: column;
@@ -40,9 +63,16 @@ const GameScreenCenter = styled.div`
 `
 
 const GameScreenBottom = styled.div`
+  grid-area: footer;
   flex: 3 3;
   overflow: hidden;
   margin-top: 3rem;
+  @media screen and (min-width: 568px) {
+    margin-top: 0;
+  }
+  @media screen and (min-width: 768px) {
+    margin-top: 3rem;
+  }
 `
 
 const PauseModalButton = styled(MenuButton)`
