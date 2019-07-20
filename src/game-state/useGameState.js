@@ -37,7 +37,28 @@ const useGameState = () => {
     }))
   }
 
+  /**
+   * Update the guessed letters array.
+   *
+   * @param {string} newLetter The new letter to add.
+   *
+   * @return {void}
+   */
+  const changeGuessedLetters = (newLetter) => {
+    const { guessedLetters } = state
 
+    if (guessedLetters.find(guessedLetter => guessedLetter === newLetter) !== undefined) {
+      return
+    }
+
+    setState(state => ({
+      ...state,
+      guessedLetters: [
+        ...guessedLetters,
+        newLetter
+      ]
+    }))
+  }
 
   // Set the random word once data is loaded.
   if (!isLoaded()) {
