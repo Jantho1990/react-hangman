@@ -55,11 +55,16 @@ const LetterVisible = ({ children, guessed = true }) => {
   }
 
   const spring = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: 1 },
+    from: {
+      transform: 'translateY(50px)',
+      opacity: 0
+    },
+    to: [
+      { transform: 'translateY(0px)', opacity: 1 }
+    ],
     onRest: finishAnimation,
     config: {
-      duration: 1000
+      velocity: 50
     }
   })
 
