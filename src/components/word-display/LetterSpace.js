@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useSpring, animated } from 'react-spring'
 import useGameState from '../game-state/useGameState'
 
 const LetterBlank = () => {
@@ -13,7 +14,15 @@ const LetterVisibleWrapper = styled.span`
 `
 
 const LetterVisible = ({ children, guessed = true }) => {
-  return <LetterVisibleWrapper className={guessed ? '' : 'not-guessed'}>{children}</LetterVisibleWrapper>
+  const spring = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 }
+  })
+  return (
+    <animated.span style={spring}>
+      <LetterVisibleWrapper className={guessed ? '' : 'not-guessed'}>{children}</LetterVisibleWrapper>
+    </animated.span>
+  )
 }
 
 const LetterSpaceWrapper = styled.span.attrs(props => ({
