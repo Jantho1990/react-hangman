@@ -3,8 +3,42 @@ import styled from 'styled-components'
 import { useSpring, animated } from 'react-spring'
 import useGameState from '../../game-state/useGameState'
 
+const LetterBlankWrapper = styled.span`
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+`
+
 const LetterBlank = () => {
-  return <span>&#95;</span>
+  const [animationDone, setAnimationDone] = useState(false)
+
+  const finishAnimation = () => {
+    setAnimationDone(true)
+  }
+
+  const spring = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    onRest: finishAnimation,
+    config: {
+      duration: 10000
+    }
+  })
+
+  const renderLetterBlank = () => {
+    if (animationDone) {
+      return <span>&#95;</span>
+    }
+
+    return (
+      <animated.span style={spring}>
+        <LetterVisibleWrapper>&#95;</LetterVisibleWrapper>
+      </animated.span>
+    )
+  }
+
+  return <LetterBlankWrapper>&#95;</LetterBlankWrapper>
 }
 
 const LetterVisibleWrapper = styled.span`
@@ -15,29 +49,32 @@ const LetterVisibleWrapper = styled.span`
 
 const LetterVisible = ({ children, guessed = true }) => {
   const [animationDone, setAnimationDone] = useState(false)
-  console.log('MARGE', animationDone)
+  
   const finishAnimation = () => {
-    console.log('yeet', animationDone)
     setAnimationDone(true)
   }
 
   const spring = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },
-    onRest: finishAnimation
+    onRest: finishAnimation,
+    config: {
+      duration: 1000
+    }
   })
 
   const renderLetterVisible = () => {
     if (animationDone) {
-      console.log('baleeted', animationDone)
       return <LetterVisibleWrapper className={guessed ? '' : 'not-guessed'}>{children}</LetterVisibleWrapper>
     }
-    console.log('barf', animationDone)
 
     return (
-      <animated.span style={spring}>
-        <LetterVisibleWrapper className={guessed ? '' : 'not-guessed'}>{children}</LetterVisibleWrapper>
-      </animated.span>
+      <Fragment>
+        <animated.span style={spring}>
+          <LetterVisibleWrapper className={guessed ? '' : 'not-guessed'}>{children}</LetterVisibleWrapper>
+        </animated.span>
+        <LetterBlank/>
+      </Fragment>
     )
   }
 
@@ -58,9 +95,16 @@ const LetterSpaceWrapper = styled.span.attrs(props => ({
   margin: 0 0rem;
   width: 2rem;
   width: ${({ fontSizeMobile }) => fontSizeMobile};
-  display: inline-block;
+  height: 2rem;
+  height: ${({ fontSizeMobile }) => fontSizeMobile};
+  ${'' /* display: inline-block; */}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
   text-transform: capitalize;
   user-select: none;
+  position: relative;
   @media screen and (min-width: 768px) {
     font-size: ${({ fontSize }) => fontSize};
     width: ${({ fontSize }) => fontSize};

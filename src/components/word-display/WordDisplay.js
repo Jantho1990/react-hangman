@@ -4,7 +4,11 @@ import LetterSpace from './LetterSpace'
 import useGameState from '../../game-state/useGameState'
 
 const WordDisplayWrapper = styled.div`
-
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  justify-content: space-evenly;
+  ${'' /* min-height: 10rem; */}
 `
 
 export default function WordDisplay(props) {
