@@ -20,9 +20,6 @@ const GameScreenWrapper = styled.div`
 const GameScreenMain = styled.div`
   width: 100%;
   height: 100%;
-  ${'' /* display: flex;
-  flex-direction: column;
-  justify-content: space-around; */}
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: 1fr 3fr 3fr;
