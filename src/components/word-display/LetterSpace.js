@@ -113,6 +113,7 @@ const LetterSpaceWrapper = styled.span.attrs(props => ({
   @media screen and (min-width: 768px) {
     font-size: ${({ fontSize }) => fontSize};
     width: ${({ fontSize }) => fontSize};
+    height: ${({ fontSize }) => fontSize};
   }
 `
 
