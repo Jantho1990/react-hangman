@@ -10,35 +10,30 @@ const LetterBlankWrapper = styled.span`
   transform: translateX(-50%);
 `
 
-const LetterBlank = () => {
-  const [animationDone, setAnimationDone] = useState(false)
-
-  const finishAnimation = () => {
-    setAnimationDone(true)
-  }
-
+const LetterBlank = ({ letterGuessed }) => {
   const spring = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: 1 },
-    onRest: finishAnimation,
-    config: {
-      duration: 10000
-    }
+    from: { opacity: 1 },
+    to: { opacity: 0 },
+    delay: 100
   })
 
   const renderLetterBlank = () => {
-    if (animationDone) {
-      return <span>&#95;</span>
+    if (letterGuessed) {
+      return (
+        <animated.span style={spring}>
+          <LetterBlankWrapper>&#95;</LetterBlankWrapper>
+        </animated.span>
+      )
     }
-
-    return (
-      <animated.span style={spring}>
-        <LetterVisibleWrapper>&#95;</LetterVisibleWrapper>
-      </animated.span>
-    )
+    
+    return <span>&#95;</span>
   }
 
-  return <LetterBlankWrapper>&#95;</LetterBlankWrapper>
+  return (
+    <LetterBlankWrapper>
+      {renderLetterBlank()}
+    </LetterBlankWrapper>
+  )
 }
 
 const LetterVisibleWrapper = styled.span`
@@ -78,7 +73,7 @@ const LetterVisible = ({ children, guessed = true }) => {
         <animated.span style={spring}>
           <LetterVisibleWrapper className={guessed ? '' : 'not-guessed'}>{children}</LetterVisibleWrapper>
         </animated.span>
-        <LetterBlank/>
+        <LetterBlank letterGuessed={guessed}/>
       </Fragment>
     )
   }
