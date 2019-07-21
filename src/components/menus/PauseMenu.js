@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import useGameState from '../../game-state/useGameState'
 import MenuContainer from './MenuContainer'
@@ -6,6 +6,7 @@ import MenuButton from '../buttons/MenuButton'
 
 const PauseMenuWrapper = styled(MenuContainer)`
   width: 85%;
+  max-height: 75%;
   background-color: ${props => props.theme.primaryBackgroundColor};
   & > * {
     margin: 0.5rem 0;
@@ -23,9 +24,17 @@ const PauseMenuButton = styled(MenuButton)`
 
 const PauseMenuTitle = styled.h2`
   color: ${props => props.theme.primaryFontColor};
-  font-size: 20vw;
+  font-size: 20vmin;
   @media screen and (min-width: 768px) {
     font-size: 3rem;
+  }
+`
+
+const PauseMenuScroll = styled.div`
+  overflow-y: auto;
+  width: 100%;
+  & > * {
+    margin: 0.5rem 0;
   }
 `
 
@@ -48,10 +57,12 @@ export default function PauseMenu({ onChangeActiveMenu, onCloseMenu, onRestartGa
   return (
     <PauseMenuWrapper theme={theme}>
       <PauseMenuTitle theme={theme}>Paused</PauseMenuTitle>
-      <PauseMenuButton theme={theme} onClick={onRestart}>Restart</PauseMenuButton>
-      <PauseMenuButton theme={theme} onClick={onOptions}>Options</PauseMenuButton>
-      <PauseMenuButton theme={theme} onClick={onQuit}>Quit</PauseMenuButton>
-      <PauseMenuButton theme={theme} onClick={onCloseMenu}>Return to Game</PauseMenuButton>
+      <PauseMenuScroll>
+        <PauseMenuButton theme={theme} onClick={onRestart}>Restart</PauseMenuButton>
+        <PauseMenuButton theme={theme} onClick={onOptions}>Options</PauseMenuButton>
+        <PauseMenuButton theme={theme} onClick={onQuit}>Quit</PauseMenuButton>
+        <PauseMenuButton theme={theme} onClick={onCloseMenu}>Return to Game</PauseMenuButton>
+      </PauseMenuScroll>
     </PauseMenuWrapper>
   )
 }
