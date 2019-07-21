@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import useGameState from '../../game-state/useGameState'
 
 const GuessCounter = styled.span`
   font-size: 10rem;

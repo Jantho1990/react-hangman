@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import useGameState from '../../game-state/useGameState'
 import MenuContainer from './MenuContainer'
