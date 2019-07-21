@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
-
+import { useTransition, animated } from 'react-spring'
+import { GameStateProvider } from './game-state/GameStateContext'
+import { AssetsProvider } from './assets/AssetsContext'
 import MainMenuScreen from './components/screens/MainMenuScreen'
 import GameScreen from './components/screens/GameScreen'
 import OptionsScreen from './components/screens/OptionsScreen'
 
-import { GameStateProvider } from './game-state/GameStateContext'
-import { AssetsProvider } from './assets/AssetsContext'
 
 const AppWrapper = styled.div`
   text-align: center;
@@ -16,29 +16,22 @@ const AppWrapper = styled.div`
 `
 
 function App() {
-  const screens = [
-    'MainMenuScreen',
-    'GameScreen',
-    'OptionsScreen'
-  ]
-
-  const [activeScreen, setActiveScreen] = useState(screens[0])
-
+  const transitions = useTransition()
+  
   const switchActiveScreen = screen => {
     setActiveScreen(screen)
   }
+  
+  const screens = {
+    'MainMenuScreen': <MainMenuScreen onSwitchScreen={switchActiveScreen}/>,
+    'GameScreen': <GameScreen onSwitchScreen={switchActiveScreen}/>,
+    'OptionsScreen': <OptionsScreen onSwitchScreen={switchActiveScreen}/>
+  }
+  
+  const [activeScreen, setActiveScreen] = useState('MainMenuScreen')
 
   const renderActiveScreen = screen => {
-    switch (screen) {
-      case screens[0]:
-        return <MainMenuScreen onSwitchScreen={switchActiveScreen}/>
-      case screens[1]:
-        return <GameScreen onSwitchScreen={switchActiveScreen}/>
-      case screens[2]:
-        return <OptionsScreen onSwitchScreen={switchActiveScreen}/>
-      default:
-        return <div>Screen "{screen}" not found.</div>
-    }
+    return screens[screen] || <div>Screen {screen} is not defined.</div>
   }
 
   return (
