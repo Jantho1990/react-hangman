@@ -54,9 +54,11 @@ const MainMenuButton = styled(MenuButton)`
 
 export default function MainMenuScreen (props) {
   const { onSwitchScreen } = props
-  const { theme } = useGameState()
+  const { theme, gameOver, resetGame } = useGameState()
 
   const onStartGame = () => {
+    if (gameOver) resetGame()
+    
     onSwitchScreen('GameScreen')
   }
 

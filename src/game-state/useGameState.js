@@ -72,6 +72,32 @@ const useGameState = () => {
     })
   }
 
+  /**
+   * Toggle game over.
+   *
+   * @return {void}
+   */
+  const declareGameOver = () => {
+    setState({
+      ...state,
+      gameOver: true
+    })
+  }
+
+  /**
+   * Reset the game.
+   *
+   * @return {void}
+   */
+  const resetGame = () => {
+    setState({
+      ...state,
+      gameOver: false,
+      guessedLetters: [],
+      word: createRandomWord(data('wordList'))
+    })
+  }
+
   // Set the random word once data is loaded.
   if (!isLoaded()) {
     onReady(assets => {
@@ -89,7 +115,10 @@ const useGameState = () => {
     changeWord,
     guessedLetters: state.guessedLetters,
     changeGuessedLetters,
-    resetGuessedLetters
+    resetGuessedLetters,
+    gameOver: state.gameOver,
+    declareGameOver,
+    resetGame
   }
 }
 
