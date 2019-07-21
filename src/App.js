@@ -13,8 +13,6 @@ const AppWrapper = styled.div`
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  ${'' /* background-color: ${theme.primaryBackgroundColor};
-  color: ${theme.primaryFontColor}; */}
 `
 
 function App() {
