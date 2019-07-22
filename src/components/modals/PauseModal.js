@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTransition, animated } from 'react-spring'
 import ModalContainer from './ModalContainer'
 import PauseMenu from '../menus/PauseMenu'
 import OptionsMenu from '../menus/OptionsMenu'
@@ -11,22 +12,33 @@ export default function PauseModal({ show, onCloseMenu, onRestartGame, onSwitchS
     setCurrentMenu(newMenu)
   }
 
+  const menus = {
+    PauseMenu: <PauseMenu onCloseMenu={onCloseMenu} onRestartGame={onRestartGame} onChangeActiveMenu={handleChangeCurrentMenu} onSwitchScreen={onSwitchScreen}/>,
+    OptionsMenu: <OptionsMenu onExitMenu={() => handleChangeCurrentMenu('PauseMenu')}/>
+  }
+
+  const transitionConfig = currentMenu !== 'PauseMenu'
+    ? {
+        from: { transform: 'translate3d(100%, 0, 0)' },
+        enter: { transform: 'translate3d(0%, 0, 0)' },
+        leave: { transform: 'translate3d(-100%, 0, 0)' }
+      }
+    : {
+        from: { transform: 'translate3d(-100%, 0, 0)' },
+        enter: { transform: 'translate3d(0%, 0, 0)' },
+        leave: { transform: 'translate3d(100%, 0, 0)' }
+      }
+
+  const menuTransitions = useTransition(currentMenu, item => item, transitionConfig)
+
   const renderCurrentMenu = () => {
-    switch (currentMenu) {
-      case 'PauseMenu':
-        return (
-          <PauseMenu
-            onCloseMenu={onCloseMenu}
-            onRestartGame={onRestartGame}
-            onChangeActiveMenu={handleChangeCurrentMenu}
-            onSwitchScreen={onSwitchScreen}
-          />
-        )
-      case 'OptionsMenu':
-        return <OptionsMenu onExitMenu={() => handleChangeCurrentMenu('PauseMenu')}/>
-      default:
-        throw new Error(`${currentMenu} could not be rendered.`)
-    }
+    return menuTransitions.map(({item, key, props}) => {
+      return (
+        <animated.div key={key} style={{...props, height: '100%', width: '100%', position: 'fixed'}}>
+          {menus[item]}
+        </animated.div>
+      )
+    })
   }
 
   return (
