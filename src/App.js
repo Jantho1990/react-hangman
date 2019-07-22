@@ -32,14 +32,22 @@ function App() {
   }
 
   const [activeScreen, setActiveScreen] = useState('MainMenuScreen')
+
+  const springTransitions = activeScreen !== 'MainMenuScreen'
+    ? {
+        from: {transform: 'translate3d(100%, 0px, 0px)' },
+        enter: {transform: 'translate3d(0%, 0px, 0px)' },
+        leave: {transform: 'translate3d(-100%, 0px, 0px)' }
+      }
+    : {
+        from: {transform: 'translate3d(-100%, 0px, 0px)' },
+        enter: {transform: 'translate3d(0%, 0px, 0px)' },
+        leave: {transform: 'translate3d(100%, 0px, 0px)' }
+      }
   
   const screenItems = Object.keys(rawScreens)
   console.log(screenItems)
-  const screens = useTransition(activeScreen, item => {console.log(item[0]);return item[0]}, {
-    from: {transform: 'translate3d(100%, 0px, 0px)' },
-    enter: {transform: 'translate3d(0%, 0px, 0px)' },
-    leave: {transform: 'translate3d(-100%, 0px, 0px)' }
-  })
+  const screens = useTransition(activeScreen, item => item, springTransitions)
 
   const renderActiveScreen = screen => {
     // return screens[screen] || <div>Screen {screen} is not defined.</div>
