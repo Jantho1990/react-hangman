@@ -77,7 +77,7 @@ const PauseModalButton = styled(MenuButton)`
   width: auto;
 `
 
-function GameScreen(props) {
+function GameScreen({ onSwitchScreen }) {
   const {
     theme,
     word: randomWord,
@@ -134,7 +134,7 @@ function GameScreen(props) {
             <PauseModal
               show={paused}
               onCloseMenu={handleCloseMenu}
-              onSwitchScreen={props.onSwitchScreen}
+              onSwitchScreen={onSwitchScreen}
               onRestartGame={handleRestart}
             />
           }
