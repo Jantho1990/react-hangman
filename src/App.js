@@ -21,18 +21,21 @@ const AppWrapper = styled.div`
 function App() {
   const { theme } = useGameState()
 
-  const switchActiveScreen = screen => {
+  const handleSwitchScreen = screen => {
     setActiveScreen(screen)
   }
   
-  const rawScreens = {
-    'MainMenuScreen': <MainMenuScreen onSwitchScreen={switchActiveScreen}/>,
-    'GameScreen': <GameScreen onSwitchScreen={switchActiveScreen}/>,
-    'OptionsScreen': <OptionsScreen onSwitchScreen={switchActiveScreen}/>
+  const screens = {
+    'MainMenuScreen': <MainMenuScreen onSwitchScreen={handleSwitchScreen}/>,
+    'GameScreen': <GameScreen onSwitchScreen={handleSwitchScreen}/>,
+    'OptionsScreen': <OptionsScreen onSwitchScreen={handleSwitchScreen}/>
   }
 
   const [activeScreen, setActiveScreen] = useState('MainMenuScreen')
 
+  // Allows other screens to "slide out" from the main menu, and
+  // "slide back" when returning to the main menu, which is better
+  // UX than the screen transitions all sliding in one direction.
   const springTransitions = activeScreen !== 'MainMenuScreen'
     ? {
         from: {transform: 'translate3d(100%, 0px, 0px)' },
@@ -45,16 +48,13 @@ function App() {
         leave: {transform: 'translate3d(100%, 0px, 0px)' }
       }
   
-  const screenItems = Object.keys(rawScreens)
-  console.log(screenItems)
-  const screens = useTransition(activeScreen, item => item, springTransitions)
+  const screenTransitions = useTransition(activeScreen, item => item, springTransitions)
 
-  const renderActiveScreen = screen => {
-    // return screens[screen] || <div>Screen {screen} is not defined.</div>
-    return screens.map(({ item, key, props }) => {
+  const renderActiveScreen = () => {
+    return screenTransitions.map(({ item, key, props }) => {
       return (
         <animated.div key={key} style={{...props, position: 'absolute', height: '100%', width: '100%'}}>
-          {rawScreens[item]}
+          {screens[item]}
         </animated.div>
       )
     })
@@ -64,7 +64,7 @@ function App() {
     <AssetsProvider>  
       <GameStateProvider>
         <AppWrapper className="App" theme={theme}>
-          {renderActiveScreen(activeScreen)}
+          {renderActiveScreen()}
         </AppWrapper>
       </GameStateProvider>
     </AssetsProvider>
