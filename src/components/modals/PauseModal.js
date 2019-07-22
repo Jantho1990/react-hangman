@@ -33,6 +33,7 @@ export default function PauseModal({ show, onCloseMenu, onRestartGame, onSwitchS
 
   const renderCurrentMenu = () => {
     return menuTransitions.map(({item, key, props}) => {
+      console.log('yeah')
       return (
         <animated.div key={key} style={{...props, height: '100%', width: '100%', position: 'fixed'}}>
           {menus[item]}
@@ -40,6 +41,12 @@ export default function PauseModal({ show, onCloseMenu, onRestartGame, onSwitchS
       )
     })
   }
+
+  /* const pauseMenuTransition = useTransition(null, null, {
+    from: { transform: 'translate3d(0, -100%, 0)' },
+    enter: { transform: 'translate3d(0, 0%, 0)' },
+    leave: { transform: 'translate3d(0, -100%, 0)' }
+  }) */
 
   return (
     <ModalContainer visible={show}>

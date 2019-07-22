@@ -6,6 +6,7 @@ import config from '../../config.json'
 const ModalContainerWrapper = styled.div`
   background-color: ${config.menuBackgroundColor || 'hsla(0, 0%, 50%, 95%)'};
   display: none;
+  display: flex;
   position: fixed;
   left: 0;
   top: 0;
@@ -21,10 +22,9 @@ const ModalContainerWrapper = styled.div`
 `
 
 export default function ModalContainer(props) {
-  const { visible } = props
   
   return (
-    <ModalContainerWrapper className={visible ? 'visible' : ''}>
+    <ModalContainerWrapper>
       {props.children}
     </ModalContainerWrapper>
   )

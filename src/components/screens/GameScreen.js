@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { useTransition, animated } from 'react-spring'
 import useGameState from '../../game-state/useGameState'
 import LetterSelector from '../../components/LetterSelector'
 import WordDisplay from '../../components/word-display/WordDisplay'
@@ -118,6 +119,30 @@ function GameScreen(props) {
     declareGameOver()
   }
 
+  // Pause menu enter/leave animation.
+  const pauseMenuTransition = useTransition(paused, null, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 }
+  })
+
+  const renderPauseMenu = () => {
+    return pauseMenuTransition.map(({item, key, props}) => {
+      return (
+        <animated.div key={key} style={{...props, position: 'fixed', height: '100%', width: '100%'}}>
+          {item && 
+            <PauseModal
+              show={paused}
+              onCloseMenu={handleCloseMenu}
+              onSwitchScreen={props.onSwitchScreen}
+              onRestartGame={handleRestart}
+            />
+          }
+        </animated.div>
+      )
+    })
+  }
+
   return (
     <GameScreenWrapper className="GameScreen">
       <GameScreenMain theme={theme} className="GameScreen-main">
@@ -154,12 +179,7 @@ function GameScreen(props) {
           />
         </GameScreenBottom>
       </GameScreenMain>
-      <PauseModal
-        show={paused}
-        onCloseMenu={handleCloseMenu}
-        onSwitchScreen={props.onSwitchScreen}
-        onRestartGame={handleRestart}
-      />
+      {renderPauseMenu()}
     </GameScreenWrapper>
   )
 }
