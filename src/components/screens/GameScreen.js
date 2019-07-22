@@ -61,7 +61,7 @@ const GameScreenCenter = styled.div`
 `
 
 const GameScreenBottomWrapper = styled.div`
-  grid-area: footer;
+  height: 100%;
   flex: 3 3;
   overflow: hidden;
   margin-top: 3rem;
@@ -81,7 +81,7 @@ const GameScreenBottom = ({children}) => {
   })
 
   return (
-    <animated.div style={springFooter}>
+    <animated.div style={{...springFooter, gridArea: 'footer', overflow: 'hidden'}}>
       <GameScreenBottomWrapper>
         {children}
       </GameScreenBottomWrapper>
