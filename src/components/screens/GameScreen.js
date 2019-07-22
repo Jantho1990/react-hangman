@@ -60,7 +60,7 @@ const GameScreenCenter = styled.div`
   }
 `
 
-const GameScreenBottom = styled.div`
+const GameScreenBottomWrapper = styled.div`
   grid-area: footer;
   flex: 3 3;
   overflow: hidden;
@@ -72,6 +72,22 @@ const GameScreenBottom = styled.div`
     margin-top: 3rem;
   }
 `
+
+const GameScreenBottom = ({children}) => {
+  const springFooter = useSpring({
+    from: { transform: 'translate3d(0, 500%, 0)' },
+    to: { transform: 'translate3d(0, 0%, 0)' },
+    delay: 550
+  })
+
+  return (
+    <animated.div style={springFooter}>
+      <GameScreenBottomWrapper>
+        {children}
+      </GameScreenBottomWrapper>
+    </animated.div>
+  )
+}
 
 const PauseModalButton = styled(MenuButton)`
   width: auto;
