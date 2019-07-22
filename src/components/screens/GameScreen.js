@@ -54,9 +54,15 @@ const GameScreenCenter = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  margin-bottom: 3rem;
+
+  @media screen and (min-width: 568px) {
+    margin-bottom: 0;
+  }
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
+    margin-bottom: 3rem;
   }
 `
 
@@ -64,13 +70,6 @@ const GameScreenBottomWrapper = styled.div`
   height: 100%;
   flex: 3 3;
   overflow: hidden;
-  margin-top: 3rem;
-  @media screen and (min-width: 568px) {
-    margin-top: 0;
-  }
-  @media screen and (min-width: 768px) {
-    margin-top: 3rem;
-  }
 `
 
 const GameScreenBottom = ({children}) => {
