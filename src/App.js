@@ -15,7 +15,7 @@ const AppWrapper = styled.div`
   width: 100vw;
   overflow: hidden;
   position: relative;
-  background-color: {props => props.theme.primaryBackgroundColor};
+  background-color: ${props => props.theme.primaryBackgroundColor};
 `
 
 function App() {
@@ -36,9 +36,9 @@ function App() {
   const screenItems = Object.keys(rawScreens)
   console.log(screenItems)
   const screens = useTransition(activeScreen, item => {console.log(item[0]);return item[0]}, {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 }
+    from: {transform: 'translate3d(100%, 0px, 0px)' },
+    enter: {transform: 'translate3d(0%, 0px, 0px)' },
+    leave: {transform: 'translate3d(-100%, 0px, 0px)' }
   })
 
   const renderActiveScreen = screen => {
