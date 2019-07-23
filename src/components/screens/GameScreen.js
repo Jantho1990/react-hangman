@@ -176,7 +176,10 @@ function GameScreen({ onSwitchScreen }) {
       return (
         <animated.div key={key} style={{...props, position: 'fixed', height: '100%', width: '100%'}}>
           {item && 
-            <EndgameModal/>
+            <EndgameModal
+              onSwitchScreen={onSwitchScreen}
+              onRestartGame={handleRestart}
+            />
           }
         </animated.div>
       )

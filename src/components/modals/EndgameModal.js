@@ -18,7 +18,10 @@ export default function PauseModal({ show, onCloseMenu, onRestartGame, onSwitchS
     return (
       <animated.div style={{...spring, height: '100%', width: '100%', position: 'fixed'}}>
         <ViewContainer>
-          <EndgameView/>
+          <EndgameView
+            onRestartGame={onRestartGame}
+            onSwitchScreen={onSwitchScreen}
+          />
         </ViewContainer>
       </animated.div>
     )
