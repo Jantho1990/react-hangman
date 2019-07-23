@@ -12,21 +12,25 @@ const WordDisplayWrapper = styled.div`
   padding: 1vh 3vw;
 `
 
-export default function WordDisplay(props) {
-  const { word, guessedLetters } = useGameState()
-  const { gameOver } = props
+export default function WordDisplay({ word, guessedLetters, gameOver }) {
+  // const { word, guessedLetters } = useGameState()
+  // const { gameOver } = props
+  console.log('word', word)
   
   let ct = 0
 
   const renderLetterSpace = letter => {
     const wordLength = word.length
     
-    let letterGuessed = true
-    if (guessedLetters.find(guessedLetter => guessedLetter === letter) === undefined) {
-      letterGuessed = false
-    }
+    let letterGuessed = guessedLetters.find(guessedLetter => guessedLetter === letter) !== undefined
+      ? true
+      : false
 
-    return <LetterSpace wordLength={wordLength} letterGuessed={letterGuessed} gameOver={gameOver} key={`key-letterspace-${ct++}`}>{letter}</LetterSpace>
+    let display = (letterGuessed || gameOver)
+      ? true
+      : false
+
+    return <LetterSpace wordLength={wordLength} guessed={letterGuessed} display={display} key={`key-letterspace-${ct++}`}>{letter}</LetterSpace>
   }
 
   const renderLetterSpaces = word => {

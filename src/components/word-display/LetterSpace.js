@@ -10,7 +10,7 @@ const LetterBlankWrapper = styled.span`
   transform: translateX(-50%);
 `
 
-const LetterBlank = ({ letterGuessed }) => {
+const LetterBlank = ({ guessed = false }) => {
   const spring = useSpring({
     from: { opacity: 1 },
     to: { opacity: 0 },
@@ -18,7 +18,7 @@ const LetterBlank = ({ letterGuessed }) => {
   })
 
   const renderLetterBlank = () => {
-    if (letterGuessed) {
+    if (guessed) {
       return (
         <animated.span style={spring}>
           <LetterBlankWrapper>&#95;</LetterBlankWrapper>
@@ -42,7 +42,7 @@ const LetterVisibleWrapper = styled.span`
   }
 `
 
-const LetterVisible = ({ children, guessed = true }) => {
+const LetterVisible = ({ children, guessed = false }) => {
   const [animationDone, setAnimationDone] = useState(false)
   
   const finishAnimation = () => {
@@ -73,7 +73,7 @@ const LetterVisible = ({ children, guessed = true }) => {
         <animated.span style={spring}>
           <LetterVisibleWrapper className={guessed ? '' : 'not-guessed'}>{children}</LetterVisibleWrapper>
         </animated.span>
-        <LetterBlank letterGuessed={guessed}/>
+        <LetterBlank guessed={guessed}/>
       </Fragment>
     )
   }
@@ -98,7 +98,6 @@ const LetterSpaceWrapper = styled.span.attrs(props => ({
   width: ${({ fontSizeMobile }) => fontSizeMobile};
   height: 2rem;
   height: ${({ fontSizeMobile }) => fontSizeMobile};
-  ${'' /* display: inline-block; */}
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -118,16 +117,14 @@ const LetterSpaceWrapper = styled.span.attrs(props => ({
   }
 `
 
-export default function LetterSpace({ letterGuessed, gameOver, children }) {
+export default function LetterSpace({ display = false, guessed = false, children }) {
   const { word } = useGameState()
 
   const wordLength = word.length
 
   const renderSpace = () => {
-    if (letterGuessed) {
-      return <LetterVisible>{children}</LetterVisible>
-    } else if (gameOver) {
-      return <LetterVisible guessed={false}>{children}</LetterVisible>
+    if (display) {
+      return <LetterVisible guessed={guessed}>{children}</LetterVisible>
     }
 
     return <LetterBlank/>
