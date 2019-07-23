@@ -41,8 +41,15 @@ export default function GallowsView({ maxGuesses, wrongGuesses, gameOver, victor
   return (
     <GallowsViewWrapper>
       <svg viewBox={`0, 0, ${width}, ${height}`} height="100%" width="auto">
-        {Object.values(piecesArray).map(piece => piece)}
+        {Object.values(piecesArray).reduce((carry, piece, i) => {
+          if (i < wrongGuesses) {
+            carry.push(piece)
+          }
+
+          return carry
+        }, [])}
       </svg>
+      { gameOver ? "Game Over" : null}
     </GallowsViewWrapper>
   )
 }
