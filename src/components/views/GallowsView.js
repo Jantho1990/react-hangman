@@ -5,6 +5,7 @@ import useGameState from '../../game-state/useGameState'
 
 const GallowsViewWrapper = styled.div`
   height: 100%;
+  ${'' /* background-color: hsla(0, 0%, 50%, 25%); */}
   @media screen and (min-width: 568px) {
     height: auto;
   }
@@ -30,6 +31,14 @@ const SvgLine = ({ start, end }) => {
 
   return (
     <animated.line style={spring} x1={start.x} y1={start.y} x2={end.x} y2={end.y} stroke={theme.primaryFontColor}/>
+  )
+}
+
+const GroundLine = ({ start, end }) => {
+  const { theme } = useGameState()
+
+  return (
+    <line style={{strokeWidth: '0.25px'}} x1={start.x} y1={start.y} x2={end.x} y2={end.y} stroke={theme.primaryFontColor}/>
   )
 }
 
@@ -71,18 +80,21 @@ export default function GallowsView({ maxGuesses, wrongGuesses, gameOver, victor
 
           return carry
         }, [])}
+        {pieces.ground[1]}
       </SvgEl>
-      { gameOver ? "Game Over" : null}
     </GallowsViewWrapper>
   )
 }
 
 const pieces = {
+  ground: {
+    1: <GroundLine start={{x: 5, y: 75}} end={{x: 65, y: 75}}/>
+  },
   gallows: {
     base: {
-      1: <GallowsLine key={'gallowsBase1'} start={{x: 10, y: 75}} end={{x: 30, y: 75}}/>,
-      2: <GallowsLine key={'gallowsBase2'} start={{x: 30, y: 75}} end={{x: 40, y: 75}}/>,
-      3: <GallowsLine key={'gallowsBase3'} start={{x: 40, y: 75}} end={{x: 60, y: 75}}/>,
+      1: <GallowsLine key={'gallowsBase1'} start={{x: 10, y: 68}} end={{x: 30, y: 68}}/>,
+      2: <GallowsLine key={'gallowsBase2'} start={{x: 30, y: 68}} end={{x: 40, y: 68}}/>,
+      3: <GallowsLine key={'gallowsBase3'} start={{x: 40, y: 68}} end={{x: 60, y: 68}}/>,
       4: <GallowsLine key={'gallowsBase4'} start={{x: 10, y: 75}} end={{x: 10, y: 65}}/>,
       5: <GallowsLine key={'gallowsBase5'} start={{x: 60, y: 75}} end={{x: 60, y: 65}}/>,
       6: <GallowsLine key={'gallowsBase6'} start={{x: 10, y: 65}} end={{x: 20, y: 65}}/>,
