@@ -12,6 +12,7 @@ const GallowsViewWrapper = styled.div`
 `
 
 const SvgEl = styled.svg`
+  height: 100%;
   @media screen and (min-width: 568px) and (max-width: 768px) {
     max-height: 30vh;
   }
@@ -46,7 +47,7 @@ export default function GallowsView({ maxGuesses, wrongGuesses, gameOver, victor
 
   return (
     <GallowsViewWrapper>
-      <SvgEl viewBox={`0, 0, ${width}, ${height}`} height="auto" width="auto">
+      <SvgEl viewBox={`0, 0, ${width}, ${height}`}>
         {Object.values(piecesArray).reduce((carry, piece, i) => {
           if (i < wrongGuesses) {
             carry.push(piece)
