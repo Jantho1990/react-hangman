@@ -67,7 +67,7 @@ const FigureHead = ({ center, radius }) => {
 export default function GallowsView({ maxGuesses, wrongGuesses, gameOver, victory }) {
   const piecesArray = piecesConfiguration[maxGuesses]
 
-  const width = 100
+  const width = 70
   const height = 80
 
   return (
