@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import useGameState from '../../game-state/useGameState'
 
 const GallowsViewWrapper = styled.div`
   height: 100%;
@@ -19,8 +20,10 @@ const SvgEl = styled.svg`
 `
 
 const SvgLine = ({ start, end }) => {
+  const { theme } = useGameState()
+
   return (
-    <line x1={start.x} y1={start.y} x2={end.x} y2={end.y} stroke="black"/>
+    <line x1={start.x} y1={start.y} x2={end.x} y2={end.y} stroke={theme.primaryFontColor}/>
   )
 }
 
@@ -33,10 +36,12 @@ const FigureLine = ({ start, end }) => {
 }
 
 const FigureHead = ({ center, radius }) => {
+  const { theme } = useGameState()
+  
   const cx = center.x
   const cy = center.y
 
-  return <circle cx={cx} cy={cy} r={radius} fill="none" stroke="black"/>
+  return <circle cx={cx} cy={cy} r={radius} fill="none" stroke={theme.primaryFontColor}/>
 }
 
 export default function GallowsView({ maxGuesses, wrongGuesses, gameOver, victory }) {
