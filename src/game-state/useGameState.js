@@ -77,10 +77,11 @@ const useGameState = () => {
    *
    * @return {void}
    */
-  const declareGameOver = () => {
+  const declareGameOver = (victory = false) => {
     setState({
       ...state,
-      gameOver: true
+      gameOver: true,
+      victory
     })
   }
 
@@ -113,11 +114,13 @@ const useGameState = () => {
     changeTheme,
     word: state.word,
     changeWord,
+    maxGuesses: state.maxGuesses,
     guessedLetters: state.guessedLetters,
     changeGuessedLetters,
     resetGuessedLetters,
     gameOver: state.gameOver,
     declareGameOver,
+    victory: state.victory,
     resetGame
   }
 }

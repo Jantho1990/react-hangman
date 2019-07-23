@@ -10,6 +10,7 @@ import MenuButton from '../../components/buttons/MenuButton'
 import AppHeader from '../../components/AppHeader'
 import AppTitle from '../../components/AppTitle'
 import PauseModal from '../../components/modals/PauseModal'
+import EndgameModal from '../../components/modals/EndgameModal'
 import config from '../../config'
 
 const GameScreenWrapper = styled.div`
@@ -136,7 +137,7 @@ function GameScreen({ onSwitchScreen }) {
     }, true)
 
   if (!gameOver && (guessesRemaining <= 0 || wordGuessed)) {
-    declareGameOver()
+    declareGameOver(wordGuessed)
   }
 
   // Pause menu enter/leave animation.
@@ -157,6 +158,25 @@ function GameScreen({ onSwitchScreen }) {
               onSwitchScreen={onSwitchScreen}
               onRestartGame={handleRestart}
             />
+          }
+        </animated.div>
+      )
+    })
+  }
+  
+  // Endgame modal enter/leave animation.
+  const endgameMenuTransition = useTransition(gameOver, null, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 }
+  })
+
+  const renderEndgameModal = () => {
+    return endgameMenuTransition.map(({item, key, props}) => {
+      return (
+        <animated.div key={key} style={{...props, position: 'fixed', height: '100%', width: '100%'}}>
+          {item && 
+            <EndgameModal/>
           }
         </animated.div>
       )
@@ -200,6 +220,7 @@ function GameScreen({ onSwitchScreen }) {
         </GameScreenBottom>
       </GameScreenMain>
       {renderPauseMenu()}
+      {renderEndgameModal()}
     </GameScreenWrapper>
   )
 }

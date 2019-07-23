@@ -13,8 +13,10 @@ const GameStateProvider = (props) => {
       ...themes[config.theme]
     },
     word,
+    maxGuesses: config.guesses,
     guessedLetters: [],
-    gameOver: false
+    gameOver: false,
+    victory: false
   })
 
   return (
