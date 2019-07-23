@@ -30,20 +30,20 @@ export default function EndgameView({ onRestartGame, onSwitchScreen }) {
   return (
     <EndgameViewWrapper theme={theme}>
       <MenuContainer>
-      <GallowsView
-        wrongGuesses={maxGuesses}
-        maxGuesses={maxGuesses}
-        gameOver={true}
-        victory={victory}
-      />
-      <WordDisplay
-        word={word}
-        guessedLetters={guessedLetters}
-        gameOver={true}
-      />
-      <span>
-        {victory ? 'You win!' : 'You lose!'}
-      </span>
+        <GallowsView
+          wrongGuesses={maxGuesses}
+          maxGuesses={maxGuesses}
+          gameOver={true}
+          victory={victory}
+        />
+        <WordDisplay
+          word={word}
+          guessedLetters={guessedLetters}
+          gameOver={true}
+        />
+        <span>
+          {victory ? 'You win!' : 'You lose!'}
+        </span>
         <MenuButton onClick={onPlayAgain}>Play Again</MenuButton>
         <MenuButton onClick={onQuit}>Quit</MenuButton>
       </MenuContainer>
