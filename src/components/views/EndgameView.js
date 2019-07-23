@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import useGameState from '../../game-state/useGameState'
 import GallowsView from './GallowsView'
@@ -17,7 +17,7 @@ const EndgameViewWrapper = styled.div`
 `
 
 export default function EndgameView({ onRestartGame, onSwitchScreen }) {
-  const { theme, gameOver, word, guessedLetters, maxGuesses, victory } = useGameState()
+  const { theme, gameOver, previousGame: { word, guessedLetters }, maxGuesses, victory } = useGameState()
 
   const onPlayAgain = () => {
     onRestartGame()
@@ -39,6 +39,7 @@ export default function EndgameView({ onRestartGame, onSwitchScreen }) {
         <WordDisplay
           word={word}
           guessedLetters={guessedLetters}
+          displayWord={true}
           gameOver={gameOver}
         />
         <span>

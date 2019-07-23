@@ -78,10 +78,16 @@ const useGameState = () => {
    * @return {void}
    */
   const declareGameOver = (victory = false) => {
+    const { word, guessedLetters } = state
+    console.log('wwww', word, state.word)
     setState({
       ...state,
       gameOver: true,
-      victory
+      victory,
+      previousGame: {
+        word,
+        guessedLetters
+      }
     })
   }
 
@@ -94,6 +100,7 @@ const useGameState = () => {
     setState({
       ...state,
       gameOver: false,
+      victory: false,
       guessedLetters: [],
       word: createRandomWord(data('wordList'))
     })
@@ -113,6 +120,7 @@ const useGameState = () => {
     theme: state.theme,
     changeTheme,
     word: state.word,
+    previousGame: state.previousGame,
     changeWord,
     maxGuesses: state.maxGuesses,
     guessedLetters: state.guessedLetters,

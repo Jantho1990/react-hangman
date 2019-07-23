@@ -12,7 +12,7 @@ const WordDisplayWrapper = styled.div`
   padding: 1vh 3vw;
 `
 
-export default function WordDisplay({ word, guessedLetters, gameOver }) {
+export default function WordDisplay({ word, guessedLetters, gameOver, displayWord }) {
   // const { word, guessedLetters } = useGameState()
   // const { gameOver } = props
   console.log('word', word)
@@ -26,7 +26,7 @@ export default function WordDisplay({ word, guessedLetters, gameOver }) {
       ? true
       : false
 
-    let display = (letterGuessed || gameOver)
+    let display = (displayWord || letterGuessed || gameOver)
       ? true
       : false
 

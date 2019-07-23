@@ -5,14 +5,16 @@ import themes from '../themes'
 const GameStateContext = React.createContext([{}, () => {}])
 
 const GameStateProvider = (props) => {
-  const word = ''
-
   const [state, setState] = useState({
     theme: {
       name: config.theme,
       ...themes[config.theme]
     },
-    word,
+    word: '',
+    previousGame: {
+      word: '',
+      guessedLetters: []
+    },
     maxGuesses: config.guesses,
     guessedLetters: [],
     gameOver: false,
