@@ -17,7 +17,7 @@ const EndgameViewWrapper = styled.div`
 `
 
 export default function EndgameView({ onRestartGame, onSwitchScreen }) {
-  const { theme, word, guessedLetters, maxGuesses, victory } = useGameState()
+  const { theme, gameOver, word, guessedLetters, maxGuesses, victory } = useGameState()
 
   const onPlayAgain = () => {
     onRestartGame()
@@ -33,13 +33,13 @@ export default function EndgameView({ onRestartGame, onSwitchScreen }) {
         <GallowsView
           wrongGuesses={maxGuesses}
           maxGuesses={maxGuesses}
-          gameOver={true}
+          gameOver={gameOver}
           victory={victory}
         />
         <WordDisplay
           word={word}
           guessedLetters={guessedLetters}
-          gameOver={true}
+          gameOver={gameOver}
         />
         <span>
           {victory ? 'You win!' : 'You lose!'}
