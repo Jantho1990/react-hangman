@@ -9,6 +9,7 @@ const WordDisplayWrapper = styled.div`
   align-items: end;
   justify-content: space-evenly;
   ${'' /* min-height: 10rem; */}
+  padding: 0 3vw;
 `
 
 export default function WordDisplay(props) {

@@ -29,10 +29,12 @@ const ListContainer = styled.ul`
   background-color: ${({ theme: { gameScreen: { keyboard }} }) => keyboard.backgroundColor};
   @media screen and (min-width: 568px) {
     height: 100%;
+    overflow: scroll;
   }
   @media screen and (min-width: 768px) {
     padding: 0;
     height: auto;
+    overflow: auto;
   }
 `
 
