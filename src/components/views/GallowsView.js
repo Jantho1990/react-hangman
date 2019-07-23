@@ -80,8 +80,8 @@ const pieces = {
   figure: {
     head: <FigureHead center={{x: 50, y: 30}} radius={5}/>,
     neck: <FigureLine start={{x: 50, y: 35}} end={{x: 50, y: 40}}/>,
-    leftArm: <FigureLine start={{x: 50, y: 40}} end={{x: 45, y: 35}}/>,
-    rightArm: <FigureLine start={{x: 50, y: 40}} end={{x: 55, y: 35}}/>,
+    leftArm: <FigureLine start={{x: 50, y: 40}} end={{x: 47, y: 45}}/>,
+    rightArm: <FigureLine start={{x: 50, y: 40}} end={{x: 53, y: 45}}/>,
     torso: <FigureLine start={{x: 50, y: 40}} end={{x: 50, y: 50}}/>,
     leftLeg: <FigureLine start={{x: 50, y: 50}} end={{x: 45, y: 57}}/>,
     rightLeg: <FigureLine start={{x: 50, y: 50}} end={{x: 55, y: 57}}/>
