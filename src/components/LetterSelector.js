@@ -27,8 +27,12 @@ const ListContainer = styled.ul`
   padding: 0 1rem;
   background-color: hsl(0, 0%, 90%);
   background-color: ${({ theme: { gameScreen: { keyboard }} }) => keyboard.backgroundColor};
+  @media screen and (min-width: 568px) {
+    height: 100%;
+  }
   @media screen and (min-width: 768px) {
     padding: 0;
+    height: auto;
   }
 `
 

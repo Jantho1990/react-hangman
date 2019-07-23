@@ -5,6 +5,7 @@ import useGameState from '../../game-state/useGameState'
 import LetterSelector from '../../components/LetterSelector'
 import WordDisplay from '../../components/word-display/WordDisplay'
 import FancyCounterView from '../../components/views/FancyCounterView'
+import GallowsView from '../../components/views/GallowsView'
 import MenuButton from '../../components/buttons/MenuButton'
 import AppHeader from '../../components/AppHeader'
 import AppTitle from '../../components/AppTitle'
@@ -24,6 +25,7 @@ const GameScreenMain = styled.div`
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: 1fr 3fr 3fr;
+  grid-template-rows: 10vh 45vh 45vh;
   grid-template-areas:
     "header"
     "center"
@@ -32,7 +34,9 @@ const GameScreenMain = styled.div`
   color: ${({ theme }) => theme.gameScreen.fontColor};
   @media screen and (min-width: 568px) {
     grid-template-columns: 1fr 1fr;
+    grid-template-columns: 60vw 40vw;
     grid-template-rows: 1fr 4fr;
+    grid-template-rows: 20vh 80vh;
     grid-template-areas:
       "header header"
       "center footer";
@@ -40,6 +44,7 @@ const GameScreenMain = styled.div`
   @media screen and (min-width: 768px) {
     grid-template-columns: auto;
     grid-template-rows: 1fr 3fr 3fr;
+    grid-template-rows: 10vh 45vh 45vh;
     grid-template-areas:
       "header"
       "center"
@@ -171,7 +176,7 @@ function GameScreen({ onSwitchScreen }) {
         </AppHeader>
 
         <GameScreenCenter className="GameScreen-center">
-          <FancyCounterView
+          <GallowsView
             wrongGuesses={wrongGuesses}
             maxGuesses={maxGuesses}
             gameOver={gameOver}
