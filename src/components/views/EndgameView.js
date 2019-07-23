@@ -17,7 +17,7 @@ const EndgameViewWrapper = styled.div`
 `
 
 export default function EndgameView({ onRestartGame, onSwitchScreen }) {
-  const { theme, gameOver, previousGame: { word, guessedLetters }, maxGuesses, victory } = useGameState()
+  const { theme, gameOver, previousGame: { word, guessedLetters, victory }, maxGuesses } = useGameState()
 
   const onPlayAgain = () => {
     onRestartGame()

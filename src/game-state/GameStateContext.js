@@ -13,7 +13,8 @@ const GameStateProvider = (props) => {
     word: '',
     previousGame: {
       word: '',
-      guessedLetters: []
+      guessedLetters: [],
+      victory: false
     },
     maxGuesses: config.guesses,
     guessedLetters: [],

@@ -86,7 +86,8 @@ const useGameState = () => {
       victory,
       previousGame: {
         word,
-        guessedLetters
+        guessedLetters,
+        victory
       }
     })
   }
