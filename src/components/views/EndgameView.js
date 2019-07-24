@@ -7,13 +7,21 @@ import MenuContainer from '../menus/MenuContainer'
 import MenuButton from '../buttons/MenuButton'
 
 const EndgameViewWrapper = styled.div`
-  width: 100%;
-  height: 100%;
+  max-height: 50vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  color: ${props => props.theme.primaryFontColor}
+  padding: 1rem;
+  color: ${props => props.theme.primaryFontColor};
+  background-color: ${props => props.theme.primaryBackgroundColor};
+  & > * {
+    margin: 0.5rem 0;
+  }
 `
 
 export default function EndgameView({ onRestartGame, onSwitchScreen }) {
@@ -29,7 +37,6 @@ export default function EndgameView({ onRestartGame, onSwitchScreen }) {
 
   return (
     <EndgameViewWrapper theme={theme}>
-      <MenuContainer>
         <GallowsView
           wrongGuesses={maxGuesses}
           maxGuesses={maxGuesses}
@@ -47,7 +54,6 @@ export default function EndgameView({ onRestartGame, onSwitchScreen }) {
         </span>
         <MenuButton onClick={onPlayAgain}>Play Again</MenuButton>
         <MenuButton onClick={onQuit}>Quit</MenuButton>
-      </MenuContainer>
     </EndgameViewWrapper>
   )
 }

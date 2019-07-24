@@ -5,7 +5,9 @@ import ModalContainer from './ModalContainer'
 import EndgameView from '../views/EndgameView'
 
 const ViewContainer = styled.div`
-  height: 50vh;
+  ${'' /* height: 50vh; */}
+  height: 100%;
+  width: 100%;
 `
 
 export default function PauseModal({ show, onCloseMenu, onRestartGame, onSwitchScreen }) {
