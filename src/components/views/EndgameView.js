@@ -28,7 +28,13 @@ const EndgameGallowsWrapper = styled.div`
 `
 
 export default function EndgameView({ onRestartGame, onSwitchScreen }) {
-  const { theme, gameOver, previousGame: { word, guessedLetters, victory }, maxGuesses } = useGameState()
+  const {
+    theme,
+    gameOver,
+    previousGame: { word, guessedLetters, victory },
+    maxGuesses,
+    getNumberOfWrongGuesses 
+  } = useGameState()
 
   const onPlayAgain = () => {
     onRestartGame()
@@ -38,11 +44,13 @@ export default function EndgameView({ onRestartGame, onSwitchScreen }) {
     onSwitchScreen('MainMenuScreen')
   }
 
+  const wrongGuesses = getNumberOfWrongGuesses(word, guessedLetters)
+
   return (
     <EndgameViewWrapper theme={theme}>
       <EndgameGallowsWrapper>
         <GallowsView
-          wrongGuesses={maxGuesses}
+          wrongGuesses={wrongGuesses}
           maxGuesses={maxGuesses}
           gameOver={gameOver}
           victory={victory}

@@ -108,6 +108,7 @@ function GameScreen({ onSwitchScreen }) {
     theme,
     word: randomWord,
     guessedLetters,
+    getNumberOfWrongGuesses,
     gameOver,
     declareGameOver,
     resetGame
@@ -128,9 +129,7 @@ function GameScreen({ onSwitchScreen }) {
     resetGame()
   }
 
-  const wrongGuesses = guessedLetters.reduce((carry, letter) => {
-    return randomWord.indexOf(letter) === -1 ? carry + 1 : carry
-  }, 0)
+  const wrongGuesses = getNumberOfWrongGuesses(randomWord, guessedLetters)
 
   const guessesRemaining = maxGuesses - wrongGuesses
 

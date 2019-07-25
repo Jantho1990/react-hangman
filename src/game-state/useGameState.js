@@ -61,6 +61,20 @@ const useGameState = () => {
   }
 
   /**
+   * Returns the number of incorrectly-guessed letters in a word.
+   * 
+   * @param {string} word The word being guessed.
+   * @param {array} guessedLetters The currently-guessed letters.
+   *
+   * @return {number} The number of incorrectly-guessed letters.
+   */
+  const getNumberOfWrongGuesses = (word, guessedLetters) => {
+    return guessedLetters.reduce((carry, letter) => {
+      return word.indexOf(letter) === -1 ? carry + 1 : carry
+    }, 0)
+  }
+
+  /**
    * Reset the guessed letters array to empty.
    *
    * @return {void}
@@ -125,6 +139,7 @@ const useGameState = () => {
     changeWord,
     maxGuesses: state.maxGuesses,
     guessedLetters: state.guessedLetters,
+    getNumberOfWrongGuesses,
     changeGuessedLetters,
     resetGuessedLetters,
     gameOver: state.gameOver,
