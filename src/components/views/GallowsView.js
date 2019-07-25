@@ -96,27 +96,27 @@ const pieces = {
   },
   gallows: {
     base: {
-      1: <GallowsLine key={'gallowsBase1'} start={{x: 10, y: 68}} end={{x: 30, y: 68}}/>,
-      2: <GallowsLine key={'gallowsBase2'} start={{x: 30, y: 68}} end={{x: 40, y: 68}}/>,
-      3: <GallowsLine key={'gallowsBase3'} start={{x: 40, y: 68}} end={{x: 60, y: 68}}/>,
+      1: <GallowsLine key={'gallowsBase1'} start={{x: 10, y: 68}} end={{x: 31, y: 68}}/>,
+      2: <GallowsLine key={'gallowsBase2'} start={{x: 29, y: 68}} end={{x: 41, y: 68}}/>,
+      3: <GallowsLine key={'gallowsBase3'} start={{x: 39, y: 68}} end={{x: 60, y: 68}}/>,
       4: <GallowsLine key={'gallowsBase4'} start={{x: 10, y: 75}} end={{x: 10, y: 65}}/>,
       5: <GallowsLine key={'gallowsBase5'} start={{x: 60, y: 75}} end={{x: 60, y: 65}}/>,
-      6: <GallowsLine key={'gallowsBase6'} start={{x: 10, y: 65}} end={{x: 20, y: 65}}/>,
-      7: <GallowsLine key={'gallowsBase7'} start={{x: 20, y: 65}} end={{x: 30, y: 65}}/>,
-      8: <GallowsLine key={'gallowsBase8'} start={{x: 30, y: 65}} end={{x: 40, y: 65}}/>,
-      9: <GallowsLine key={'gallowsBase9'} start={{x: 40, y: 65}} end={{x: 50, y: 65}}/>,
-      10: <GallowsLine key={'gallowsBase10'} start={{x: 50, y: 65}} end={{x: 60, y: 65}}/>,
+      6: <GallowsLine key={'gallowsBase6'} start={{x: 9, y: 65}} end={{x: 21, y: 65}}/>,
+      7: <GallowsLine key={'gallowsBase7'} start={{x: 20, y: 65}} end={{x: 31, y: 65}}/>,
+      8: <GallowsLine key={'gallowsBase8'} start={{x: 30, y: 65}} end={{x: 41, y: 65}}/>,
+      9: <GallowsLine key={'gallowsBase9'} start={{x: 40, y: 65}} end={{x: 51, y: 65}}/>,
+      10: <GallowsLine key={'gallowsBase10'} start={{x: 50, y: 65}} end={{x: 61, y: 65}}/>,
     },
     upright: {
       1: <GallowsLine key={'gallowsUpright1'} start={{x: 30, y: 65}} end={{x: 30, y: 55}}/>,
-      2: <GallowsLine key={'gallowsUpright2'} start={{x: 30, y: 55}} end={{x: 30, y: 45}}/>,
-      3: <GallowsLine key={'gallowsUpright3'} start={{x: 30, y: 45}} end={{x: 30, y: 35}}/>,
-      4: <GallowsLine key={'gallowsUpright4'} start={{x: 30, y: 35}} end={{x: 30, y: 25}}/>,
-      5: <GallowsLine key={'gallowsUpright5'} start={{x: 30, y: 25}} end={{x: 30, y: 15}}/>
+      2: <GallowsLine key={'gallowsUpright2'} start={{x: 30, y: 56}} end={{x: 30, y: 45}}/>,
+      3: <GallowsLine key={'gallowsUpright3'} start={{x: 30, y: 46}} end={{x: 30, y: 35}}/>,
+      4: <GallowsLine key={'gallowsUpright4'} start={{x: 30, y: 36}} end={{x: 30, y: 25}}/>,
+      5: <GallowsLine key={'gallowsUpright5'} start={{x: 30, y: 26}} end={{x: 30, y: 15}}/>
     },
     beam: {
-      1: <GallowsLine key={'gallowsLine1'} start={{x: 30, y: 15}} end={{x: 40, y: 15}}/>,
-      2: <GallowsLine key={'gallowsLine2'} start={{x: 40, y: 15}} end={{x: 50, y: 15}}/>
+      1: <GallowsLine key={'gallowsLine1'} start={{x: 28, y: 15}} end={{x: 40, y: 15}}/>,
+      2: <GallowsLine key={'gallowsLine2'} start={{x: 39, y: 15}} end={{x: 51, y: 15}}/>
     },
     rope: {
       1: <GallowsLine key={'gallowsRope1'} start={{x: 50, y: 15}} end={{x: 50, y: 20}}/>,
@@ -126,11 +126,11 @@ const pieces = {
   figure: {
     head: <FigureHead key="figureHead" center={{x: 50, y: 30}} radius={5}/>,
     neck: <FigureLine key="figureNeck" start={{x: 50, y: 35}} end={{x: 50, y: 40}}/>,
-    leftArm: <FigureLine key="figureLeftArm" start={{x: 50, y: 40}} end={{x: 47, y: 45}}/>,
-    rightArm: <FigureLine key="figureRightArm" start={{x: 50, y: 40}} end={{x: 53, y: 45}}/>,
-    torso: <FigureLine key="figureTorso" start={{x: 50, y: 40}} end={{x: 50, y: 50}}/>,
-    leftLeg: <FigureLine key="figureLeftLeg" start={{x: 50, y: 50}} end={{x: 45, y: 57}}/>,
-    rightLeg: <FigureLine key="figureRightLeg" start={{x: 50, y: 50}} end={{x: 55, y: 57}}/>
+    leftArm: <FigureLine key="figureLeftArm" start={{x: 50, y: 38}} end={{x: 45, y: 45}}/>,
+    rightArm: <FigureLine key="figureRightArm" start={{x: 50, y: 38}} end={{x: 55, y: 45}}/>,
+    torso: <FigureLine key="figureTorso" start={{x: 50, y: 39}} end={{x: 50, y: 50}}/>,
+    leftLeg: <FigureLine key="figureLeftLeg" start={{x: 50, y: 49}} end={{x: 45, y: 57}}/>,
+    rightLeg: <FigureLine key="figureRightLeg" start={{x: 50, y: 49}} end={{x: 55, y: 57}}/>
   }
 }
 
