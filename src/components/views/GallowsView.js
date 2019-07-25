@@ -135,24 +135,147 @@ const pieces = {
 }
 
 const piecesConfiguration = {
-  1: [
-    [
-      pieces.gallows.base[1], pieces.gallows.base[2]
+  1: {
+    1: [
+      pieces.gallows.base[1], pieces.gallows.base[2], pieces.gallows.base[3], pieces.gallows.base[4],
+      pieces.gallows.base[5], pieces.gallows.base[6], pieces.gallows.base[7], pieces.gallows.base[8],
+      pieces.gallows.base[9], pieces.gallows.base[10],
+      pieces.gallows.upright[1], pieces.gallows.upright[2], pieces.gallows.upright[3],
+      pieces.gallows.upright[4], pieces.gallows.upright[5],
+      pieces.gallows.beam[1], pieces.gallows.beam[2], pieces.gallows.rope[1], pieces.gallows.rope[2],
+      pieces.figure.head, pieces.figure.neck, pieces.figure.leftArm, pieces.figure.rightArm,
+      pieces.figure.torso, pieces.figure.leftLeg, pieces.figure.rightLeg
     ]
-  ],
-  2: [
-    [
-      pieces.gallows.base[1], pieces.gallows.base[2]
+  },
+  2: {
+    1: [
+      pieces.gallows.base[1], pieces.gallows.base[2], pieces.gallows.base[3], pieces.gallows.base[4],
+      pieces.gallows.base[5], pieces.gallows.base[6], pieces.gallows.base[7], pieces.gallows.base[8],
+      pieces.gallows.base[9], pieces.gallows.base[10],
+      pieces.gallows.upright[1], pieces.gallows.upright[2], pieces.gallows.upright[3],
+      pieces.gallows.upright[4], pieces.gallows.upright[5],
+      pieces.gallows.beam[1], pieces.gallows.beam[2], pieces.gallows.rope[1], pieces.gallows.rope[2]
     ],
-    [ pieces.figure[1], pieces.figure[2] ]
-  ],
-  3: [],
-  4: [],
-  5: [],
-  6: [],
-  7: [],
-  8: [],
-  9: [],
+    2: [
+      pieces.figure.head, pieces.figure.neck, pieces.figure.leftArm, pieces.figure.rightArm,
+      pieces.figure.torso, pieces.figure.leftLeg, pieces.figure.rightLeg
+    ]
+  },
+  3: {
+    1: [
+      pieces.gallows.base[1], pieces.gallows.base[2], pieces.gallows.base[3], pieces.gallows.base[4],
+      pieces.gallows.base[5], pieces.gallows.base[6], pieces.gallows.base[7], pieces.gallows.base[8],
+      pieces.gallows.base[9], pieces.gallows.base[10]
+    ],
+    2: [
+      pieces.gallows.upright[1], pieces.gallows.upright[2], pieces.gallows.upright[3],
+      pieces.gallows.upright[4], pieces.gallows.upright[5],
+      pieces.gallows.beam[1], pieces.gallows.beam[2], pieces.gallows.rope[1], pieces.gallows.rope[2]
+    ],
+    3: [
+      pieces.figure.head, pieces.figure.neck, pieces.figure.leftArm, pieces.figure.rightArm,
+      pieces.figure.torso, pieces.figure.leftLeg, pieces.figure.rightLeg
+    ]
+  },
+  4: {
+    1: [
+      pieces.gallows.base[1], pieces.gallows.base[2], pieces.gallows.base[3], pieces.gallows.base[4],
+      pieces.gallows.base[5], pieces.gallows.base[6], pieces.gallows.base[7], pieces.gallows.base[8],
+      pieces.gallows.base[9], pieces.gallows.base[10]
+    ],
+    2: [
+      pieces.gallows.upright[1], pieces.gallows.upright[2], pieces.gallows.upright[3],
+      pieces.gallows.upright[4], pieces.gallows.upright[5],
+      pieces.gallows.beam[1], pieces.gallows.beam[2], pieces.gallows.rope[1], pieces.gallows.rope[2]
+    ],
+    3: [pieces.figure.head, pieces.figure.neck, pieces.figure.leftArm, pieces.figure.rightArm],
+    4: [pieces.figure.torso, pieces.figure.leftLeg, pieces.figure.rightLeg]
+  },
+  5: {
+    1: [
+      pieces.gallows.base[1], pieces.gallows.base[2], pieces.gallows.base[3], pieces.gallows.base[4],
+      pieces.gallows.base[5], pieces.gallows.base[6], pieces.gallows.base[7], pieces.gallows.base[8],
+      pieces.gallows.base[9], pieces.gallows.base[10]
+    ],
+    2: [
+      pieces.gallows.upright[1], pieces.gallows.upright[2], pieces.gallows.upright[3],
+      pieces.gallows.upright[4], pieces.gallows.upright[5],
+      pieces.gallows.beam[1], pieces.gallows.beam[2], pieces.gallows.rope[1], pieces.gallows.rope[2]
+    ],
+    3: [pieces.figure.head, pieces.figure.neck],
+    4: [pieces.figure.leftArm, pieces.figure.rightArm, pieces.figure.torso],
+    5: [pieces.figure.leftLeg, pieces.figure.rightLeg]
+  },
+  6: {
+    1: [
+      pieces.gallows.base[1], pieces.gallows.base[2], pieces.gallows.base[3], pieces.gallows.base[4],
+      pieces.gallows.base[5], pieces.gallows.base[6], pieces.gallows.base[7], pieces.gallows.base[8],
+      pieces.gallows.base[9], pieces.gallows.base[10]
+    ],
+    2: [
+      pieces.gallows.upright[1], pieces.gallows.upright[2], pieces.gallows.upright[3],
+      pieces.gallows.upright[4], pieces.gallows.upright[5],
+      pieces.gallows.beam[1], pieces.gallows.beam[2], pieces.gallows.rope[1], pieces.gallows.rope[2]
+    ],
+    3: [pieces.figure.head, pieces.figure.neck],
+    4: [pieces.figure.leftArm, pieces.figure.rightArm],
+    5: [pieces.figure.torso],
+    6: [pieces.figure.leftLeg, pieces.figure.rightLeg]
+  },
+  7: {
+    1: [
+      pieces.gallows.base[1], pieces.gallows.base[2], pieces.gallows.base[3], pieces.gallows.base[4],
+      pieces.gallows.base[5], pieces.gallows.base[6], pieces.gallows.base[7], pieces.gallows.base[8],
+      pieces.gallows.base[9], pieces.gallows.base[10]
+    ],
+    2: [
+      pieces.gallows.upright[1], pieces.gallows.upright[2], pieces.gallows.upright[3],
+      pieces.gallows.upright[4], pieces.gallows.upright[5],
+      pieces.gallows.beam[1], pieces.gallows.beam[2], pieces.gallows.rope[1], pieces.gallows.rope[2]
+    ],
+    3: [pieces.figure.head],
+    4: [pieces.figure.neck],
+    5: [pieces.figure.leftArm, pieces.figure.rightArm],
+    6: [pieces.figure.torso],
+    7: [pieces.figure.leftLeg, pieces.figure.rightLeg]
+  },
+  8: {
+    1: [
+      pieces.gallows.base[1], pieces.gallows.base[2], pieces.gallows.base[3], pieces.gallows.base[4],
+      pieces.gallows.base[5], pieces.gallows.base[6], pieces.gallows.base[7], pieces.gallows.base[8],
+      pieces.gallows.base[9], pieces.gallows.base[10]
+    ],
+    2: [
+      pieces.gallows.upright[1], pieces.gallows.upright[2], pieces.gallows.upright[3],
+      pieces.gallows.upright[4], pieces.gallows.upright[5],
+      pieces.gallows.beam[1], pieces.gallows.beam[2], pieces.gallows.rope[1], pieces.gallows.rope[2]
+    ],
+    3: [pieces.figure.head],
+    4: [pieces.figure.neck],
+    5: [pieces.figure.leftArm, pieces.figure.rightArm],
+    6: [pieces.figure.torso],
+    7: [pieces.figure.leftLeg],
+    8: [pieces.figure.rightLeg]
+  },
+  9: {
+    1: [
+      pieces.gallows.base[1], pieces.gallows.base[2], pieces.gallows.base[3], pieces.gallows.base[4],
+      pieces.gallows.base[5], pieces.gallows.base[6], pieces.gallows.base[7], pieces.gallows.base[8],
+      pieces.gallows.base[9], pieces.gallows.base[10]
+    ],
+    2: [
+      pieces.gallows.upright[1], pieces.gallows.upright[2], pieces.gallows.upright[3],
+      pieces.gallows.upright[4], pieces.gallows.upright[5],
+      pieces.gallows.beam[1], pieces.gallows.beam[2], pieces.gallows.rope[1], pieces.gallows.rope[2]
+    ],
+    3: [pieces.figure.head],
+    4: [pieces.figure.neck],
+    5: [pieces.figure.leftArm],
+    6: [pieces.figure.rightArm],
+    7: [pieces.figure.torso],
+    8: [pieces.figure.leftLeg],
+    9: [pieces.figure.rightLeg]
+  },
   10: {
     1: [
       pieces.gallows.base[1], pieces.gallows.base[2], pieces.gallows.base[3], pieces.gallows.base[4],
