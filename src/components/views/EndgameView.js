@@ -7,7 +7,6 @@ import MenuContainer from '../menus/MenuContainer'
 import MenuButton from '../buttons/MenuButton'
 
 const EndgameViewWrapper = styled.div`
-  max-height: 50vh;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -24,6 +23,10 @@ const EndgameViewWrapper = styled.div`
   }
 `
 
+const EndgameGallowsWrapper = styled.div`
+  max-height: 200px;
+`
+
 export default function EndgameView({ onRestartGame, onSwitchScreen }) {
   const { theme, gameOver, previousGame: { word, guessedLetters, victory }, maxGuesses } = useGameState()
 
@@ -37,12 +40,14 @@ export default function EndgameView({ onRestartGame, onSwitchScreen }) {
 
   return (
     <EndgameViewWrapper theme={theme}>
+      <EndgameGallowsWrapper>
         <GallowsView
           wrongGuesses={maxGuesses}
           maxGuesses={maxGuesses}
           gameOver={gameOver}
           victory={victory}
         />
+      </EndgameGallowsWrapper>
         <WordDisplay
           word={word}
           guessedLetters={guessedLetters}

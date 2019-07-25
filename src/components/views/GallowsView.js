@@ -5,6 +5,10 @@ import useGameState from '../../game-state/useGameState'
 
 const GallowsViewWrapper = styled.div`
   height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   ${'' /* background-color: hsla(0, 0%, 50%, 25%); */}
   @media screen and (min-width: 568px) {
     height: auto;

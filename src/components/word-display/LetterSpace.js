@@ -87,7 +87,7 @@ const LetterVisible = ({ children, guessed = false }) => {
 
 const LetterSpaceWrapper = styled.span.attrs(props => ({
   fontSize: `calc(50vw / ${props.wordLength})`,
-  fontSizeTablet: `calc(55vw / ${props.wordLength})`,
+  fontSizeTablet: `calc(75vmin / ${props.wordLength})`,
   fontSizeMobile: `calc(90vw / ${props.wordLength})`
 }))`
   color: hsl(0%, 0%, 90%);
