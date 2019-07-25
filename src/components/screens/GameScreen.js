@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useSpring, useTransition, animated } from 'react-spring'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import useGameState from '../../game-state/useGameState'
 import LetterSelector from '../../components/LetterSelector'
 import WordDisplay from '../../components/word-display/WordDisplay'
@@ -12,6 +15,8 @@ import AppTitle from '../../components/AppTitle'
 import PauseModal from '../../components/modals/PauseModal'
 import EndgameModal from '../../components/modals/EndgameModal'
 import config from '../../config'
+
+library.add(faBars)
 
 const GameScreenWrapper = styled.div`
   text-align: center;
@@ -194,7 +199,7 @@ function GameScreen({ onSwitchScreen }) {
           <PauseModalButton
             onClick={() => showPauseModal()}
           >
-            Menu
+            <FontAwesomeIcon icon="bars"/>
           </PauseModalButton>
         </AppHeader>
 
