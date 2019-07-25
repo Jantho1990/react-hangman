@@ -79,7 +79,7 @@ const useGameState = () => {
    */
   const declareGameOver = (victory = false) => {
     const { word, guessedLetters } = state
-    console.log('wwww', word, state.word)
+    
     setState({
       ...state,
       gameOver: true,

@@ -13,9 +13,6 @@ const WordDisplayWrapper = styled.div`
 `
 
 export default function WordDisplay({ word, guessedLetters, gameOver, displayWord }) {
-  // const { word, guessedLetters } = useGameState()
-  // const { gameOver } = props
-  console.log('word', word)
   
   let ct = 0
 
