@@ -5,5 +5,11 @@
   },
   "Whoosh": {
     "path": "/assets/sounds/whoosh1.wav"
+  },
+  "BackgroundMusic": {
+    "path": "/assets/sounds/Blackout Knockdown.wav",
+    "options": {
+      "loop": true
+    }
   }
 }

@@ -7,6 +7,7 @@ import { AssetsProvider } from './assets/AssetsContext'
 import MainMenuScreen from './components/screens/MainMenuScreen'
 import GameScreen from './components/screens/GameScreen'
 import OptionsScreen from './components/screens/OptionsScreen'
+import SoundManager from './sound-manager/SoundManager'
 
 
 const AppWrapper = styled.div`
@@ -63,6 +64,7 @@ function App() {
   return (
     <AssetsProvider>  
       <GameStateProvider>
+        <SoundManager/>
         <AppWrapper className="App" theme={theme}>
           {renderActiveScreen()}
         </AppWrapper>
