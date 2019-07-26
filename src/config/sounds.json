@@ -11,7 +11,8 @@
   "BackgroundMusic": {
     "path": "/assets/sounds/Blackout Knockdown.mp3",
     "options": {
-      "loop": true
+      "loop": true,
+      "volume": 0.2
     },
     "channel": "music"
   }

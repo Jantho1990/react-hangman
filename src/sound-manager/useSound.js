@@ -32,6 +32,12 @@ const useSound = () => {
     callbacks.push(callback)
   }
 
+  /**
+   * Plays a loaded audio asset.
+   * @param {string} key The name of the audio to play. Must already be loaded.
+   *
+   * @return {void}
+   */
   const play = key => {
     if (!isReady(key)) return
 
@@ -50,6 +56,12 @@ const useSound = () => {
     })
   }
 
+  /**
+   * Stops an audio asset.
+   * @param {string} key The name of the audio to stop.
+   *
+   * @return {void}
+   */
   const stop = key => {
     const audio = state.sounds[key]
 
@@ -69,8 +81,14 @@ const useSound = () => {
     })
   }
 
+  /**
+   * Check to see if an audio asset is currently playing.
+   *
+   * @param {string} key The name of the audio asset.
+   *
+   * @return {boolean} The playing status of the audio asset, or false if it isn't defined.
+   */
   const isPlaying = key => {
-    console.log(state)
     const audio = state.sounds[key]
 
     if (audio === undefined) {
@@ -80,7 +98,14 @@ const useSound = () => {
     return audio.playing
   }
 
-  const changeVolume = (channelName, volume) => {
+  /**
+   * Change a channel's volume.
+   * @param {string} channelName The name of the channel.
+   * @param {number} volume The volume to change to, from 0 to 1.
+   *
+   * @return {void}
+   */
+  const changeChannelVolume = (channelName, volume) => {
     if (volume > 1) {
       throw new Error(`Volume must be a number between 0 and 1, ${volume} provided.`)
     }
@@ -107,7 +132,7 @@ const useSound = () => {
     play,
     stop,
     isPlaying,
-    changeVolume
+    changeChannelVolume
   }
 }
 
