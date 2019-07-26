@@ -7,7 +7,7 @@
     "path": "/assets/sounds/whoosh1.wav"
   },
   "BackgroundMusic": {
-    "path": "/assets/sounds/Blackout Knockdown.wav",
+    "path": "/assets/sounds/Blackout Knockdown.mp3",
     "options": {
       "loop": true
     }

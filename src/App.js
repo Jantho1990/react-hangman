@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import styled from 'styled-components'
 import { useTransition, animated } from 'react-spring'
 import { GameStateProvider } from './game-state/GameStateContext'
 import useGameState from './game-state/useGameState'
 import { AssetsProvider } from './assets/AssetsContext'
+import useAssets from './assets/useAssets'
 import MainMenuScreen from './components/screens/MainMenuScreen'
 import GameScreen from './components/screens/GameScreen'
 import OptionsScreen from './components/screens/OptionsScreen'
 import SoundManager from './sound-manager/SoundManager'
-
 
 const AppWrapper = styled.div`
   text-align: center;
@@ -19,8 +19,15 @@ const AppWrapper = styled.div`
   background-color: ${props => props.theme.primaryBackgroundColor};
 `
 
+const LoadingScreen = () => {
+  return <div>Loading game...</div>
+}
+
 function App() {
+  const [ loading, setLoading ] = useState(true)
+
   const { theme } = useGameState()
+  const { onReady } = useAssets()
 
   const handleSwitchScreen = screen => {
     setActiveScreen(screen)
@@ -52,6 +59,10 @@ function App() {
   const screenTransitions = useTransition(activeScreen, item => item, springTransitions)
 
   const renderActiveScreen = () => {
+    if (loading) {
+      return <LoadingScreen/>
+    }
+
     return screenTransitions.map(({ item, key, props }) => {
       return (
         <animated.div key={key} style={{...props, position: 'absolute', height: '100%', width: '100%'}}>
@@ -61,7 +72,15 @@ function App() {
     })
   }
 
+  if (loading) {
+    onReady(() => {
+      console.log('done loading')
+      setLoading(false)
+    })
+  }
+
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <AssetsProvider>  
       <GameStateProvider>
         <SoundManager/>
@@ -70,6 +89,7 @@ function App() {
         </AppWrapper>
       </GameStateProvider>
     </AssetsProvider>
+    </Suspense>
   );
 }
 

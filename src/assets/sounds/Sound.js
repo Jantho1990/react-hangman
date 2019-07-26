@@ -16,8 +16,8 @@ class Sound {
     const opts = Object.assign({ time: 0 }, options, overrides)
     audio.volume = opts.volume
     audio.currentTime = opts.time
-    audio.play()
     this.playing = true
+    return audio.play()
   }
 
   stop() {
