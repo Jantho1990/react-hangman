@@ -70,9 +70,11 @@ export default function LetterSelector(props) {
   const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
   
   const handleLetterGuess = (letter) => {
-    // keySound.play()
     sound('KeyEnter1').play()
     changeGuessedLetters(letter)
+    if (isLetterGuessedCorrectly(letter)) {
+      sound('Whoosh').play()
+    }
   }
 
   const isLetterGuessed = letter => {

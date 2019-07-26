@@ -1,3 +1,9 @@
 {
-  "KeyEnter1": "/assets/sounds/KeyEnter1.wav"
+  "KeyEnter1": {
+    "path": "/assets/sounds/KeyEnter1.wav",
+    "pool": 3
+  },
+  "Whoosh": {
+    "path": "/assets/sounds/whoosh1.wav"
+  }
 }

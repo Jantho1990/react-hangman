@@ -1,19 +1,29 @@
 import { objectFromEntries } from '../helpers'
+import Sound from './sounds/Sound'
+import SoundPool from './sounds/SoundPool'
 
 /**
- * Loads a new HTMLAudioElement, without injecting it into the DOM.
+ * Loads a new Sound or SoundPool, without injecting the underlying HTMLAudioElement(s) into the DOM.
  *
  * @param {string} path The path to the sound resource.
  *
- * @return {Promise} A promise resolving to the loaded HTMLAudioElement.
+ * @return {Promise} A promise resolving to a Sound or SoundPool object.
  */
-const loadSound = path => {
+const loadSound = ({ path, options = {}, pool = 0 }) => {
   const sound = new Audio(path)
 
   return new Promise((resolve, reject) => {
     const onLoad = el => {
       sound.removeEventListener('canplay', onLoad, false)
-      resolve(sound)
+
+      let soundObj
+      if (pool <= 0) {
+        soundObj = new Sound(sound, options)
+      } else {
+        soundObj = new SoundPool(sound, options, pool)
+      }
+
+      resolve(soundObj)
     }
 
     const onError = e => {
