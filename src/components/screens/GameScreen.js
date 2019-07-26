@@ -101,6 +101,7 @@ const GameScreenBottom = ({children}) => {
 
 const PauseModalButton = styled(MenuButton)`
   width: auto;
+  margin-right: 0.25rem;
 `
 
 function GameScreen({ onSwitchScreen }) {

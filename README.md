@@ -1,3 +1,6 @@
+## Sound Effect Attributions
+Additional sound effects from https://www.zapsplat.com
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
