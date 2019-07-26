@@ -5,6 +5,7 @@ import themes from '../themes'
 const GameStateContext = React.createContext([{}, () => {}])
 
 const GameStateProvider = (props) => {
+  console.log('derp')
   const [state, setState] = useState({
     theme: {
       name: config.theme,

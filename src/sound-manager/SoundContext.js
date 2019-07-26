@@ -22,26 +22,14 @@ const SoundProvider = (props) => {
       sfx: {
         volume: 1.0
       }
-    }
+    },
+    sounds: {}
   })
 
-  const { sound, onReady } = useAssets()
-
-  if (!loaded && !loading) {
-    loading = true
-    
-  }
-
+  const { onReady } = useAssets()
   onReady(assets => {
-    console.log('claims to be ready')
-    const promise = assets.sound['BackgroundMusic'].play()
-    if (promise !== undefined) {
-      promise.then(result => {
-        console.log('playing')
-      }).catch(e => {
-        console.log('not playing', e)
-      })
-    }
+    loaded = true
+    onLoadedCallbacks.forEach(callback => callback(assets))
   })
 
   return (

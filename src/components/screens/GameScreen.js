@@ -5,6 +5,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import useGameState from '../../game-state/useGameState'
+import useSound from '../../sound-manager/useSound'
 import LetterSelector from '../../components/LetterSelector'
 import WordDisplay from '../../components/word-display/WordDisplay'
 import FancyCounterView from '../../components/views/FancyCounterView'
@@ -114,6 +115,11 @@ function GameScreen({ onSwitchScreen }) {
     declareGameOver,
     resetGame
   } = useGameState()
+
+  const { play, isPlaying } = useSound()
+  if (!isPlaying('BackgroundMusic')) {
+    play('BackgroundMusic')
+  }
 
   const [paused, setPaused] = useState(false)
   const { guesses: maxGuesses } = config

@@ -9,7 +9,7 @@ import SoundPool from './sounds/SoundPool'
  *
  * @return {Promise} A promise resolving to a Sound or SoundPool object.
  */
-const loadSound = ({ path, options = {}, pool = 0 }) => {
+const loadSound = ({ path, options = {}, pool = 0, channel = 'sfx' }) => {
   const sound = new Audio(path)
 
   return new Promise((resolve, reject) => {
@@ -22,6 +22,7 @@ const loadSound = ({ path, options = {}, pool = 0 }) => {
       } else {
         soundObj = new SoundPool(sound, options, pool)
       }
+      soundObj.channel = channel
 
       resolve(soundObj)
     }

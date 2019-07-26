@@ -1,15 +1,18 @@
 {
   "KeyEnter1": {
     "path": "/assets/sounds/KeyEnter1.wav",
-    "pool": 3
+    "pool": 3,
+    "channel": "sfx"
   },
   "Whoosh": {
-    "path": "/assets/sounds/whoosh1.wav"
+    "path": "/assets/sounds/whoosh1.wav",
+    "channel": "sfx"
   },
   "BackgroundMusic": {
     "path": "/assets/sounds/Blackout Knockdown.mp3",
     "options": {
       "loop": true
-    }
+    },
+    "channel": "music"
   }
 }

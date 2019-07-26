@@ -123,7 +123,9 @@ const useGameState = () => {
 
   // Set the random word once data is loaded.
   if (!isLoaded()) {
+    console.log('am i')
     onReady(assets => {
+      console.log('here', assets, state)
       setState(state => ({
         ...state,
         word: createRandomWord(assets.data['wordList']) // Accessed as an array here because assets is just the whole list of assets, not the access functions.
