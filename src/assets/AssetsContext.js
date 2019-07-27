@@ -31,7 +31,9 @@ const AssetsProvider = (props) => {
     loading = true
     loadFromManifest(assetManifest)
       .then(assets => {
-        setState(assets)
+        setState({
+          ...assets
+        })
         loaded = true
         onLoadedCallbacks.forEach(callback => callback(assets))
       })

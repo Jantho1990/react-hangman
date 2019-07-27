@@ -91,7 +91,6 @@ const loadFromManifest = async manifest => {
       const result = await loaderFunc(path)
         .then(res => res)
         .catch(e => {throw e})
-
       return [name, result]
     })
 

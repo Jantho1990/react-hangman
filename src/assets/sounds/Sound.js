@@ -1,4 +1,5 @@
 class Sound {
+  audio = null
   constructor(audio, options = {}) {
     this.playing = false
     this.audio = audio
@@ -26,7 +27,7 @@ class Sound {
   }
 
   get volume() {
-    return this.audio.volume
+    return this.options.volume
   }
 
   set volume(volume) {

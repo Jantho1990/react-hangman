@@ -7,7 +7,7 @@
  */
 export function objectFromEntries(arr) {
   const obj = {}
-  // debugger
+
   arr.forEach(([key, value]) => obj[key] = value)
 
   return obj

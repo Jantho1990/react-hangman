@@ -12,7 +12,7 @@
     "path": "/assets/sounds/Blackout Knockdown.mp3",
     "options": {
       "loop": true,
-      "volume": 0.2
+      "volume": 0.6
     },
     "channel": "music"
   }
