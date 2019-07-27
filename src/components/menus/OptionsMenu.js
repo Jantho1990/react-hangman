@@ -96,6 +96,7 @@ const SubmenuVolume = props => {
   return (
     <SubmenuWrapper title="Volume" {...props}>
       <MenuRange label="Master" onsubmit={handleChangeMasterVolume} currentValue={masterVolume} min={0} max={1} step={0.01}/>
+      <MenuRange label="Music" onsubmit={value => handleChangeChannelVolume('music', value)} currentValue={musicVolume} min={0} max={1} step={0.01}/>
       <MenuRange label="Sound Effects" onsubmit={value => handleChangeChannelVolume('sfx', value)} currentValue={sfxVolume} min={0} max={1} step={0.01}/>
     </SubmenuWrapper>
   )

@@ -123,7 +123,10 @@ const useSound = () => {
       ...state,
       channels: {
         ...state.channels,
-        [channelName]: channel
+        [channelName]: {
+          ...channel,
+          volume: channel.volume
+        }
       }
     })
   }
