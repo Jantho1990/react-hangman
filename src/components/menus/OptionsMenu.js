@@ -67,7 +67,14 @@ class SubmenuWrapper extends Component {
   `
 
   shouldComponentUpdate(nextProps, nextState, nextContext) {
-     return false
+    const { theme } = this.props
+    const { nextTheme } = nextProps
+
+    if (theme !== nextTheme) {
+      return true
+    }
+    
+    return false
   }
 
   render () {
@@ -82,7 +89,7 @@ class SubmenuWrapper extends Component {
   }
 }
 
-const SubmenuVolume = props => {
+const SubmenuVolume = ({ theme }) => {
   const {
     master: { volume: masterVolume },
     changeMasterVolume,
@@ -102,10 +109,10 @@ const SubmenuVolume = props => {
   }
 
   return (
-    <SubmenuWrapper title="Volume" theme={props.theme}>
-      <MenuRange theme={props.theme} label="Master" onsubmit={handleChangeMasterVolume} defaultValue={() => masterVolume} min={0} max={1} step={0.01}/>
-      <MenuRange theme={props.theme} label="Music" onsubmit={value => handleChangeChannelVolume('music', value)} defaultValue={() => musicVolume} min={0} max={1} step={0.01}/>
-      <MenuRange theme={props.theme} label="Sound Effects" onsubmit={value => handleChangeChannelVolume('sfx', value)} defaultValue={() => sfxVolume} min={0} max={1} step={0.01}/>
+    <SubmenuWrapper title="Volume" theme={theme}>
+      <MenuRange theme={theme} label="Master" onsubmit={handleChangeMasterVolume} defaultValue={() => masterVolume} min={0} max={1} step={0.01}/>
+      <MenuRange theme={theme} label="Music" onsubmit={value => handleChangeChannelVolume('music', value)} defaultValue={() => musicVolume} min={0} max={1} step={0.01}/>
+      <MenuRange theme={theme} label="Sound Effects" onsubmit={value => handleChangeChannelVolume('sfx', value)} defaultValue={() => sfxVolume} min={0} max={1} step={0.01}/>
     </SubmenuWrapper>
   )
 }

@@ -36,9 +36,8 @@ const MenuRangeLabel = styled.label`
 export default class MenuRange extends Component {
   constructor (props) {
     super(props)
-    const { theme, label = null, onsubmit, defaultValue = 1 } = props
+    const { label = null, onsubmit, defaultValue = 1 } = props
     this.state = {
-      theme,
       label,
       onsubmit,
       currentValue: defaultValue()
@@ -60,9 +59,13 @@ export default class MenuRange extends Component {
   }
 
   shouldComponentUpdate (nextProps, nextState) {
-    const { inputEl: { value }} = this
-    const { nextValueState } = nextState
-    const { nextValueProp } = nextProps
+    const { inputEl: { value }, props: { theme }} = this
+    const { theme: nextTheme, currentValue: nextValueState } = nextState
+    const { currentValue: nextValueProp } = nextProps
+
+    if (theme !== nextTheme) {
+      return true
+    }
 
     if (nextValueState === value || nextValueProp === value) {
       return false
@@ -72,8 +75,8 @@ export default class MenuRange extends Component {
   }
 
   render () {
-    const { inputEl, handleSubmit, props } = this
-    const { theme, label = null, currentValue } = this.state
+    const { inputEl, handleSubmit, props, props: { theme } } = this
+    const { label = null, currentValue } = this.state
 
     return (
       <MenuRangeWrapper theme={theme} onChange={handleSubmit}>
