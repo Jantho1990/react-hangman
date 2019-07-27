@@ -17,8 +17,7 @@ const MenuRangeWrapper = styled.form`
 const Range = styled.input`
   border: none;
   border-radius: 3px;
-  padding: 0.5rem 1rem;
-  width: 100%;
+  padding: 0.5rem 0;
   cursor: pointer;
   background-color: ${props => props.theme.primaryButtonColor};
   color: ${props => props.theme.primaryButtonFontColor};

@@ -42,22 +42,33 @@ const SubmenuTheme = (props) => {
   )
 }
 
-const SubmenuVolume = (props) => {
+const SubmenuVolumeWrapper = props => {
+  const Wrapper = styled.div`
+    border: 1px solid red;
+  `
+
+  return <Wrapper {...props}>{props.children}</Wrapper>
+}
+
+const SubmenuVolume = props => {
+  const { master: { volume: masterVolume }, changeMasterVolume } = useSound()
+
+  const handleChangeMasterVolume = value => {
+    changeMasterVolume(value)
+  }
+
   return (
-    <MenuRange label="Volume" {...props}/>
+    <SubmenuVolumeWrapper {...props}>
+      <MenuRange label="Master Volume" onsubmit={handleChangeMasterVolume} currentValue={masterVolume} min={0} max={1} step={0.01}/>
+    </SubmenuVolumeWrapper>
   )
 }
 
 export default function OptionsMenu({ onExitMenu }) {
   const { theme, changeTheme } = useGameState()
-  const { master: { volume: masterVolume }, changeMasterVolume } = useSound()
 
   const handleChangeTheme = (value) => {
     changeTheme(value)
-  }
-
-  const handleChangeVolume = value => {
-    changeMasterVolume(value)
   }
 
   const handleClickBack = () => {
@@ -69,7 +80,7 @@ export default function OptionsMenu({ onExitMenu }) {
       <OptionsMenuTitle theme={theme}>Options</OptionsMenuTitle>
       <OptionsMenuScroll handleChangeTheme={handleChangeTheme}>
         <SubmenuTheme onsubmit={handleChangeTheme} currentValue={theme.name}/>
-        <SubmenuVolume onsubmit={handleChangeVolume} currentValue={masterVolume} min={0} max={1} step={0.01}/>
+        <SubmenuVolume/>
         <MenuButton onClick={handleClickBack}>Back</MenuButton>
       </OptionsMenuScroll>
     </OptionsMenuWrapper>
