@@ -126,8 +126,6 @@ const useSound = () => {
         [channelName]: channel
       }
     })
-
-    // updateSoundVolumes()
   }
 
   /**
@@ -151,8 +149,6 @@ const useSound = () => {
         volume
       }
     })
-
-    // updateSoundVolumes()
   }
 
   /**
