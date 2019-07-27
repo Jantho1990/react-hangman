@@ -162,12 +162,13 @@ const useSound = () => {
     const { sounds, master, channels, muted } = state
 
     if (sounds !== undefined) {
-      Object.entries(sounds).forEach(([, sound]) => {
+      Object.entries(sounds).forEach(([key, sound]) => {
         if (muted) {
           sound.volume = 0
         } else {
           sound.volume = master.volume * channels[sound.channel].volume * sound.options.baseVolume
         }
+        console.log(key, sound.volume, master.volume, channels[sound.channel].volume, sound.options.baseVolume)
       })
     }
   }

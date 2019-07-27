@@ -54,7 +54,7 @@ export default class MenuRange extends Component {
   handleSubmit = event => {
     const { onsubmit } = this.state
 
-    const value = event.target.value
+    const value = Number(event.target.value)
     onsubmit(value)
 
     this.setState({
