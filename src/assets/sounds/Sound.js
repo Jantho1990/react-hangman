@@ -3,7 +3,7 @@ class Sound {
   constructor(audio, options = {}) {
     this.playing = false
     this.audio = audio
-    this.options = Object.assign({ volume: 1 }, options)
+    this.options = Object.assign({ volume: 1, baseVolume: 1 }, options)
 
     if (options.loop) {
       audio.loop = true
@@ -15,7 +15,7 @@ class Sound {
   play(overrides) {
     const { audio, options } = this
     const opts = Object.assign({ time: 0 }, options, overrides)
-    audio.volume = opts.volume
+    audio.volume = opts.volume * opts.baseVolume
     audio.currentTime = opts.time
     this.playing = true
     return audio.play()

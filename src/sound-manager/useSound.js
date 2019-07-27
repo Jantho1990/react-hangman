@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { SoundContext, onLoaded } from './SoundContext'
 import useAssets from '../assets/useAssets'
+import { objectFromEntries } from '../helpers'
 
 /**
  * Signifies if assets are ready to be used.
@@ -125,7 +126,49 @@ const useSound = () => {
         [channelName]: channel
       }
     })
+
+    // updateSoundVolumes()
   }
+
+  /**
+   * Change the master volume.
+   *
+   * @param {number} volume The volume to change to, from 0 to 1.
+   *
+   * @return {void}
+   */
+  const changeMasterVolume = volume => {
+    if (volume > 1) {
+      throw new Error(`Volume must be a number between 0 and 1, ${volume} provided.`)
+    }
+
+    const { master } = state
+    master.volume = volume
+    
+    setState({
+      ...state,
+      master
+    })
+
+    // updateSoundVolumes()
+  }
+
+  /**
+   * Update the volumes on all playing sounds.
+   *
+   * @return {void}
+   */
+  const updateSoundVolumes = () => {
+    const { sounds, master, channels } = state
+
+    if (sounds !== undefined) {
+      Object.entries(sounds).forEach(([, sound]) => {
+        sound.volume *= master.volume * channels[sound.channel].volume
+      })
+    }
+  }
+
+  updateSoundVolumes()
 
   return {
     isLoaded,
@@ -133,7 +176,11 @@ const useSound = () => {
     play,
     stop,
     isPlaying,
-    changeChannelVolume
+    master: state.master,
+    channels: state.channels,
+    changeChannelVolume,
+    changeMasterVolume,
+    updateSoundVolumes
   }
 }
 
