@@ -47,7 +47,7 @@ const useSound = () => {
 
     const audio = sound(key)
 
-    audio.volume *= master.volume * channels[audio.channel].volume
+    audio.volume = master.volume * channels[audio.channel].volume * audio.options.baseVolume
 
     audio.play()
 
@@ -143,11 +143,13 @@ const useSound = () => {
     }
 
     const { master } = state
-    master.volume = volume
+    console.log('master volume', master.volume, volume)
     
     setState({
       ...state,
-      master
+      master: {
+        volume
+      }
     })
 
     // updateSoundVolumes()
@@ -163,7 +165,7 @@ const useSound = () => {
 
     if (sounds !== undefined) {
       Object.entries(sounds).forEach(([, sound]) => {
-        sound.volume *= master.volume * channels[sound.channel].volume
+        sound.volume = master.volume * channels[sound.channel].volume * sound.options.baseVolume
       })
     }
   }

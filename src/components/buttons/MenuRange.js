@@ -37,17 +37,18 @@ const MenuRangeLabel = styled.label`
 
 export default function MenuRange (props) {
   const { theme } = useGameState()
-  const { label = null, onsubmit } = props
+  const { label = null, onsubmit, defaultValue = 1 } = props
 
   const handleSubmit = event => {
     const value = event.target.value
+    console.log('new value', value)
     onsubmit(value)
   }
 
   return (
     <MenuRangeWrapper theme={theme} onChange={handleSubmit}>
       <MenuRangeLabel theme={theme}>{label}</MenuRangeLabel>
-      <Range type="range" defaultValue={1} theme={theme} {...props} onClick={props.onClick}>{props.children}</Range>
+      <Range type="range" defaultValue={defaultValue} theme={theme} {...props} onClick={props.onClick}>{props.children}</Range>
     </MenuRangeWrapper>
   ) 
 }
