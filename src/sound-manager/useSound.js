@@ -40,10 +40,13 @@ const useSound = () => {
    */
   const play = key => {
     if (!isReady(key)) return
+    if (state.muted) return
+
+    const { channels, master } = state
 
     const audio = sound(key)
 
-    audio.volume *= state.channels[audio.channel].volume
+    audio.volume *= master.volume * channels[audio.channel].volume
 
     audio.play()
 
@@ -65,9 +68,7 @@ const useSound = () => {
   const stop = key => {
     const audio = state.sounds[key]
 
-    if (audio === undefined) {
-      throw new Error(`Audio "${key}" not found in SoundContext.`)
-    }
+    if (audio === undefined) return
 
     audio.stop()
 

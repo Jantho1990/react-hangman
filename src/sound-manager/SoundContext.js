@@ -15,6 +15,9 @@ let loading = false
  */
 const SoundProvider = (props) => {
   const [state, setState] = useState({
+    master: {
+      volume: 1.0
+    },
     channels: {
       music: {
         volume: 1.0
@@ -23,6 +26,7 @@ const SoundProvider = (props) => {
         volume: 1.0
       }
     },
+    muted: false,
     sounds: {}
   })
 
