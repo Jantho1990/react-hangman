@@ -159,13 +159,29 @@ const useSound = () => {
    * @return {void}
    */
   const updateSoundVolumes = () => {
-    const { sounds, master, channels } = state
+    const { sounds, master, channels, muted } = state
 
     if (sounds !== undefined) {
       Object.entries(sounds).forEach(([, sound]) => {
-        sound.volume = master.volume * channels[sound.channel].volume * sound.options.baseVolume
+        if (muted) {
+          sound.volume = 0
+        } else {
+          sound.volume = master.volume * channels[sound.channel].volume * sound.options.baseVolume
+        }
       })
     }
+  }
+
+  /**
+   * Toggles sound muting.
+   *
+   * @return {void}
+   */
+  const toggleMute = () => {
+    setState({
+      ...state,
+      muted: !state.muted
+    })
   }
 
   updateSoundVolumes()
@@ -180,7 +196,9 @@ const useSound = () => {
     channels: state.channels,
     changeChannelVolume,
     changeMasterVolume,
-    updateSoundVolumes
+    updateSoundVolumes,
+    muted: state.muted,
+    toggleMute
   }
 }
 

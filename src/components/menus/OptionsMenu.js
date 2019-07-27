@@ -5,6 +5,7 @@ import MenuButton from '../buttons/MenuButton'
 import MenuSelect from '../buttons/MenuSelect'
 import MenuOption from '../buttons/MenuOption'
 import MenuRange from '../buttons/MenuRange'
+import MenuCheckbox from '../buttons/MenuCheckbox'
 import useGameState from '../../game-state/useGameState'
 import useSound from '../../sound-manager/useSound'
 
@@ -73,7 +74,7 @@ class SubmenuWrapper extends Component {
     if (theme !== nextTheme) {
       return true
     }
-    
+
     return false
   }
 
@@ -97,7 +98,9 @@ const SubmenuVolume = ({ theme }) => {
       music: { volume: musicVolume },
       sfx: { volume: sfxVolume }
     },
-    changeChannelVolume
+    changeChannelVolume,
+    muted,
+    toggleMute
   } = useSound()
 
   const handleChangeMasterVolume = value => {
@@ -108,8 +111,13 @@ const SubmenuVolume = ({ theme }) => {
     changeChannelVolume(channel, value)
   }
 
+  const handleMuteToggle = () => {
+    toggleMute()
+  }
+
   return (
     <SubmenuWrapper title="Volume" theme={theme}>
+      <MenuCheckbox label="Mute" theme={theme} onsubmit={handleMuteToggle} checked={muted}/>
       <MenuRange theme={theme} label="Master" onsubmit={handleChangeMasterVolume} defaultValue={() => masterVolume} min={0} max={1} step={0.01}/>
       <MenuRange theme={theme} label="Music" onsubmit={value => handleChangeChannelVolume('music', value)} defaultValue={() => musicVolume} min={0} max={1} step={0.01}/>
       <MenuRange theme={theme} label="Sound Effects" onsubmit={value => handleChangeChannelVolume('sfx', value)} defaultValue={() => sfxVolume} min={0} max={1} step={0.01}/>
