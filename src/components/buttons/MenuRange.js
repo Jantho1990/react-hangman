@@ -20,9 +20,14 @@ const Range = styled.input`
   cursor: pointer;
   background-color: ${props => props.theme.primaryButtonColor};
   color: ${props => props.theme.primaryButtonFontColor};
+  outline: none;
   &:hover {
     background-color: ${props => props.theme.primaryButtonHoverColor};
     color: ${props => props.theme.primaryButtonFontHoverColor};
+  }
+  &:focus, &::-moz-focus-outer{
+    outline: none;
+    border: 0;
   }
 `
 

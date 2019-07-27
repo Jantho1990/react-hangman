@@ -26,6 +26,7 @@ const Input = styled.input`
   cursor: pointer;
   background-color: ${props => props.theme.primaryButtonColor};
   color: ${props => props.theme.primaryButtonFontColor};
+  outline: 0;
   &:hover {
     background-color: ${props => props.theme.primaryButtonHoverColor};
     color: ${props => props.theme.primaryButtonFontHoverColor};
