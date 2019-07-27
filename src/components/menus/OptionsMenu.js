@@ -42,25 +42,62 @@ const SubmenuTheme = (props) => {
   )
 }
 
-const SubmenuVolumeWrapper = props => {
+const SubmenuWrapper = ({ title, theme, children }) => {
   const Wrapper = styled.div`
-    border: 1px solid red;
+    text-align: left;
+    & > :nth-child(n + 2) {
+      margin-left: 1rem;
+      padding: 0;
+      font-size: 0.85em;
+      & > label {
+        font-weight: normal;
+        font-style: italic;
+      }
+    }
   `
 
-  return <Wrapper {...props}>{props.children}</Wrapper>
+  const Title = styled.span`
+    color: ${props => props.theme.primaryFontColor};
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    display: inline-block;
+    &::after {
+      content: ':';
+    }
+  `
+
+  return (
+    <Wrapper theme={theme}>
+      <Title theme={theme}>{title}</Title>
+      {children}
+    </Wrapper>
+  )
 }
 
 const SubmenuVolume = props => {
-  const { master: { volume: masterVolume }, changeMasterVolume } = useSound()
+  const {
+    master: { volume: masterVolume },
+    changeMasterVolume,
+    channels: {
+      music: { volume: musicVolume },
+      sfx: { volume: sfxVolume }
+    },
+    changeChannelVolume
+  } = useSound()
 
   const handleChangeMasterVolume = value => {
     changeMasterVolume(value)
   }
+  
+  const handleChangeChannelVolume = (channel, value) => {
+    changeChannelVolume(channel, value)
+  }
 
   return (
-    <SubmenuVolumeWrapper {...props}>
-      <MenuRange label="Master Volume" onsubmit={handleChangeMasterVolume} currentValue={masterVolume} min={0} max={1} step={0.01}/>
-    </SubmenuVolumeWrapper>
+    <SubmenuWrapper title="Volume" {...props}>
+      <MenuRange label="Master" onsubmit={handleChangeMasterVolume} currentValue={masterVolume} min={0} max={1} step={0.01}/>
+      <MenuRange label="Sound Effects" onsubmit={value => handleChangeChannelVolume('sfx', value)} currentValue={sfxVolume} min={0} max={1} step={0.01}/>
+    </SubmenuWrapper>
   )
 }
 
@@ -80,7 +117,7 @@ export default function OptionsMenu({ onExitMenu }) {
       <OptionsMenuTitle theme={theme}>Options</OptionsMenuTitle>
       <OptionsMenuScroll handleChangeTheme={handleChangeTheme}>
         <SubmenuTheme onsubmit={handleChangeTheme} currentValue={theme.name}/>
-        <SubmenuVolume/>
+        <SubmenuVolume theme={theme}/>
         <MenuButton onClick={handleClickBack}>Back</MenuButton>
       </OptionsMenuScroll>
     </OptionsMenuWrapper>

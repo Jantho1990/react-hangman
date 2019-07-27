@@ -6,7 +6,6 @@ const MenuRangeWrapper = styled.form`
   color: ${props => props.theme.primaryFontColor};
   ${'' /* border: 1px solid ${props => props.theme.primaryButtonColor}; */}
   border-radius: 3px;
-  width: 100%;
   padding: 0.5rem 0;
   display: flex;
   flex-direction: row;
