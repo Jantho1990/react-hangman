@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import MenuContainer from './MenuContainer'
 import MenuButton from '../buttons/MenuButton'
@@ -42,8 +42,8 @@ const SubmenuTheme = (props) => {
   )
 }
 
-const SubmenuWrapper = ({ title, theme, children }) => {
-  const Wrapper = styled.div`
+class SubmenuWrapper extends Component {
+  Wrapper = styled.div`
     text-align: left;
     & > :nth-child(n + 2) {
       margin-left: 1rem;
@@ -56,7 +56,7 @@ const SubmenuWrapper = ({ title, theme, children }) => {
     }
   `
 
-  const Title = styled.span`
+  Title = styled.span`
     color: ${props => props.theme.primaryFontColor};
     font-weight: bold;
     margin-bottom: 0.25rem;
@@ -66,12 +66,20 @@ const SubmenuWrapper = ({ title, theme, children }) => {
     }
   `
 
-  return (
-    <Wrapper theme={theme}>
-      <Title theme={theme}>{title}</Title>
-      {children}
-    </Wrapper>
-  )
+  shouldComponentUpdate(nextProps, nextState, nextContext) {
+     return false
+  }
+
+  render () {
+    const { Wrapper, Title } = this
+    const { title, theme, children } = this.props
+    return (
+      <Wrapper theme={theme}>
+        <Title theme={theme}>{title}</Title>
+        {children}
+      </Wrapper>
+    )
+  }
 }
 
 const SubmenuVolume = props => {
@@ -94,10 +102,10 @@ const SubmenuVolume = props => {
   }
 
   return (
-    <SubmenuWrapper title="Volume" {...props}>
-      <MenuRange label="Master" onsubmit={handleChangeMasterVolume} currentValue={masterVolume} min={0} max={1} step={0.01}/>
-      <MenuRange label="Music" onsubmit={value => handleChangeChannelVolume('music', value)} currentValue={musicVolume} min={0} max={1} step={0.01}/>
-      <MenuRange label="Sound Effects" onsubmit={value => handleChangeChannelVolume('sfx', value)} currentValue={sfxVolume} min={0} max={1} step={0.01}/>
+    <SubmenuWrapper title="Volume" theme={props.theme}>
+      <MenuRange theme={props.theme} label="Master" onsubmit={handleChangeMasterVolume} defaultValue={() => masterVolume} min={0} max={1} step={0.01}/>
+      <MenuRange theme={props.theme} label="Music" onsubmit={value => handleChangeChannelVolume('music', value)} defaultValue={() => musicVolume} min={0} max={1} step={0.01}/>
+      <MenuRange theme={props.theme} label="Sound Effects" onsubmit={value => handleChangeChannelVolume('sfx', value)} defaultValue={() => sfxVolume} min={0} max={1} step={0.01}/>
     </SubmenuWrapper>
   )
 }

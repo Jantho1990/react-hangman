@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import useGameState from '../../game-state/useGameState'
 
@@ -33,20 +33,53 @@ const MenuRangeLabel = styled.label`
   }
 `
 
-export default function MenuRange (props) {
-  const { theme } = useGameState()
-  const { label = null, onsubmit, defaultValue = 1 } = props
+export default class MenuRange extends Component {
+  constructor (props) {
+    super(props)
+    const { theme, label = null, onsubmit, defaultValue = 1 } = props
+    this.state = {
+      theme,
+      label,
+      onsubmit,
+      currentValue: defaultValue()
+    }
 
-  const handleSubmit = event => {
-    const value = event.target.value
-    console.log('new value', value)
-    onsubmit(value)
+    this.inputEl = React.createRef()
   }
 
-  return (
-    <MenuRangeWrapper theme={theme} onChange={handleSubmit}>
-      <MenuRangeLabel theme={theme}>{label}</MenuRangeLabel>
-      <Range type="range" defaultValue={defaultValue} theme={theme} {...props} onClick={props.onClick}>{props.children}</Range>
-    </MenuRangeWrapper>
-  ) 
+  handleSubmit = event => {
+    const { onsubmit } = this.state
+
+    const value = event.target.value
+    onsubmit(value)
+
+    this.setState({
+      ...this.state,
+      currentValue: value
+    })
+  }
+
+  shouldComponentUpdate (nextProps, nextState) {
+    const { inputEl: { value }} = this
+    const { nextValueState } = nextState
+    const { nextValueProp } = nextProps
+
+    if (nextValueState === value || nextValueProp === value) {
+      return false
+    }
+
+    return true
+  }
+
+  render () {
+    const { inputEl, handleSubmit, props } = this
+    const { theme, label = null, currentValue } = this.state
+
+    return (
+      <MenuRangeWrapper theme={theme} onChange={handleSubmit}>
+        <MenuRangeLabel theme={theme}>{label}</MenuRangeLabel>
+        <Range type="range" ref={inputEl} defaultValue={currentValue} theme={theme} min={props.min} max={props.max} step={props.step}>{props.children}</Range>
+      </MenuRangeWrapper>
+    ) 
+  }
 }

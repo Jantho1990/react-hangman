@@ -144,7 +144,6 @@ const useSound = () => {
     }
 
     const { master } = state
-    console.log('master volume', master.volume, volume)
     
     setState({
       ...state,
