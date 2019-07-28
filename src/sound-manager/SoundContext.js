@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import useAssets from '../assets/useAssets'
+import useLocalStorage from '../local-storage/useLocalStorage'
 
 const SoundContext = React.createContext([{}, () => {}])
 
@@ -14,11 +15,34 @@ let loading = false
  * @return {JSX} Component wrapped in SoundContext.
  */
 const SoundProvider = (props) => {
-  const [ masterVolume, setMasterVolume ] = useState(1.0)
+  // Default values from localStorage, if they exist.
+  const { hydrateState, setItem } = useLocalStorage()
+  const defaultValues = hydrateState({
+    masterVolume: 1.0,
+    musicChannelVolume: 1.0,
+    sfxChannelVolume: 1.0
+  })
 
-  const [ musicChannelVolume, setMusicChannelVolume ] = useState(1.0)
+  const [ masterVolume, setMasterVolumeFunc ] = useState(defaultValues.masterVolume)
+  const setMasterVolume = value => {
+    setItem('masterVolume', value)
 
-  const [ sfxChannelVolume, setSfxChannelVolume ] = useState(1.0)
+    setMasterVolumeFunc(value)
+  }
+
+  const [ musicChannelVolume, setMusicChannelVolumeFunc ] = useState(defaultValues.musicChannelVolume)
+  const setMusicChannelVolume = value => {
+    setItem('musicChannelVolume', value)
+
+    setMusicChannelVolumeFunc(value)
+  }
+
+  const [ sfxChannelVolume, setSfxChannelVolumeFunc ] = useState(defaultValues.sfxChannelVolume)
+  const setSfxChannelVolume = value => {
+    setItem('sfxChannelVolume', value)
+
+    setSfxChannelVolumeFunc(value)
+  }
 
   const channelVolumeSetters = {
     music: setMusicChannelVolume,
