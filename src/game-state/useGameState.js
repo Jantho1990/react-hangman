@@ -1,11 +1,13 @@
 import { useContext } from 'react'
 import { GameStateContext } from './GameStateContext'
 import useAssets from '../assets/useAssets'
+import useLocalStorage from '../local-storage/useLocalStorage'
 import { createRandomWord } from '../lib/randomWord'
 import themes from '../themes'
 
 const useGameState = () => {
   const { isLoaded, data, onReady } = useAssets()
+  const { setItem } = useLocalStorage()
   const [state, setState] = useContext(GameStateContext)
 
   /**
@@ -16,12 +18,16 @@ const useGameState = () => {
    * @return {void}
    */
   function changeTheme(themeName) {
+    const theme = {
+      name: themeName,
+      ...themes[themeName]
+    }
+    
+    setItem('theme', theme)
+
     setState(state => ({
       ...state,
-      theme: {
-        name: themeName,
-        ...themes[themeName]
-      }
+      theme
     }))
   }
 
