@@ -18,8 +18,19 @@ onLoaded(assets => {
 const callbacks = []
 
 const useSound = () => {
-  const [state, setState] = useContext(SoundContext)
   const { sound, isLoaded: assetsLoaded } = useAssets()
+  const {
+    master,
+    channels,
+    muted,
+    sounds,
+    setMasterVolume,
+    setMusicChannelVolume,
+    setSfxChannelVolume,
+    setMuted,
+    setSounds,
+    channelVolumeSetters
+  } = useContext(SoundContext)
 
   const isReady = key => {
     if (ready) return true
@@ -41,22 +52,19 @@ const useSound = () => {
    */
   const play = key => {
     if (!isReady(key)) return
-    if (state.muted) return
-
-    const { channels, master } = state
+    if (muted) return
 
     const audio = sound(key)
+
+    console.log('STAT', master, channels[audio.channel], audio.options)
 
     audio.volume = master.volume * channels[audio.channel].volume * audio.options.baseVolume
 
     audio.play()
 
-    setState({
-      ...state,
-      sounds: {
-        ...state.sounds,
-        [key]: audio
-      }
+    setSounds({
+      ...sounds,
+      [key]: audio
     })
   }
 
@@ -67,19 +75,16 @@ const useSound = () => {
    * @return {void}
    */
   const stop = key => {
-    const audio = state.sounds[key]
+    const audio = sounds[key]
 
     if (audio === undefined) return
 
     audio.stop()
 
-    const newSounds = state.sounds
+    const newSounds = sounds
     delete newSounds[key]
-    setState({
-      ...state,
-      sounds: {
-        ...newSounds
-      }
+    setSounds({
+      ...newSounds
     })
   }
 
@@ -91,7 +96,7 @@ const useSound = () => {
    * @return {boolean} The playing status of the audio asset, or false if it isn't defined.
    */
   const isPlaying = key => {
-    const audio = state.sounds[key]
+    const audio = sounds[key]
 
     if (audio === undefined) {
       return false
@@ -112,23 +117,14 @@ const useSound = () => {
       throw new Error(`Volume must be a number between 0 and 1, ${volume} provided.`)
     }
     
-    const channel = state.channels[channelName]
+    const channel = channels[channelName]
     if (channel === undefined) {
       throw new Error(`Channel "${channelName}" not found in SoundContext.`)
     }
 
-    channel.volume = volume
+    channelVolumeSetters[channelName](volume)
 
-    setState({
-      ...state,
-      channels: {
-        ...state.channels,
-        [channelName]: {
-          ...channel,
-          volume: channel.volume
-        }
-      }
-    })
+    console.log('Channel Master', master, master.volume)
   }
 
   /**
@@ -143,14 +139,7 @@ const useSound = () => {
       throw new Error(`Volume must be a number between 0 and 1, ${volume} provided.`)
     }
 
-    const { master } = state
-    
-    setState({
-      ...state,
-      master: {
-        volume
-      }
-    })
+    setMasterVolume(volume)
   }
 
   /**
@@ -159,8 +148,6 @@ const useSound = () => {
    * @return {void}
    */
   const updateSoundVolumes = () => {
-    const { sounds, master, channels, muted } = state
-
     if (sounds !== undefined) {
       Object.entries(sounds).forEach(([key, sound]) => {
         if (muted) {
@@ -179,10 +166,9 @@ const useSound = () => {
    * @return {void}
    */
   const toggleMute = () => {
-    setState({
-      ...state,
-      muted: !state.muted
-    })
+    // Somehow, THIS function specifically is not resetting the master volume.
+    console.log('MUTE master', master)
+    setMuted(!muted)
   }
 
   updateSoundVolumes()
@@ -193,12 +179,12 @@ const useSound = () => {
     play,
     stop,
     isPlaying,
-    master: state.master,
-    channels: state.channels,
+    master,
+    channels,
     changeChannelVolume,
     changeMasterVolume,
     updateSoundVolumes,
-    muted: state.muted,
+    muted,
     toggleMute
   }
 }
