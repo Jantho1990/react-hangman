@@ -27,8 +27,22 @@ export default function useLocalStorage() {
     return window.localStorage.getItem(key)
   }
 
+  const getItemSafe = key => {
+    const value = getItem(key)
+
+    if (value === null) {
+      throw new Error(`"${key}" was not found in local storage.`)
+    }
+
+    return JSON.parse(value)
+  }
+
   const setItem = (key, value) => {
     return window.localStorage.setItem(key, value)
+  }
+
+  const setItemSafe  = (key, value) => {
+    return setItem(key, JSON.stringify(value))
   }
 
   const removeItem = key => {
@@ -53,8 +67,8 @@ export default function useLocalStorage() {
 
   return {
     hydrateState,
-    getItem,
-    setItem,
+    getItem: getItemSafe,
+    setItem: setItemSafe,
     removeItem,
     updateWrapper
   }
