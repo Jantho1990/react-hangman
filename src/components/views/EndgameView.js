@@ -24,7 +24,7 @@ const EndgameViewWrapper = styled.div`
 `
 
 const EndgameGallowsWrapper = styled.div`
-  max-height: 200px;
+  height: 200px;
 `
 
 export default function EndgameView({ onRestartGame, onSwitchScreen }) {
