@@ -11,7 +11,7 @@ const GallowsViewWrapper = styled.div`
   justify-content: center;
   ${'' /* background-color: hsla(0, 0%, 50%, 25%); */}
   @media screen and (min-width: 568px) {
-    height: auto;
+    height: 30vh;
   }
   @media screen and (min-width: 768px) {
     height: 100%;
