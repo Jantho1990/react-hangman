@@ -16,11 +16,12 @@ let loading = false
  */
 const SoundProvider = (props) => {
   // Default values from localStorage, if they exist.
-  const { hydrateState, setItem } = useLocalStorage()
+  const { hydrateState, setItem, updateWrapper } = useLocalStorage()
   const defaultValues = hydrateState({
     masterVolume: 1.0,
     musicChannelVolume: 1.0,
-    sfxChannelVolume: 1.0
+    sfxChannelVolume: 1.0,
+    muted: false
   })
 
   const [ masterVolume, setMasterVolumeFunc ] = useState(defaultValues.masterVolume)
@@ -49,7 +50,8 @@ const SoundProvider = (props) => {
     sfx: setSfxChannelVolume
   }
 
-  const [ muted, setMuted ] = useState(false)
+  const [ muted, setMutedFunc ] = useState(defaultValues.muted)
+  const setMuted = value => updateWrapper('muted', value, setMutedFunc)
 
   const [ sounds, setSounds ] = useState({})
 

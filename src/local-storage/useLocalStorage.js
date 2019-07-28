@@ -35,10 +35,27 @@ export default function useLocalStorage() {
     return window.localStorage.removeItem(key)
   }
 
+  /**
+   * Helper function specifically for wrapping State Hook setters to
+   * save their values to localStorage first.
+   *
+   * @param {string} key The key to save to in localStorage.
+   * @param {*} value The incoming value.
+   * @param {Function} callback The update function.
+   *
+   * @return {void}
+   */
+  const updateWrapper = (key, value, callback) => {
+    setItem(key, value)
+
+    callback(value)
+  }
+
   return {
     hydrateState,
     getItem,
     setItem,
-    removeItem
+    removeItem,
+    updateWrapper
   }
 }
