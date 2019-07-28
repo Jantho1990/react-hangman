@@ -27,8 +27,6 @@ const AssetsProvider = (props) => {
     data: {}
   })
 
-  console.log('asset provider updated', state)
-
   if (!loaded && !loading) {
     loading = true
     loadFromManifest(assetManifest)

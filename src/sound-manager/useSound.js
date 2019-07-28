@@ -56,8 +56,6 @@ const useSound = () => {
 
     const audio = sound(key)
 
-    console.log('STAT', master, channels[audio.channel], audio.options)
-
     audio.volume = master.volume * channels[audio.channel].volume * audio.options.baseVolume
 
     audio.play()
@@ -123,8 +121,6 @@ const useSound = () => {
     }
 
     channelVolumeSetters[channelName](volume)
-
-    console.log('Channel Master', master, master.volume)
   }
 
   /**
@@ -149,13 +145,12 @@ const useSound = () => {
    */
   const updateSoundVolumes = () => {
     if (sounds !== undefined) {
-      Object.entries(sounds).forEach(([key, sound]) => {
+      Object.entries(sounds).forEach(([, sound]) => {
         if (muted) {
           sound.volume = 0
         } else {
           sound.volume = master.volume * channels[sound.channel].volume * sound.options.baseVolume
         }
-        console.log(key, sound.volume, master.volume, channels[sound.channel].volume, sound.options.baseVolume)
       })
     }
   }
@@ -166,8 +161,6 @@ const useSound = () => {
    * @return {void}
    */
   const toggleMute = () => {
-    // Somehow, THIS function specifically is not resetting the master volume.
-    console.log('MUTE master', master)
     setMuted(!muted)
   }
 
