@@ -46,16 +46,17 @@ const loadSound = ({ path, options = {}, pool = 0, channel = 'sfx' }) => {
  */
 const loadData = async path => {
   // File extension
-  let contentType = ''
+  let contentType = 'text/plain'
   const ext = path.split('.')
   if (ext[ext.length - 1] === 'json') {
-    contentType = 'json'
+    contentType = 'application/json'
   }
+  let headers = { 'Content-Type': contentType }
 
-  return await fetch(path)
+  return await fetch(path, { headers })
     .then(response => {
       switch (contentType) {
-        case 'json':
+        case 'application/json':
           return response.json()
         default:
           return response.text()
