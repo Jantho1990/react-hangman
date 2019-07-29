@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import useAssets from '../../assets/useAssets'
+import useGameState from '../../game-state/useGameState'
 
 const LoadingScreenWrapper = styled.div`
   background-color: ${ props => props.theme.primaryBackgroundColor };
@@ -15,7 +17,20 @@ const LoadingScreenText = styled.div`
   transform: translate(-50%, -50%);
 `
 
-export default function LoadingScreen() {
+let loaded = false
+let loading = false
+
+export default function LoadingScreen({ onSwitchScreen }) {
+  const { onReady } = useAssets()
+  const { resetGame } = useGameState()
+
+  if (!loaded && !loading) {
+    loading = true
+    onReady(() => {
+      onSwitchScreen('MainMenuScreen')
+    })
+  }
+
   return (
     <LoadingScreenWrapper>
       <LoadingScreenText>

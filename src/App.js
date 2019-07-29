@@ -9,6 +9,7 @@ import useAssets from './assets/useAssets'
 import MainMenuScreen from './components/screens/MainMenuScreen'
 import GameScreen from './components/screens/GameScreen'
 import OptionsScreen from './components/screens/OptionsScreen'
+import LoadingScreen from './components/screens/LoadingScreen'
 import useSound from './sound-manager/useSound'
 
 const AppWrapper = styled.div`
@@ -19,10 +20,6 @@ const AppWrapper = styled.div`
   position: relative;
   background-color: ${props => props.theme.primaryBackgroundColor};
 `
-
-const LoadingScreen = () => {
-  return <div>Loading game...</div>
-}
 
 function App() {
   const [ loading, setLoading ] = useState(true)
@@ -38,10 +35,11 @@ function App() {
   const screens = {
     'MainMenuScreen': <MainMenuScreen onSwitchScreen={handleSwitchScreen}/>,
     'GameScreen': <GameScreen onSwitchScreen={handleSwitchScreen}/>,
-    'OptionsScreen': <OptionsScreen onSwitchScreen={handleSwitchScreen}/>
+    'OptionsScreen': <OptionsScreen onSwitchScreen={handleSwitchScreen}/>,
+    'LoadingScreen': <LoadingScreen onSwitchScreen={handleSwitchScreen}/>
   }
 
-  const [activeScreen, setActiveScreen] = useState('MainMenuScreen')
+  const [activeScreen, setActiveScreen] = useState('LoadingScreen')
 
   // Allows other screens to "slide out" from the main menu, and
   // "slide back" when returning to the main menu, which is better
