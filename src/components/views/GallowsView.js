@@ -9,7 +9,6 @@ const GallowsViewWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  ${'' /* background-color: hsla(0, 0%, 50%, 25%); */}
   @media screen and (min-width: 568px) {
     height: 30vh;
   }
@@ -20,6 +19,7 @@ const GallowsViewWrapper = styled.div`
 
 const SvgEl = styled.svg`
   height: 100%;
+  width: 100%;
   @media screen and (min-width: 568px) and (max-width: 768px) {
     max-height: 30vh;
   }
