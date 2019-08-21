@@ -12,6 +12,7 @@ import GallowsView from 'views/GallowsView'
 import MenuButton from 'inputs/MenuButton'
 import GameScreenHeader from 'screens/game-screen/game-screen-header/GameScreenHeader'
 import GameScreenWrapper from 'screens/game-screen/game-screen-wrapper/GameScreenWrapper'
+import GameScreenCenter from 'screens/game-screen/game-screen-center/GameScreenCenter'
 import GameScreenTitle from 'screens/game-screen/game-screen-header/GameScreenTitle'
 import GameScreenMain from 'screens/game-screen/game-screen-main/GameScreenMain'
 import PauseModal from 'modals/PauseModal'
@@ -19,25 +20,6 @@ import EndgameModal from 'modals/EndgameModal'
 import config from 'config'
 
 library.add(faBars)
-
-const GameScreenCenter = styled.div`
-  grid-area: center;
-  flex: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  margin-bottom: 3rem;
-
-  @media screen and (min-width: 568px) {
-    margin-bottom: 0;
-  }
-
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-    margin-bottom: 3rem;
-  }
-`
 
 const GameScreenBottomWrapper = styled.div`
   height: 100%;
