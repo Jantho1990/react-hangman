@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { useSpring, animated } from 'react-spring'
-import ModalContainer from './ModalContainer'
-import EndgameView from '../views/EndgameView'
+import ModalContainer from 'modals/ModalContainer'
+import EndgameView from 'views/EndgameView'
 
 const ViewContainer = styled.div`
   ${'' /* height: 50vh; */}

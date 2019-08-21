@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import useGameState from '../../game-state/useGameState'
-import OptionsMenu from '../menus/OptionsMenu'
+import useGameState from 'game-state/useGameState'
+import OptionsMenu from 'menus/OptionsMenu'
 
 const OptionsScreenWrapper = styled.div`
   height: 100%;

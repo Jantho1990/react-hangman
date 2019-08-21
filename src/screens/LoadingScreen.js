@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import useAssets from '../../assets/useAssets'
-import useGameState from '../../game-state/useGameState'
+import useAssets from 'assets/useAssets'
+import useGameState from 'game-state/useGameState'
 
 const LoadingScreenWrapper = styled.div`
   background-color: ${ props => props.theme.primaryBackgroundColor };

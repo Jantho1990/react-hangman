@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import useGameState from '../../game-state/useGameState'
-import MenuContainer from './MenuContainer'
+import useGameState from 'game-state/useGameState'
+import MenuContainer from 'menus/MenuContainer'
 import MenuButton from 'inputs/MenuButton'
 
 const PauseMenuWrapper = styled(MenuContainer)`

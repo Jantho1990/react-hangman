@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { loadFromManifest } from './AssetsLoader'
-import AssetManifest from './AssetManifest'
-import soundsList from '../config/sounds.json'
-import dataList from '../config/data.json'
+import { loadFromManifest } from 'assets/AssetsLoader'
+import AssetManifest from 'assets/AssetManifest'
+import soundsList from 'config/sounds.json'
+import dataList from 'config/data.json'
 
 const AssetsContext = React.createContext([{}, () => {}])
 

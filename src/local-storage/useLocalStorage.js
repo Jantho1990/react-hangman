@@ -1,5 +1,4 @@
-import React from 'react'
-import { objectFromEntries } from '../helpers'
+import { objectFromEntries } from 'helpers'
 
 /**
  * A hook for saving and retrieving desired state to local storage.

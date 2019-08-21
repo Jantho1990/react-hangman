@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { AssetsContext, onLoaded } from './AssetsContext'
+import { AssetsContext, onLoaded } from 'assets/AssetsContext'
 
 /**
  * Signifies if assets are ready to be used.

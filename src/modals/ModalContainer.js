@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import config from '../../config.json'
+import config from 'config.json'
 
 const ModalContainerWrapper = styled.div`
   background-color: ${config.menuBackgroundColor || 'hsla(0, 0%, 50%, 95%)'};

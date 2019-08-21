@@ -1,9 +1,9 @@
 import { useContext } from 'react'
-import { GameStateContext } from './GameStateContext'
-import useAssets from '../assets/useAssets'
-import useLocalStorage from '../local-storage/useLocalStorage'
-import { createRandomWord } from '../lib/randomWord'
-import themes from '../themes'
+import { GameStateContext } from 'game-state/GameStateContext'
+import useAssets from 'assets/useAssets'
+import useLocalStorage from 'local-storage/useLocalStorage'
+import { createRandomWord } from 'lib/randomWord'
+import themes from 'themes'
 
 const useGameState = () => {
   const { isLoaded, data, onReady } = useAssets()

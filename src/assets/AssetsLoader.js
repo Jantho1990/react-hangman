@@ -1,6 +1,6 @@
-import { objectFromEntries } from '../helpers'
-import Sound from './sounds/Sound'
-import SoundPool from './sounds/SoundPool'
+import { objectFromEntries } from 'helpers'
+import Sound from 'assets/sounds/Sound'
+import SoundPool from 'assets/sounds/SoundPool'
 
 /**
  * Loads a new Sound or SoundPool, without injecting the underlying HTMLAudioElement(s) into the DOM.

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import useAssets from '../assets/useAssets'
+import useAssets from 'assets/useAssets'
 
 const AudioEnableModal = styled.div`
   position: fixed;

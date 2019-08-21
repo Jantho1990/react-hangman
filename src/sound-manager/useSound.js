@@ -1,7 +1,6 @@
 import { useContext } from 'react'
-import { SoundContext, onLoaded } from './SoundContext'
-import useAssets from '../assets/useAssets'
-import { objectFromEntries } from '../helpers'
+import { SoundContext, onLoaded } from 'sound-manager/SoundContext'
+import useAssets from 'assets/useAssets'
 
 /**
  * Signifies if assets are ready to be used.

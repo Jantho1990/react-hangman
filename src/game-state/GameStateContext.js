@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import useLocalStorage from '../local-storage/useLocalStorage'
-import config from '../config.json'
-import themes from '../themes'
+import useLocalStorage from 'local-storage/useLocalStorage'
+import config from 'config.json'
+import themes from 'themes'
 
 const GameStateContext = React.createContext([{}, () => {}])
 

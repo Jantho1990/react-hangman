@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import config from './config.json'
-import themes from './themes'
+import config from 'config.json'
+import themes from 'themes'
 
 const DataContext = React.createContext()
 

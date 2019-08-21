@@ -1,4 +1,4 @@
-import Sound from './Sound'
+import Sound from 'assets/sounds/Sound'
 
 class SoundPool {
   constructor(audio, options = {}, poolSize = 3) {

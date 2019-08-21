@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
 import { useTransition, animated } from 'react-spring'
-import { GameStateProvider } from './game-state/GameStateContext'
-import useGameState from './game-state/useGameState'
-import { AssetsProvider } from './assets/AssetsContext'
-import { SoundProvider } from './sound-manager/SoundContext'
-import useAssets from './assets/useAssets'
-import MainMenuScreen from './components/screens/MainMenuScreen'
-import GameScreen from './components/screens/GameScreen'
-import OptionsScreen from './components/screens/OptionsScreen'
-import LoadingScreen from './components/screens/LoadingScreen'
-import useSound from './sound-manager/useSound'
+import { GameStateProvider } from 'game-state/GameStateContext'
+import useGameState from 'game-state/useGameState'
+import { AssetsProvider } from 'assets/AssetsContext'
+import { SoundProvider } from 'sound-manager/SoundContext'
+import useAssets from 'assets/useAssets'
+import MainMenuScreen from 'screens/MainMenuScreen'
+import GameScreen from 'screens/GameScreen'
+import OptionsScreen from 'screens/OptionsScreen'
+import LoadingScreen from 'screens/LoadingScreen'
+import useSound from 'sound-manager/useSound'
 
 const AppWrapper = styled.div`
   text-align: center;

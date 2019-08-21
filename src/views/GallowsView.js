@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useSpring, animated } from 'react-spring'
-import useGameState from '../../game-state/useGameState'
+import useGameState from 'game-state/useGameState'
 
 const GallowsViewWrapper = styled.div`
   height: 100%;

@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import LetterSpace from './LetterSpace'
-import useGameState from '../../game-state/useGameState'
-import useAssets from '../../assets/useAssets'
+import LetterSpace from 'word-display/LetterSpace'
 
 const WordDisplayWrapper = styled.div`
   display: flex;

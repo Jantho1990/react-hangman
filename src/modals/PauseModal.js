@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useTransition, animated } from 'react-spring'
-import ModalContainer from './ModalContainer'
-import PauseMenu from '../menus/PauseMenu'
-import OptionsMenu from '../menus/OptionsMenu'
+import ModalContainer from 'modals/ModalContainer'
+import PauseMenu from 'menus/PauseMenu'
+import OptionsMenu from 'menus/OptionsMenu'
 
 export default function PauseModal({ show, onCloseMenu, onRestartGame, onSwitchScreen }) {
 

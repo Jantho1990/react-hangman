@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import useAssets from '../assets/useAssets'
-import useLocalStorage from '../local-storage/useLocalStorage'
+import useAssets from 'assets/useAssets'
+import useLocalStorage from 'local-storage/useLocalStorage'
 
 const SoundContext = React.createContext([{}, () => {}])
 

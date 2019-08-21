@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import useGameState from '../game-state/useGameState'
-import useSound from '../sound-manager/useSound'
+import useGameState from 'game-state/useGameState'
+import useSound from 'sound-manager/useSound'
 
 const LetterWrapper = styled.div`
   max-width: 50rem;
