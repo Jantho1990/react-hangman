@@ -11,6 +11,7 @@ import WordDisplay from 'word-display/WordDisplay'
 import GallowsView from 'views/GallowsView'
 import MenuButton from 'inputs/MenuButton'
 import GameScreenHeader from 'screens/game-screen/game-screen-header/GameScreenHeader'
+import GameScreenWrapper from 'screens/game-screen/game-screen-wrapper/GameScreenWrapper'
 import GameScreenTitle from 'screens/game-screen/game-screen-header/GameScreenTitle'
 import GameScreenMain from 'screens/game-screen/game-screen-main/GameScreenMain'
 import PauseModal from 'modals/PauseModal'
@@ -18,13 +19,6 @@ import EndgameModal from 'modals/EndgameModal'
 import config from 'config'
 
 library.add(faBars)
-
-const GameScreenWrapper = styled.div`
-  text-align: center;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-`
 
 const GameScreenCenter = styled.div`
   grid-area: center;
