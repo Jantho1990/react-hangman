@@ -13,7 +13,7 @@ import MenuButton from 'inputs/MenuButton'
 import GameScreenHeader from 'screens/game-screen/game-screen-header/GameScreenHeader'
 import GameScreenWrapper from 'screens/game-screen/game-screen-wrapper/GameScreenWrapper'
 import GameScreenCenter from 'screens/game-screen/game-screen-center/GameScreenCenter'
-import GameScreenBottomWrapper from 'screens/game-screen/game-screen-bottom-wrapper/GameScreenBottomWrapper'
+import GameScreenBottom from 'screens/game-screen/game-screen-bottom/GameScreenBottom'
 import GameScreenTitle from 'screens/game-screen/game-screen-header/GameScreenTitle'
 import GameScreenMain from 'screens/game-screen/game-screen-main/GameScreenMain'
 import PauseModal from 'modals/PauseModal'
@@ -21,22 +21,6 @@ import EndgameModal from 'modals/EndgameModal'
 import config from 'config'
 
 library.add(faBars)
-
-const GameScreenBottom = ({children}) => {
-  const springFooter = useSpring({
-    from: { transform: 'translate3d(0, 500%, 0)' },
-    to: { transform: 'translate3d(0, 0%, 0)' },
-    delay: 550
-  })
-
-  return (
-    <animated.div style={{...springFooter, gridArea: 'footer', overflow: 'hidden'}}>
-      <GameScreenBottomWrapper>
-        {children}
-      </GameScreenBottomWrapper>
-    </animated.div>
-  )
-}
 
 const PauseModalButton = styled(MenuButton)`
   width: auto;
