@@ -7,7 +7,7 @@ import { AssetsProvider } from 'assets/AssetsContext'
 import { SoundProvider } from 'sound-manager/SoundContext'
 import useAssets from 'assets/useAssets'
 import MainMenuScreen from 'screens/MainMenuScreen'
-import GameScreen from 'screens/GameScreen'
+import GameScreen from 'screens/game-screen/GameScreen'
 import OptionsScreen from 'screens/OptionsScreen'
 import LoadingScreen from 'screens/LoadingScreen'
 

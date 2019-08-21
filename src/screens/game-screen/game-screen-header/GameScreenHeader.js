@@ -1,6 +1,6 @@
 import React from 'react'
-import GameScreenHeaderAnimation from 'game-screen-header/GameScreenHeaderAnimation'
-import GameScreenHeaderWrapper from 'game-screen-header/GameScreenHeaderWrapper'
+import GameScreenHeaderAnimation from 'screens/game-screen/game-screen-header/GameScreenHeaderAnimation'
+import GameScreenHeaderWrapper from 'screens/game-screen/game-screen-header/GameScreenHeaderWrapper'
 
 export default function GameScreenHeader({children, theme}) {
   return (
