@@ -6,8 +6,8 @@ import MenuSelect from 'inputs/MenuSelect'
 import MenuOption from 'inputs/MenuOption'
 import MenuRange from 'inputs/MenuRange'
 import MenuCheckbox from 'inputs/MenuCheckbox'
-import useGameState from '../../game-state/useGameState'
-import useSound from '../../sound-manager/useSound'
+import useGameState from '../game-state/useGameState'
+import useSound from '../sound-manager/useSound'
 
 const OptionsMenuWrapper = styled(MenuContainer)`
   width: 85%;
