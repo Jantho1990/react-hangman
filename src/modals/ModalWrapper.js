@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import config from 'config.json'
 
-const ModalContainerWrapper = styled.div`
+export default styled.div`
   background-color: ${config.menuBackgroundColor || 'hsla(0, 0%, 50%, 95%)'};
   display: none;
   display: flex;
@@ -20,12 +20,3 @@ const ModalContainerWrapper = styled.div`
     display: flex;
   }
 `
-
-export default function ModalContainer(props) {
-  
-  return (
-    <ModalContainerWrapper>
-      {props.children}
-    </ModalContainerWrapper>
-  )
-}

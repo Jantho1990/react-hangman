@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useSpring, animated } from 'react-spring'
-import ModalContainer from 'modals/ModalContainer'
+import ModalWrapper from 'modals/ModalWrapper'
 import EndgameView from 'views/EndgameView'
 
 const ViewContainer = styled.div`
@@ -36,8 +36,8 @@ export default function PauseModal({ show, onCloseMenu, onRestartGame, onSwitchS
   }) */
 
   return (
-    <ModalContainer visible={show}>
+    <ModalWrapper visible={show}>
       {renderCurrentMenu()}
-    </ModalContainer>
+    </ModalWrapper>
   )
 }

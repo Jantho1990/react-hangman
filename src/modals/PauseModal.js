@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useTransition, animated } from 'react-spring'
-import ModalContainer from 'modals/ModalContainer'
+import ModalWrapper from 'modals/ModalWrapper'
 import PauseMenu from 'menus/PauseMenu'
 import OptionsMenu from 'menus/OptionsMenu'
 
@@ -42,8 +42,8 @@ export default function PauseModal({ show, onCloseMenu, onRestartGame, onSwitchS
   }
 
   return (
-    <ModalContainer visible={show}>
+    <ModalWrapper visible={show}>
       {renderCurrentMenu()}
-    </ModalContainer>
+    </ModalWrapper>
   )
 }
