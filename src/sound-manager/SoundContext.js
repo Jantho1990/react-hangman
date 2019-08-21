@@ -4,9 +4,6 @@ import useLocalStorage from 'local-storage/useLocalStorage'
 
 const SoundContext = React.createContext([{}, () => {}])
 
-let loaded = false
-let loading = false
-
 /**
  * Provider for game sounds.
  *
@@ -79,7 +76,6 @@ const SoundProvider = (props) => {
 
   const { onReady } = useAssets()
   onReady(assets => {
-    loaded = true
     onLoadedCallbacks.forEach(callback => callback(assets))
   })
 

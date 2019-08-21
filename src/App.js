@@ -10,7 +10,6 @@ import MainMenuScreen from 'screens/MainMenuScreen'
 import GameScreen from 'screens/GameScreen'
 import OptionsScreen from 'screens/OptionsScreen'
 import LoadingScreen from 'screens/LoadingScreen'
-import useSound from 'sound-manager/useSound'
 
 const AppWrapper = styled.div`
   text-align: center;
@@ -26,7 +25,6 @@ function App() {
 
   const { theme } = useGameState()
   const { onReady } = useAssets()
-  const { play, isPlaying } = useSound()
 
   const handleSwitchScreen = screen => {
     setActiveScreen(screen)

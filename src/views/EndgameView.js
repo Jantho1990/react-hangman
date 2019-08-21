@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import useGameState from 'game-state/useGameState'
 import GallowsView from 'views/GallowsView'
 import WordDisplay from 'word-display/WordDisplay'
-import MenuContainer from 'menus/MenuContainer'
 import MenuButton from 'inputs/MenuButton'
 
 const EndgameViewWrapper = styled.div`

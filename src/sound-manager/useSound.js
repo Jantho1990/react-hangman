@@ -17,15 +17,13 @@ onLoaded(assets => {
 const callbacks = []
 
 const useSound = () => {
-  const { sound, isLoaded: assetsLoaded } = useAssets()
+  const { sound } = useAssets()
   const {
     master,
     channels,
     muted,
     sounds,
     setMasterVolume,
-    setMusicChannelVolume,
-    setSfxChannelVolume,
     setMuted,
     setSounds,
     channelVolumeSetters
