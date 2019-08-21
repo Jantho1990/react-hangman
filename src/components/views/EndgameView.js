@@ -4,7 +4,7 @@ import useGameState from '../../game-state/useGameState'
 import GallowsView from './GallowsView'
 import WordDisplay from '../word-display/WordDisplay'
 import MenuContainer from '../menus/MenuContainer'
-import MenuButton from '../buttons/MenuButton'
+import MenuButton from 'inputs/MenuButton'
 
 const EndgameViewWrapper = styled.div`
   position: fixed;

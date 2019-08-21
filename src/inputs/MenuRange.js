@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import useGameState from '../../game-state/useGameState'
+import useGameState from '../game-state/useGameState'
 
 const MenuRangeWrapper = styled.form`
   color: ${props => props.theme.primaryFontColor};
