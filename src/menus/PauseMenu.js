@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import useGameState from 'game-state/useGameState'
-import MenuContainer from 'menus/MenuContainer'
+import MenuWrapper from 'menus/MenuWrapper'
 import MenuButton from 'inputs/MenuButton'
 
-const PauseMenuWrapper = styled(MenuContainer)`
+const PauseMenuWrapper = styled(MenuWrapper)`
   width: 85%;
   max-height: 75%;
   background-color: ${props => props.theme.primaryBackgroundColor};

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import MenuContainer from 'menus/MenuContainer'
+import MenuWrapper from 'menus/MenuWrapper'
 import MenuButton from 'inputs/MenuButton'
 import MenuSelect from 'inputs/MenuSelect'
 import MenuOption from 'inputs/MenuOption'
@@ -9,7 +9,7 @@ import MenuCheckbox from 'inputs/MenuCheckbox'
 import useGameState from 'game-state/useGameState'
 import useSound from 'sound-manager/useSound'
 
-const OptionsMenuWrapper = styled(MenuContainer)`
+const OptionsMenuWrapper = styled(MenuWrapper)`
   width: 85%;
   max-height: 75%;
   background-color: ${props => props.theme.primaryBackgroundColor};
