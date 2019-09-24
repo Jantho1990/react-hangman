@@ -43,7 +43,7 @@ export default function GameStats(props) {
     wrongGuesses > 0
       ? (
         <React.Fragment>
-          <span>Incorrect Guesses: </span>
+          <span>Incorrect Guesses:&nbsp;</span>
           <span>{ wrongGuesses }</span>
         </React.Fragment>
       ) : <span>You got them all correct! Great job!</span>
@@ -61,7 +61,7 @@ export default function GameStats(props) {
             .map((letter, i, wrongGuesses) => {
               return (
                 <span>
-                  <StatLetter correct={false}>{letter}</StatLetter>{i < wrongGuesses.length - 1 ? ', ' : ''}
+                  <StatLetter correct={false}>{letter}</StatLetter>{i < wrongGuesses.length - 1 ? ' ' : ''}
                 </span>
               )
             })
