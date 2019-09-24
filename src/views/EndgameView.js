@@ -34,6 +34,16 @@ const EndgameGallowsWrapper = styled.div`
   height: 200px;
 `
 
+const RightSide = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  & > * {
+    margin-top: 1rem;
+  }
+`
+
 export default function EndgameView({ onRestartGame, onSwitchScreen }) {
   const {
     theme,
@@ -64,15 +74,17 @@ export default function EndgameView({ onRestartGame, onSwitchScreen }) {
             victory={victory}
           />
         </EndgameGallowsWrapper>
-        <GameStats/>
+        <RightSide>
+          <WordDisplay
+            word={word}
+            guessedLetters={guessedLetters}
+            displayWord={true}
+            gameOver={gameOver}
+            scale={false}
+          />
+          <GameStats/>
+        </RightSide>
       </EndgameItem>
-        <WordDisplay
-          word={word}
-          guessedLetters={guessedLetters}
-          displayWord={true}
-          gameOver={gameOver}
-          scale={false}
-        />
         <span>
           {victory ? 'You win!' : 'You lose!'}
         </span>

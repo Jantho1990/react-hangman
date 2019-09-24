@@ -8,6 +8,9 @@ const GameStatsWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  & > * {
+    margin-top: 0.5rem;
+  }
 `
 
 const GameStateItem = styled.div`
@@ -36,23 +39,32 @@ export default function GameStats(props) {
 
   const wrongGuesses = getNumberOfWrongGuesses(word, guessedLetters)
 
+  const renderWrongGuessCounter = () =>
+    wrongGuesses > 0
+      ? (
+        <React.Fragment>
+          <span>Incorrect Guesses: </span>
+          <span>{ wrongGuesses }</span>
+        </React.Fragment>
+      ) : <span>You got them all correct! Great job!</span>
+
   return (
     <GameStatsWrapper>
       <GameStateItem>
-        <span>Incorrect Guesses:</span>
-        <span>{ wrongGuesses }</span>
+        { renderWrongGuessCounter() }
       </GameStateItem>
       <GameStateItem>
-        <span>Guessed Letters</span>
         <span>{
-          guessedLetters.map((letter, i) => {
-            const correct = word.indexOf(letter) > -1
-            return (
-              <span>
-                <StatLetter correct={correct}>{letter}</StatLetter> {i < guessedLetters.length - 1 ? ',' : ''}
-              </span>
-            )
-          })
+          guessedLetters
+            .filter(letter => word.indexOf(letter) === -1)
+            .sort()
+            .map((letter, i, wrongGuesses) => {
+              return (
+                <span>
+                  <StatLetter correct={false}>{letter}</StatLetter>{i < wrongGuesses.length - 1 ? ', ' : ''}
+                </span>
+              )
+            })
         }</span>
       </GameStateItem>
     </GameStatsWrapper>
