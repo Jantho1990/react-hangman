@@ -25,9 +25,12 @@ const EndgameViewWrapper = styled.div`
 
 const EndgameItem = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  @media screen and (min-width: 1200px) {
+    flex-direction: row;
+  }
 `
 
 const EndgameGallowsWrapper = styled.div`
