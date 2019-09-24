@@ -85,9 +85,9 @@ export default function EndgameView({ onRestartGame, onSwitchScreen }) {
           <GameStats/>
         </RightSide>
       </EndgameItem>
-        <span>
+        {/* <span>
           {victory ? 'You win!' : 'You lose!'}
-        </span>
+        </span> */}
         <MenuButton onClick={onPlayAgain}>Play Again</MenuButton>
         <MenuButton onClick={onQuit}>Quit</MenuButton>
     </EndgameViewWrapper>
