@@ -10,7 +10,9 @@ const useGameState = () => {
   const { setItem, updateWrapper } = useLocalStorage()
   const [state, setState] = useContext(GameStateContext)
 
-  setItem('gameState', state)
+  // Update local storage
+  Object.entries(state).forEach(([key, value]) => setItem(key, value))
+  // setItem('gameState', state)
 
   /**
    * Change the application visual theme.

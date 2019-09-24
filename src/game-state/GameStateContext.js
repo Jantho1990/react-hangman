@@ -11,11 +11,7 @@ const GameStateProvider = (props) => {
     theme: {
       name: config.theme,
       ...themes[config.theme]
-    }
-  })
-
-  const [state, setState] = useState({
-    theme: defaultValues.theme,
+    },
     word: '',
     previousGame: {
       word: '',
@@ -26,6 +22,16 @@ const GameStateProvider = (props) => {
     guessedLetters: [],
     gameOver: false,
     victory: false
+  })
+
+  const [state, setState] = useState({
+    theme: defaultValues.theme,
+    word: defaultValues.word,
+    previousGame: defaultValues.previousGame,
+    maxGuesses: defaultValues.maxGuesses,
+    guessedLetters: defaultValues.guessedLetters,
+    gameOver: defaultValues.gameOver,
+    victory: defaultValues.victory
   })
 
   return (

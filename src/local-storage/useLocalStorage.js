@@ -5,6 +5,14 @@ import { objectFromEntries } from 'helpers'
  */
 export default function useLocalStorage() {
   
+  /**
+   * For each key, returns either the saved value or, if
+   * no saved value exists, a default value.
+   *
+   * @param {array} keys The keys to look for in stored state.
+   *
+   * @return {object}
+   */
   const hydrateState = keys => {
     const arr = Object.entries(keys).map(([key, defaultValue]) => {
       const rawValue = getItemUnsafe(key)
