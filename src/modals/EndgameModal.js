@@ -10,7 +10,7 @@ const ViewContainer = styled.div`
   width: 100%;
 `
 
-export default function PauseModal({ show, onCloseMenu, onRestartGame, onSwitchScreen }) {
+export default function EndgameModal({ show, onCloseMenu, onRestartGame, onSwitchScreen }) {
   const spring = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 }

@@ -4,6 +4,7 @@ import useGameState from 'game-state/useGameState'
 import GallowsView from 'views/GallowsView'
 import WordDisplay from 'word-display/WordDisplay'
 import MenuButton from 'inputs/MenuButton'
+import GameStats from 'game-stats/GameStats'
 
 const EndgameViewWrapper = styled.div`
   position: fixed;
@@ -55,6 +56,7 @@ export default function EndgameView({ onRestartGame, onSwitchScreen }) {
           victory={victory}
         />
       </EndgameGallowsWrapper>
+      <GameStats/>
         <WordDisplay
           word={word}
           guessedLetters={guessedLetters}
