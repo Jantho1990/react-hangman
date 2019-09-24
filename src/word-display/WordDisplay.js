@@ -11,7 +11,7 @@ const WordDisplayWrapper = styled.div`
   padding: 1vh 3vw;
 `
 
-export default function WordDisplay({ word, guessedLetters, gameOver, displayWord }) {
+export default function WordDisplay({ word, guessedLetters, gameOver, displayWord, scale = true }) {
   
   let ct = 0
 
@@ -26,7 +26,7 @@ export default function WordDisplay({ word, guessedLetters, gameOver, displayWor
       ? true
       : false
 
-    return <LetterSpace wordLength={wordLength} guessed={letterGuessed} display={display} key={`key-letterspace-${ct++}`}>{letter}</LetterSpace>
+    return <LetterSpace scale={scale} wordLength={wordLength} guessed={letterGuessed} display={display} key={`key-letterspace-${ct++}`}>{letter}</LetterSpace>
   }
 
   const renderLetterSpaces = word => {

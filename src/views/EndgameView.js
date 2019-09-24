@@ -23,6 +23,13 @@ const EndgameViewWrapper = styled.div`
   }
 `
 
+const EndgameItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+`
+
 const EndgameGallowsWrapper = styled.div`
   height: 200px;
 `
@@ -48,20 +55,23 @@ export default function EndgameView({ onRestartGame, onSwitchScreen }) {
 
   return (
     <EndgameViewWrapper theme={theme}>
-      <EndgameGallowsWrapper>
-        <GallowsView
-          wrongGuesses={wrongGuesses}
-          maxGuesses={maxGuesses}
-          gameOver={gameOver}
-          victory={victory}
-        />
-      </EndgameGallowsWrapper>
-      <GameStats/>
+      <EndgameItem>
+        <EndgameGallowsWrapper>
+          <GallowsView
+            wrongGuesses={wrongGuesses}
+            maxGuesses={maxGuesses}
+            gameOver={gameOver}
+            victory={victory}
+          />
+        </EndgameGallowsWrapper>
+        <GameStats/>
+      </EndgameItem>
         <WordDisplay
           word={word}
           guessedLetters={guessedLetters}
           displayWord={true}
           gameOver={gameOver}
+          scale={false}
         />
         <span>
           {victory ? 'You win!' : 'You lose!'}

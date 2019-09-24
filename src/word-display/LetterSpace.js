@@ -85,10 +85,10 @@ const LetterVisible = ({ children, guessed = false }) => {
   )
 }
 
-const LetterSpaceWrapper = styled.span.attrs(props => ({
-  fontSize: `calc(50vw / ${props.wordLength})`,
-  fontSizeTablet: `calc(75vmin / ${props.wordLength})`,
-  fontSizeMobile: `calc(90vw / ${props.wordLength})`
+const LetterSpaceWrapper = styled.span.attrs(({ scale, wordLength }) => ({
+  fontSize: scale ? `calc(50vw / ${wordLength})` : '2rem',
+  fontSizeTablet: scale ? `calc(75vmin / ${wordLength})` : '2rem',
+  fontSizeMobile: scale ? `calc(90vw / ${wordLength})` : '2rem'
 }))`
   color: hsl(0%, 0%, 90%);
   font-size: 2rem;
@@ -117,7 +117,7 @@ const LetterSpaceWrapper = styled.span.attrs(props => ({
   }
 `
 
-export default function LetterSpace({ display = false, guessed = false, children }) {
+export default function LetterSpace({ display = false, guessed = false, children, scale = true }) {
   const { word } = useGameState()
 
   const wordLength = word.length
@@ -131,7 +131,7 @@ export default function LetterSpace({ display = false, guessed = false, children
   }
 
   return (
-    <LetterSpaceWrapper wordLength={wordLength}>
+    <LetterSpaceWrapper scale={scale} wordLength={wordLength}>
       {renderSpace()}
     </LetterSpaceWrapper>
   )
