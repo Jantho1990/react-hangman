@@ -7,8 +7,10 @@ import themes from 'themes'
 
 const useGameState = () => {
   const { isLoaded, data, onReady } = useAssets()
-  const { setItem } = useLocalStorage()
+  const { setItem, updateWrapper } = useLocalStorage()
   const [state, setState] = useContext(GameStateContext)
+
+  setItem('gameState', state)
 
   /**
    * Change the application visual theme.
@@ -75,6 +77,7 @@ const useGameState = () => {
    * @return {number} The number of incorrectly-guessed letters.
    */
   const getNumberOfWrongGuesses = (word, guessedLetters) => {
+    // debugger
     return guessedLetters.reduce((carry, letter) => {
       return word.indexOf(letter) === -1 ? carry + 1 : carry
     }, 0)

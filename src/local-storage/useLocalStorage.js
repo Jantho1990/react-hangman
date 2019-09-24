@@ -7,7 +7,7 @@ export default function useLocalStorage() {
   
   const hydrateState = keys => {
     const arr = Object.entries(keys).map(([key, defaultValue]) => {
-      const rawValue = getItem(key)
+      const rawValue = getItemUnsafe(key)
       
       let value
       if (rawValue !== null) {
@@ -22,12 +22,12 @@ export default function useLocalStorage() {
     return objectFromEntries(arr)
   }
 
-  const getItem = key => {
+  const getItemUnsafe = key => {
     return window.localStorage.getItem(key)
   }
 
-  const getItemSafe = key => {
-    const value = getItem(key)
+  const getItem = key => {
+    const value = getItemUnsafe(key)
 
     if (value === null) {
       throw new Error(`"${key}" was not found in local storage.`)
@@ -36,12 +36,12 @@ export default function useLocalStorage() {
     return JSON.parse(value)
   }
 
-  const setItem = (key, value) => {
+  const setItemUnsafe = (key, value) => {
     return window.localStorage.setItem(key, value)
   }
 
-  const setItemSafe  = (key, value) => {
-    return setItem(key, JSON.stringify(value))
+  const setItem  = (key, value) => {
+    return setItemUnsafe(key, JSON.stringify(value))
   }
 
   const removeItem = key => {
@@ -54,20 +54,24 @@ export default function useLocalStorage() {
    *
    * @param {string} key The key to save to in localStorage.
    * @param {*} value The incoming value.
-   * @param {Function} callback The update function.
+   * @param {function} callback The update function.
    *
    * @return {void}
    */
   const updateWrapper = (key, value, callback) => {
-    setItem(key, value)
+    if (typeof value !== 'function') {
+      setItem(key, value)
+    } else {
+      setItem(key, value())
+    }
 
-    callback(value)
+    return callback(value)
   }
 
   return {
     hydrateState,
-    getItem: getItemSafe,
-    setItem: setItemSafe,
+    getItem,
+    setItem,
     removeItem,
     updateWrapper
   }
