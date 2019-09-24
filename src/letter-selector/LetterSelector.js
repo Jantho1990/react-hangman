@@ -48,6 +48,9 @@ const ListItem = styled.li`
   background-color: hsl(0, 0%, 65%);
   user-select: none;
   transition: all ease-in 0.125s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &.guessed {
     color: hsl(0, 0%, 90%);
   }
