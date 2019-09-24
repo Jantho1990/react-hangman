@@ -57,8 +57,12 @@ export default function MainMenuScreen (props) {
   const { theme, gameOver, resetGame, word } = useGameState()
 
   const onStartGame = () => {
-    if (gameOver || word === '') resetGame()
+    resetGame()
     
+    onSwitchScreen('GameScreen')
+  }
+
+  const onResumeGame = () => {
     onSwitchScreen('GameScreen')
   }
 
@@ -66,11 +70,14 @@ export default function MainMenuScreen (props) {
     onSwitchScreen('OptionsScreen')
   }
 
+  const hasOngoingGame = !gameOver && !!word
+
   return (
     <MainMenuWrapper theme={theme}>
       <GameTitle theme={theme}>React Hangman</GameTitle>
       <MenuButtonContainer>
-        <MainMenuButton theme={theme} onClick={onStartGame}>Start</MainMenuButton>
+        { hasOngoingGame && <MainMenuButton theme={theme} onClick={onResumeGame}>Resume Game</MainMenuButton> }
+        <MainMenuButton theme={theme} onClick={onStartGame}>New Game</MainMenuButton>
         <MainMenuButton theme={theme} onClick={onShowOptions}>Options</MainMenuButton>
       </MenuButtonContainer>
     </MainMenuWrapper>
