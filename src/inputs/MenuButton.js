@@ -7,6 +7,7 @@ const Button = styled.button`
   border-radius: 3px;
   padding: 0.5rem 1rem;
   width: 100%;
+  max-width: 300px;
   cursor: pointer;
   background-color: ${props => props.theme.primaryButtonColor};
   color: ${props => props.theme.primaryButtonFontColor};
