@@ -33,7 +33,6 @@ const ListContainer = styled.ul`
   @media screen and (min-width: 568px) {
     height: 100%;
     overflow-y: scroll;
-    padding-bottom: 1rem;
   }
   @media screen and (min-width: 768px) {
     padding: 0;
