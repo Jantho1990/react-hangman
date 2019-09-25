@@ -72,11 +72,14 @@ export default function LetterSelector(props) {
   
   const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
   
-  const handleLetterGuess = (letter) => {
-    play('KeyEnter1')
-    changeGuessedLetters(letter)
-    if (isLetterGuessedCorrectly(letter)) {
-      play('Whoosh')
+  const handleLetterGuess = letter => {
+    const letterGuessed = isLetterGuessed(letter)
+    if (!letterGuessed) {
+      play('KeyEnter1')
+      changeGuessedLetters(letter)
+      if (isLetterGuessedCorrectly(letter)) {
+        play('Whoosh')
+      }
     }
   }
 
