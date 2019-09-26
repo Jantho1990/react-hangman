@@ -4,20 +4,23 @@ import { FlagsContext } from 'flags/FlagsContext'
 const useFlags = () => {
   const [{
     gameLoading,
-    gameStart
+    isFirstLoad,
+    isOngoingGame
   }, {
     setGameLoading,
-    setGameStart
+    setIsFirstLoad,
+    setIsOngoingGame
   }] = useContext(FlagsContext)
   console.log('game loading is', gameLoading)
 
   return {
     gameLoading,
-    gameStart,
+    isFirstLoad,
+    isOngoingGame,
     startGameLoading: () => {console.log('start');setGameLoading(true);},
     finishGameLoading: () => {console.log('finish');setGameLoading(false)},
-    startGameStart: () => setGameStart(true),
-    finishGameStart: () => setGameStart(false)
+    firstLoadFinished: () => setIsFirstLoad(false),
+    setIsOngoingGame
   }
 }
 

@@ -55,12 +55,20 @@ const MainMenuButton = styled(MenuButton)`
 
 export default function MainMenuScreen (props) {
   const { onSwitchScreen } = props
-  const { theme, gameOver, resetGame, word } = useGameState()
-  const { gameLoading, gameStart, startGameStart, finishGameStart } = useFlags()
+  const { theme, gameOver, resetGame } = useGameState()
+  const { gameLoading, isFirstLoad, firstLoadFinished, isOngoingGame, setIsOngoingGame } = useFlags()
+
+  if (isFirstLoad && !gameOver) {
+    setIsOngoingGame(true)
+  }
 
   const onStartGame = () => {
-    startGameStart()
-    window.setTimeout(finishGameStart, 1500)
+    if (!isOngoingGame) {
+      window.setTimeout(() => setIsOngoingGame(true), 1500)
+    }
+
+    if (isFirstLoad) firstLoadFinished()
+
     resetGame()
     
     onSwitchScreen('GameScreen')
@@ -74,14 +82,11 @@ export default function MainMenuScreen (props) {
     onSwitchScreen('OptionsScreen')
   }
 
-  const hasOngoingGame = !gameLoading && !gameOver && !!word
-  // console.log(gameLoading)
-
   return (
     <MainMenuWrapper theme={theme}>
       <GameTitle theme={theme}>React Hangman</GameTitle>
       <MenuButtonContainer>
-        { hasOngoingGame && <MainMenuButton theme={theme} onClick={onResumeGame}>Resume Game</MainMenuButton> }
+        { isOngoingGame && !gameLoading && <MainMenuButton theme={theme} onClick={onResumeGame}>Resume Game</MainMenuButton> }
         <MainMenuButton theme={theme} onClick={onStartGame}>New Game</MainMenuButton>
         <MainMenuButton theme={theme} onClick={onShowOptions}>Options</MainMenuButton>
       </MenuButtonContainer>

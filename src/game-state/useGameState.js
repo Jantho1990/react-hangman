@@ -9,7 +9,7 @@ import themes from 'themes'
 const useGameState = () => {
   const { isLoaded, data, onReady } = useAssets()
   const { setItem } = useLocalStorage()
-  const { startGameLoading, finishGameLoading }  = useFlags()
+  const { startGameLoading, finishGameLoading, setIsOngoingGame }  = useFlags()
   const [state, setState] = useContext(GameStateContext)
 
   // Update local storage
@@ -116,6 +116,8 @@ const useGameState = () => {
         victory
       }
     })
+
+    setIsOngoingGame(false)
   }
 
   /**

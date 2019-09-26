@@ -9,17 +9,20 @@ console.log('fish')
  */
 const FlagsProvider = (props) => {
   const [gameLoading, setGameLoading] = useState(false)
-  const [gameStart, setGameStart] = useState(false)
+  const [isFirstLoad, setIsFirstLoad] = useState(true)
+  const [isOngoingGame, setIsOngoingGame] = useState(false)
   console.log('rabbit', gameLoading)
 
   const flags = {
     gameLoading,
-    gameStart
+    isFirstLoad,
+    isOngoingGame
   }
   
   const setFlags = {
     setGameLoading,
-    setGameStart
+    setIsFirstLoad,
+    setIsOngoingGame
   }
 
   return (
