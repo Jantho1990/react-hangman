@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { GameStateContext } from 'game-state/GameStateContext'
 import useAssets from 'assets/useAssets'
 import useLocalStorage from 'local-storage/useLocalStorage'
@@ -9,6 +9,7 @@ const useGameState = () => {
   const { isLoaded, data, onReady } = useAssets()
   const { setItem } = useLocalStorage()
   const [state, setState] = useContext(GameStateContext)
+  const [gameLoading, setGameLoading] = useState(false)
 
   // Update local storage
   Object.entries(state).forEach(([key, value]) => setItem(key, value))
@@ -32,21 +33,6 @@ const useGameState = () => {
       ...state,
       theme
     }))
-  }
-
-  /**
-   * Initiate game loading.
-   *
-   * @param {bool} value Turns the flag on or off.
-   *
-   * @return {void}
-   */
-  const setGameLoading = value => {
-    console.log('game loading is', value)
-    setState({
-      ...state,
-      gameLoading: value
-    })
   }
 
   /**
@@ -173,7 +159,7 @@ const useGameState = () => {
     declareGameOver,
     victory: state.victory,
     resetGame,
-    gameLoading: state.gameLoading,
+    gameLoading,
     gameLoadStart: () => setGameLoading(true),
     gameLoadFinish: () => setGameLoading(false)
   }
