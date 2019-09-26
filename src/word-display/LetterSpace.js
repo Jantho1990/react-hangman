@@ -118,8 +118,8 @@ const LetterSpaceWrapper = styled.span.attrs(({ scale = 1, wordLength }) => ({
   }
 `
 
-export default function LetterSpace({ display = false, guessed = false, children, scale = true }) {
-  const { theme, word } = useGameState()
+export default function LetterSpace({ display = false, word, guessed = false, children, scale = true }) {
+  const { theme } = useGameState()
 
   const wordLength = word.length
 

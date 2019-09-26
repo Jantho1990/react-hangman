@@ -26,7 +26,7 @@ export default function WordDisplay({ word, guessedLetters, gameOver, displayWor
       ? true
       : false
 
-    return <LetterSpace scale={scale} wordLength={wordLength} guessed={letterGuessed} display={display} key={`key-letterspace-${ct++}`}>{letter}</LetterSpace>
+    return <LetterSpace scale={scale} word={word} wordLength={wordLength} guessed={letterGuessed} display={display} key={`key-letterspace-${ct++}`}>{letter}</LetterSpace>
   }
 
   const renderLetterSpaces = word => {
