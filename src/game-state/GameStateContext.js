@@ -21,7 +21,8 @@ const GameStateProvider = (props) => {
     maxGuesses: config.guesses,
     guessedLetters: [],
     gameOver: false,
-    victory: false
+    victory: false,
+    gameLoading: false
   })
 
   const [state, setState] = useState({
@@ -34,7 +35,8 @@ const GameStateProvider = (props) => {
     maxGuesses: defaultValues.maxGuesses,
     guessedLetters: defaultValues.guessedLetters,
     gameOver: defaultValues.gameOver,
-    victory: defaultValues.victory
+    victory: defaultValues.victory,
+    gameLoading: defaultValues.gameLoading
   })
 
   return (

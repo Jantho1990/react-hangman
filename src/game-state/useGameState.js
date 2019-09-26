@@ -7,12 +7,11 @@ import themes from 'themes'
 
 const useGameState = () => {
   const { isLoaded, data, onReady } = useAssets()
-  const { setItem, updateWrapper } = useLocalStorage()
+  const { setItem } = useLocalStorage()
   const [state, setState] = useContext(GameStateContext)
 
   // Update local storage
   Object.entries(state).forEach(([key, value]) => setItem(key, value))
-  // setItem('gameState', state)
 
   /**
    * Change the application visual theme.
@@ -33,6 +32,21 @@ const useGameState = () => {
       ...state,
       theme
     }))
+  }
+
+  /**
+   * Initiate game loading.
+   *
+   * @param {bool} value Turns the flag on or off.
+   *
+   * @return {void}
+   */
+  const setGameLoading = value => {
+    console.log('game loading is', value)
+    setState({
+      ...state,
+      gameLoading: value
+    })
   }
 
   /**
@@ -123,6 +137,7 @@ const useGameState = () => {
    * @return {void}
    */
   const resetGame = () => {
+    setGameLoading(true)
     setState({
       ...state,
       gameOver: false,
@@ -130,6 +145,7 @@ const useGameState = () => {
       guessedLetters: [],
       word: createRandomWord(data('wordList'))
     })
+    window.setTimeout(setGameLoading(false), 1500)
   }
 
   // Set the random word once data is loaded.
@@ -156,7 +172,10 @@ const useGameState = () => {
     gameOver: state.gameOver,
     declareGameOver,
     victory: state.victory,
-    resetGame
+    resetGame,
+    gameLoading: state.gameLoading,
+    gameLoadStart: () => setGameLoading(true),
+    gameLoadFinish: () => setGameLoading(false)
   }
 }
 

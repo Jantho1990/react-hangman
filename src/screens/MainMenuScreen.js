@@ -54,7 +54,7 @@ const MainMenuButton = styled(MenuButton)`
 
 export default function MainMenuScreen (props) {
   const { onSwitchScreen } = props
-  const { theme, gameOver, resetGame, word } = useGameState()
+  const { theme, gameOver, resetGame, word, gameLoading } = useGameState()
 
   const onStartGame = () => {
     resetGame()
@@ -70,7 +70,7 @@ export default function MainMenuScreen (props) {
     onSwitchScreen('OptionsScreen')
   }
 
-  const hasOngoingGame = !gameOver && !!word
+  const hasOngoingGame = !gameLoading && !gameOver && !!word
 
   return (
     <MainMenuWrapper theme={theme}>
