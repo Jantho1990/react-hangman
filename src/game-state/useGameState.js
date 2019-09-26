@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
 import { GameStateContext } from 'game-state/GameStateContext'
 import useAssets from 'assets/useAssets'
-import useGameLoading from 'game-loading/useGameLoading'
+import useFlags from 'flags/useFlags'
 import useLocalStorage from 'local-storage/useLocalStorage'
 import { createRandomWord } from 'lib/randomWord'
 import themes from 'themes'
@@ -9,8 +9,8 @@ import themes from 'themes'
 const useGameState = () => {
   const { isLoaded, data, onReady } = useAssets()
   const { setItem } = useLocalStorage()
+  const { startGameLoading, finishGameLoading }  = useFlags()
   const [state, setState] = useContext(GameStateContext)
-  const { isGameLoading, startGameLoading, finishGameLoading }  = useGameLoading()
 
   // Update local storage
   Object.entries(state).forEach(([key, value]) => setItem(key, value))

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import MenuButton from 'inputs/MenuButton'
 import useGameState from 'game-state/useGameState'
-import useGameLoading from 'game-loading/useGameLoading'
+import useFlags from 'flags/useFlags'
 
 const MainMenuWrapper = styled.div`
   display: flex;
@@ -56,9 +56,11 @@ const MainMenuButton = styled(MenuButton)`
 export default function MainMenuScreen (props) {
   const { onSwitchScreen } = props
   const { theme, gameOver, resetGame, word } = useGameState()
-  const { isGameLoading } = useGameLoading()
+  const { gameLoading, gameStart, startGameStart, finishGameStart } = useFlags()
 
   const onStartGame = () => {
+    startGameStart()
+    window.setTimeout(finishGameStart, 1500)
     resetGame()
     
     onSwitchScreen('GameScreen')
@@ -72,8 +74,7 @@ export default function MainMenuScreen (props) {
     onSwitchScreen('OptionsScreen')
   }
 
-  const hasOngoingGame = !isGameLoading() && !gameOver && !!word
-  const gameLoading = isGameLoading()
+  const hasOngoingGame = !gameLoading && !gameOver && !!word
   // console.log(gameLoading)
 
   return (

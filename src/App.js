@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components'
 import { useTransition, animated } from 'react-spring'
 import { GameStateProvider } from 'game-state/GameStateContext'
-import { GameLoadingProvider } from 'game-loading/GameLoadingContext'
+import { FlagsProvider } from 'flags/FlagsContext'
 import { AssetsProvider } from 'assets/AssetsContext'
 import { SoundProvider } from 'sound-manager/SoundContext'
 import useAssets from 'assets/useAssets'
@@ -76,7 +76,7 @@ function App() {
   }
 
   return (
-    <GameLoadingProvider>
+    <FlagsProvider>
       <AssetsProvider> 
         <SoundProvider>
           <GameStateProvider>
@@ -86,7 +86,7 @@ function App() {
           </GameStateProvider>
         </SoundProvider>
       </AssetsProvider>
-    </GameLoadingProvider>
+    </FlagsProvider>
   );
 }
 
