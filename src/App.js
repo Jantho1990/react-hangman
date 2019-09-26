@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components'
 import { useTransition, animated } from 'react-spring'
 import { GameStateProvider } from 'game-state/GameStateContext'
+import { GameLoadingProvider } from 'game-loading/GameLoadingContext'
 import { AssetsProvider } from 'assets/AssetsContext'
 import { SoundProvider } from 'sound-manager/SoundContext'
 import useAssets from 'assets/useAssets'
@@ -75,15 +76,17 @@ function App() {
   }
 
   return (
-    <AssetsProvider> 
-      <SoundProvider>
-        <GameStateProvider>
-          <AppWrapper className="App">
-            {renderActiveScreen()}
-          </AppWrapper>
-        </GameStateProvider>
-      </SoundProvider>
-    </AssetsProvider>
+    <GameLoadingProvider>
+      <AssetsProvider> 
+        <SoundProvider>
+          <GameStateProvider>
+            <AppWrapper className="App">
+              {renderActiveScreen()}
+            </AppWrapper>
+          </GameStateProvider>
+        </SoundProvider>
+      </AssetsProvider>
+    </GameLoadingProvider>
   );
 }
 

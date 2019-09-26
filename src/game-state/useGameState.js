@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react'
 import { GameStateContext } from 'game-state/GameStateContext'
 import useAssets from 'assets/useAssets'
+import useGameLoading from 'game-loading/useGameLoading'
 import useLocalStorage from 'local-storage/useLocalStorage'
 import { createRandomWord } from 'lib/randomWord'
 import themes from 'themes'
@@ -9,7 +10,7 @@ const useGameState = () => {
   const { isLoaded, data, onReady } = useAssets()
   const { setItem } = useLocalStorage()
   const [state, setState] = useContext(GameStateContext)
-  const [gameLoading, setGameLoading] = useState(false)
+  const { isGameLoading, startGameLoading, finishGameLoading }  = useGameLoading()
 
   // Update local storage
   Object.entries(state).forEach(([key, value]) => setItem(key, value))
@@ -123,7 +124,8 @@ const useGameState = () => {
    * @return {void}
    */
   const resetGame = () => {
-    setGameLoading(true)
+    startGameLoading()
+    console.log('reset')
     setState({
       ...state,
       gameOver: false,
@@ -131,7 +133,7 @@ const useGameState = () => {
       guessedLetters: [],
       word: createRandomWord(data('wordList'))
     })
-    window.setTimeout(setGameLoading(false), 1500)
+    window.setTimeout(finishGameLoading, 1500)
   }
 
   // Set the random word once data is loaded.
@@ -158,10 +160,7 @@ const useGameState = () => {
     gameOver: state.gameOver,
     declareGameOver,
     victory: state.victory,
-    resetGame,
-    gameLoading,
-    gameLoadStart: () => setGameLoading(true),
-    gameLoadFinish: () => setGameLoading(false)
+    resetGame
   }
 }
 
