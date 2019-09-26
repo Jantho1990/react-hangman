@@ -91,7 +91,7 @@ export default function EndgameView({ onRestartGame, onSwitchScreen }) {
             gameOver={gameOver}
             scale={0.4}
           />
-          <GameStats/>
+          <GameStats word={word} guessedLetters={guessedLetters}/>
         </RightSide>
       </EndgameItem>
         {/* <span>

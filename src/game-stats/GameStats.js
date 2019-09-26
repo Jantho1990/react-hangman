@@ -29,12 +29,10 @@ const StatLetter = styled.span.attrs(props => ({
   }
 `
 
-export default function GameStats(props) {
+export default function GameStats({ word, guessedLetters }) {
   const {
-    guessedLetters,
     getNumberOfWrongGuesses,
-    theme,
-    word
+    theme
   } = useGameState()
 
   const wrongGuesses = getNumberOfWrongGuesses(word, guessedLetters)
