@@ -81,9 +81,14 @@ const GameScreenBottomWrapper = styled.div`
   height: 100%;
   flex: 3 3;
   overflow: hidden;
+  background-color: ${({ theme }) => theme.gameScreen.keyboard.backgroundColor};
+  @media screen and (min-width: 768px) {
+    background-color: transparent;
+  }
 `
 
 const GameScreenBottom = ({children}) => {
+  const { theme } = useGameState()
   const springFooter = useSpring({
     from: { transform: 'translate3d(0, 500%, 0)' },
     to: { transform: 'translate3d(0, 0%, 0)' },
@@ -92,7 +97,7 @@ const GameScreenBottom = ({children}) => {
 
   return (
     <animated.div style={{...springFooter, gridArea: 'footer', overflow: 'hidden'}}>
-      <GameScreenBottomWrapper>
+      <GameScreenBottomWrapper theme={theme}>
         {children}
       </GameScreenBottomWrapper>
     </animated.div>

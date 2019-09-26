@@ -10,7 +10,7 @@ const LetterWrapper = styled.div`
   overflow-y: scroll;
   border-top: 1px solid ${({ theme: { gameScreen: { keyboard }} }) => keyboard.borderTop};
   @media screen and (min-width: 568px) {
-    overflow-y: hidden;
+    ${'' /* overflow-y: hidden; */}
   }
   @media screen and (min-width: 768px) {
     overflow-y: auto;
@@ -29,10 +29,6 @@ const ListContainer = styled.ul`
   margin: 0;
   padding: 0 1rem;
   background-color: ${({ theme: { gameScreen: { keyboard }} }) => keyboard.backgroundColor};
-  @media screen and (min-width: 568px) {
-    height: 100%;
-    overflow-y: scroll;
-  }
   @media screen and (min-width: 768px) {
     padding: 0;
     height: auto;
