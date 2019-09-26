@@ -86,10 +86,10 @@ const LetterVisible = ({ children, guessed = false }) => {
   )
 }
 
-const LetterSpaceWrapper = styled.span.attrs(({ scale, wordLength }) => ({
-  fontSize: scale ? `calc(50vw / ${wordLength})` : '2rem',
-  fontSizeTablet: scale ? `calc(75vmin / ${wordLength})` : '2rem',
-  fontSizeMobile: scale ? `calc(90vw / ${wordLength})` : '2rem'
+const LetterSpaceWrapper = styled.span.attrs(({ scale = 1, wordLength }) => ({
+  fontSize: scale ? `calc((50vw * ${scale}) / ${wordLength})` : '2rem',
+  fontSizeTablet: scale ? `calc((75vmin * ${scale}) / ${wordLength})` : '2rem',
+  fontSizeMobile: scale ? `calc((90vw * ${scale}) / ${wordLength})` : '2rem'
 }))`
   color: ${({ theme }) => theme.gameScreen.wordDisplay.color.default};
   font-size: 2rem;

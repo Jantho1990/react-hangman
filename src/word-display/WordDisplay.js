@@ -11,7 +11,7 @@ const WordDisplayWrapper = styled.div`
   padding: 1vh 3vw;
 `
 
-export default function WordDisplay({ word, guessedLetters, gameOver, displayWord, scale = true }) {
+export default function WordDisplay({ word, guessedLetters, gameOver, displayWord, scale = 1 }) {
   
   let ct = 0
 
