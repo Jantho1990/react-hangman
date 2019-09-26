@@ -12,6 +12,6 @@ export default styled.div`
   padding: 1rem;
   width: 100%;
   @media screen and (min-width: 768px) {
-    width: 30rem;
+    width: 40rem;
   }
 `
