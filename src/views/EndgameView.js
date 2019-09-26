@@ -38,6 +38,9 @@ const EndgameGallowsWrapper = styled.div`
   @media screen and (min-width: 568px) {
     height: auto;
   }
+  @media screen and (min-width: 768px) {
+    height: 200px;
+  }
 `
 
 const RightSide = styled.div`

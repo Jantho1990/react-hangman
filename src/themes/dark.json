@@ -10,7 +10,29 @@
     "backgroundColor": "hsl(220, 13%, 18%)",
     "fontColor": "hsl(0, 0%, 90%)",
     "keyboard": {
-      "backgroundColor": "hsl(218, 50%, 10%)"
+      "backgroundColor": "hsl(218, 50%, 10%)",
+      "borderTop": "hsl(0, 0%, 50%)",
+      "keys": {
+        "backgroundColor": {
+          "default": "hsl(0, 0%, 65%)",
+          "correct": "hsl(90, 65%, 40%)",
+          "wrong": "hsl(0, 65%, 40%)"
+        },
+        "color": {
+          "default" : "hsl(0, 0%, 10%)",
+          "guessed": "hsl(0, 0%, 90%)"
+        }
+      }
+    },
+    "wordDisplay": {
+      "color": {
+        "default": "hsl(0, 0%, 90%)",
+        "wrong": "hsl(0, 65%, 60%)"
+      }
     }
+  },
+  "endgameModal": {
+    "correctGuesses": "hsl(90, 65%, 60%)",
+    "wrongGuesses": "hsl(0, 65%, 60%)"
   }
 }

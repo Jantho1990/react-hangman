@@ -8,7 +8,7 @@ const LetterWrapper = styled.div`
   height: 100%;
   margin: auto;
   overflow-y: scroll;
-  border-top: 1px solid hsl(0, 0%, 50%);
+  border-top: 1px solid ${({ theme: { gameScreen: { keyboard }} }) => keyboard.borderTop};
   @media screen and (min-width: 568px) {
     overflow-y: hidden;
   }
@@ -28,7 +28,6 @@ const ListContainer = styled.ul`
   text-transform: capitalize;
   margin: 0;
   padding: 0 1rem;
-  background-color: hsl(0, 0%, 90%);
   background-color: ${({ theme: { gameScreen: { keyboard }} }) => keyboard.backgroundColor};
   @media screen and (min-width: 568px) {
     height: 100%;
@@ -43,25 +42,25 @@ const ListContainer = styled.ul`
 
 const ListItem = styled.li`
   cursor: pointer;
-  color: hsl(0, 0%, 10%);
+  color: ${({ theme }) => theme.gameScreen.keyboard.keys.color.default};
   margin: 0.5em;
   padding: 0.5em;
   width: 1em;
   height: 1em;
-  background-color: hsl(0, 0%, 65%);
+  background-color: ${({ theme }) => theme.gameScreen.keyboard.keys.backgroundColor.default};
   user-select: none;
   transition: all ease-in 0.125s;
   display: flex;
   align-items: center;
   justify-content: center;
   &.guessed {
-    color: hsl(0, 0%, 90%);
+    color: ${({ theme }) => theme.gameScreen.keyboard.keys.color.guessed};
   }
   &.guessed.correctly {
-    background-color: hsl(90, 65%, 40%);
+    background-color: ${({ theme }) => theme.gameScreen.keyboard.keys.backgroundColor.correct};
   }
   &.guessed.wrongly {
-    background-color: hsl(0, 65%, 40%);
+    background-color: ${({ theme }) => theme.gameScreen.keyboard.keys.backgroundColor.wrong};
   }
 `
 
@@ -104,6 +103,7 @@ export default function LetterSelector(props) {
               guessed={isLetterGuessed(letter)}
               onClick={() => !gameOver ? handleLetterGuess(letter) : null}
               key={`key-letter-${i}`}
+              theme={theme}
             >
               {letter}
             </ListItem>
@@ -121,6 +121,6 @@ export default function LetterSelector(props) {
     : ''
 
   return (
-    <LetterWrapper className={className}>{renderLetterButtons()}</LetterWrapper>
+    <LetterWrapper className={className} theme={theme}>{renderLetterButtons()}</LetterWrapper>
   )
 }

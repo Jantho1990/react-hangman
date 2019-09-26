@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components'
 import { useTransition, animated } from 'react-spring'
 import { GameStateProvider } from 'game-state/GameStateContext'
-import useGameState from 'game-state/useGameState'
 import { AssetsProvider } from 'assets/AssetsContext'
 import { SoundProvider } from 'sound-manager/SoundContext'
 import useAssets from 'assets/useAssets'
@@ -17,13 +16,11 @@ const AppWrapper = styled.div`
   width: 100vw;
   overflow: hidden;
   position: relative;
-  background-color: ${props => props.theme.primaryBackgroundColor};
 `
 
 function App() {
   const [ loading, setLoading ] = useState(true)
 
-  const { theme } = useGameState()
   const { onReady } = useAssets()
 
   const handleSwitchScreen = screen => {
@@ -81,7 +78,7 @@ function App() {
     <AssetsProvider> 
       <SoundProvider>
         <GameStateProvider>
-          <AppWrapper className="App" theme={theme}>
+          <AppWrapper className="App">
             {renderActiveScreen()}
           </AppWrapper>
         </GameStateProvider>

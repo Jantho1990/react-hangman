@@ -38,11 +38,12 @@ const LetterBlank = ({ guessed = false }) => {
 
 const LetterVisibleWrapper = styled.span`
   &.not-guessed {
-    color: hsl(0, 65%, 60%);
+    color: ${({ theme }) => theme.gameScreen.wordDisplay.color.wrong};
   }
 `
 
 const LetterVisible = ({ children, guessed = false }) => {
+  const { theme } = useGameState()
   const [animationDone, setAnimationDone] = useState(false)
   
   const finishAnimation = () => {
@@ -65,13 +66,13 @@ const LetterVisible = ({ children, guessed = false }) => {
 
   const renderLetterVisible = () => {
     if (animationDone) {
-      return <LetterVisibleWrapper className={guessed ? '' : 'not-guessed'}>{children}</LetterVisibleWrapper>
+      return <LetterVisibleWrapper className={guessed ? '' : 'not-guessed'} theme={theme}>{children}</LetterVisibleWrapper>
     }
 
     return (
       <Fragment>
         <animated.span style={spring}>
-          <LetterVisibleWrapper className={guessed ? '' : 'not-guessed'}>{children}</LetterVisibleWrapper>
+          <LetterVisibleWrapper className={guessed ? '' : 'not-guessed'} theme={theme}>{children}</LetterVisibleWrapper>
         </animated.span>
         <LetterBlank guessed={guessed}/>
       </Fragment>
@@ -90,7 +91,7 @@ const LetterSpaceWrapper = styled.span.attrs(({ scale, wordLength }) => ({
   fontSizeTablet: scale ? `calc(75vmin / ${wordLength})` : '2rem',
   fontSizeMobile: scale ? `calc(90vw / ${wordLength})` : '2rem'
 }))`
-  color: hsl(0%, 0%, 90%);
+  color: ${({ theme }) => theme.gameScreen.wordDisplay.color.default};
   font-size: 2rem;
   font-size: ${({ fontSizeMobile }) => fontSizeMobile};
   margin: 0 0rem;
@@ -118,7 +119,7 @@ const LetterSpaceWrapper = styled.span.attrs(({ scale, wordLength }) => ({
 `
 
 export default function LetterSpace({ display = false, guessed = false, children, scale = true }) {
-  const { word } = useGameState()
+  const { theme, word } = useGameState()
 
   const wordLength = word.length
 
@@ -131,7 +132,7 @@ export default function LetterSpace({ display = false, guessed = false, children
   }
 
   return (
-    <LetterSpaceWrapper scale={scale} wordLength={wordLength}>
+    <LetterSpaceWrapper scale={scale} theme={theme} wordLength={wordLength}>
       {renderSpace()}
     </LetterSpaceWrapper>
   )

@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import useGameState from 'game-state/useGameState'
-import LetterSpace from 'word-display/LetterSpace'
 
 const GameStatsWrapper = styled.div`
   display: flex;
@@ -23,10 +22,10 @@ const GameStateItem = styled.div`
 const StatLetter = styled.span.attrs(props => ({
   className: `${!props.correct ? 'wrong' : ''}`
 }))`
-  color: hsl(90, 65%, 60%);
+  color: ${({ theme }) => theme.endgameModal.correctGuesses};
   text-transform: capitalize;
   &.wrong {
-    color: hsl(0, 65%, 60%);
+    color: ${({ theme }) => theme.endgameModal.wrongGuesses};
   }
 `
 
@@ -34,6 +33,7 @@ export default function GameStats(props) {
   const {
     guessedLetters,
     getNumberOfWrongGuesses,
+    theme,
     word
   } = useGameState()
 
@@ -61,7 +61,7 @@ export default function GameStats(props) {
             .map((letter, i, wrongGuesses) => {
               return (
                 <span>
-                  <StatLetter correct={false}>{letter}</StatLetter>{i < wrongGuesses.length - 1 ? ' ' : ''}
+                  <StatLetter correct={false} theme={theme}>{letter}</StatLetter>{i < wrongGuesses.length - 1 ? ' ' : ''}
                 </span>
               )
             })
