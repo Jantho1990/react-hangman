@@ -18,15 +18,40 @@ const Range = styled.input`
   padding: 0.5rem 0;
   cursor: pointer;
   background-color: ${props => props.theme.primaryButtonColor};
+  background-color: transparent;
   color: ${props => props.theme.primaryButtonFontColor};
   outline: none;
   &:hover {
-    background-color: ${props => props.theme.primaryButtonHoverColor};
-    color: ${props => props.theme.primaryButtonFontHoverColor};
+    ${'' /* background-color: ${props => props.theme.primaryButtonHoverColor}; */}
+    ${'' /* color: ${props => props.theme.primaryButtonFontHoverColor}; */}
   }
   &:focus, &::-moz-focus-outer{
     outline: none;
     border: 0;
+  }
+  &::-moz-range-track,
+  &::-webkit-slider-runnable-track,
+  &:focus::-webkit-slider-runnable-track {
+    background: ${props => props.theme.primaryButtonFontColor};
+    border-radius: 20px;
+  }
+  &::-ms-fill-lower,
+  &::-ms-fill-upper,
+  &:focus::-ms-fill-lower,
+  &:focus::-ms-fill-upper {
+    background: ${props => props.theme.primaryButtonFontColor};
+    border-radius: 20px;
+  }
+  &::-moz-range-thumb,
+  &::-webkit-slider-thumb {
+    background: ${props => props.theme.primaryButtonColor};
+    width: 20px;
+    height: 10px;
+  }
+  &::-ms-thumb {
+    background: ${props => props.theme.primaryButtonColor};
+    width: 20px;
+    height: 10px;
   }
 `
 
