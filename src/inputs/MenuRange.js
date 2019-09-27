@@ -13,6 +13,7 @@ const MenuRangeWrapper = styled.form`
 `
 
 const Range = styled.input`
+  appearance: none;
   border: none;
   border-radius: 3px;
   padding: 0.5rem 0;
@@ -29,29 +30,54 @@ const Range = styled.input`
     outline: none;
     border: 0;
   }
-  &::-moz-range-track,
-  &::-webkit-slider-runnable-track,
-  &:focus::-webkit-slider-runnable-track {
+  /* These propreties need to be kept separate in order to work. */
+  &::-moz-range-track {
+    appearance: none;
     background: ${props => props.theme.primaryButtonFontColor};
     border-radius: 20px;
+    width: 100%;
+    height: 2px;
+  }
+  &::-webkit-slider-runnable-track,
+  &:focus::-webkit-slider-runnable-track {
+    appearance: none;
+    background: ${props => props.theme.primaryButtonFontColor};
+    border-radius: 20px;
+    width: 100%;
+    height: 2px;
+    position: relative;
   }
   &::-ms-fill-lower,
   &::-ms-fill-upper,
   &:focus::-ms-fill-lower,
   &:focus::-ms-fill-upper {
+    appearance: none;
     background: ${props => props.theme.primaryButtonFontColor};
     border-radius: 20px;
   }
-  &::-moz-range-thumb,
-  &::-webkit-slider-thumb {
+  &::-moz-range-thumb {
+    appearance: none;
     background: ${props => props.theme.primaryButtonColor};
     width: 20px;
     height: 10px;
+    border-radius: 20px;
+  }
+  &::-webkit-slider-thumb {
+    appearance: none;
+    background: ${props => props.theme.primaryButtonColor};
+    border: 1px solid ${props => props.theme.primaryFontColor};
+    width: 20px;
+    height: 10px;
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
   &::-ms-thumb {
     background: ${props => props.theme.primaryButtonColor};
     width: 20px;
     height: 10px;
+    border-radius: 20px;
   }
 `
 
