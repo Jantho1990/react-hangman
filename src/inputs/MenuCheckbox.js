@@ -19,17 +19,39 @@ const MenuCheckboxLabel = styled.label`
   }
 `
 
-const Input = styled.input`
+const Input = styled.input.attrs(props => ({
+  transitionCode: 'ease-in 0.125s'
+}))`
+  appearance: none;
   border: none;
   border-radius: 3px;
-  padding: 0.5rem 0;
+  padding: 10px 20px;
   cursor: pointer;
-  background-color: ${props => props.theme.primaryButtonColor};
+  background-color: ${props => props.theme.primaryButtonHoverColor};
   color: ${props => props.theme.primaryButtonFontColor};
   outline: 0;
-  &:hover {
-    background-color: ${props => props.theme.primaryButtonHoverColor};
-    color: ${props => props.theme.primaryButtonFontHoverColor};
+  position: relative;
+  border-radius: 25px;
+  transition: background-color ${({ transitionCode }) => transitionCode}; 
+  &:checked {
+    background-color: ${props => props.theme.primaryButtonColor};
+    color: ${props => props.theme.primaryButtonFontColor};
+  }
+  &:after {
+    content: ' ';
+    position: absolute;
+    left: 25%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background-color:  ${props => props.theme.primaryButtonFontColor};
+    transition: left ${({ transitionCode }) => transitionCode}, background-color ${({ transitionCode }) => transitionCode};
+  }
+  &:checked:after {
+    left: 75%;
+    background-color: ${props => props.theme.primaryButtonFontColor};
   }
 `
 
