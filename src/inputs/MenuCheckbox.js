@@ -27,15 +27,15 @@ const Input = styled.input.attrs(props => ({
   border-radius: 3px;
   padding: 10px 20px;
   cursor: pointer;
-  background-color: ${props => props.theme.primaryButtonHoverColor};
-  color: ${props => props.theme.primaryButtonFontColor};
+  background-color: ${props => props.theme.checkboxDisabledColor};
+  color: ${props => props.theme.checkboxForegroundColor};
   outline: 0;
   position: relative;
   border-radius: 25px;
   transition: background-color ${({ transitionCode }) => transitionCode}; 
   &:checked {
-    background-color: ${props => props.theme.primaryButtonColor};
-    color: ${props => props.theme.primaryButtonFontColor};
+    background-color: ${props => props.theme.checkboxBackgroundColor};
+    color: ${props => props.theme.checkboxForegroundColor};
   }
   &:after {
     content: ' ';
@@ -46,12 +46,12 @@ const Input = styled.input.attrs(props => ({
     width: 17px;
     height: 17px;
     border-radius: 50%;
-    background-color:  ${props => props.theme.primaryButtonFontColor};
+    background-color:  ${props => props.theme.checkboxForegroundColor};
     transition: left ${({ transitionCode }) => transitionCode}, background-color ${({ transitionCode }) => transitionCode};
   }
   &:checked:after {
     left: 75%;
-    background-color: ${props => props.theme.primaryButtonFontColor};
+    background-color: ${props => props.theme.checkboxForegroundColor};
   }
 `
 

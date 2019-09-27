@@ -33,7 +33,7 @@ const Range = styled.input`
   /* These propreties need to be kept separate in order to work. */
   &::-moz-range-track {
     appearance: none;
-    background: ${props => props.theme.primaryButtonFontColor};
+    background: ${props => props.theme.inputBackgroundColor};
     border-radius: 20px;
     width: 100%;
     height: 2px;
@@ -41,7 +41,7 @@ const Range = styled.input`
   &::-webkit-slider-runnable-track,
   &:focus::-webkit-slider-runnable-track {
     appearance: none;
-    background: ${props => props.theme.primaryButtonFontColor};
+    background: ${props => props.theme.inputBackgroundColor};
     border-radius: 20px;
     width: 100%;
     height: 2px;
@@ -52,20 +52,20 @@ const Range = styled.input`
   &:focus::-ms-fill-lower,
   &:focus::-ms-fill-upper {
     appearance: none;
-    background: ${props => props.theme.primaryButtonFontColor};
+    background: ${props => props.theme.inputBackgroundColor};
     border-radius: 20px;
   }
   &::-moz-range-thumb {
     appearance: none;
-    background: ${props => props.theme.primaryButtonColor};
+    background: ${props => props.theme.inputForegroundColor};
     width: 20px;
     height: 10px;
     border-radius: 20px;
   }
   &::-webkit-slider-thumb {
     appearance: none;
-    background: ${props => props.theme.primaryButtonColor};
-    border: 1px solid ${props => props.theme.primaryFontColor};
+    background: ${props => props.theme.inputForegroundColor};
+    border: 1px solid ${props => props.theme.inputBorderColor};
     width: 20px;
     height: 10px;
     border-radius: 20px;
@@ -74,7 +74,7 @@ const Range = styled.input`
     transform: translateY(-50%);
   }
   &::-ms-thumb {
-    background: ${props => props.theme.primaryButtonColor};
+    background: ${props => props.theme.inputForegroundColor};
     width: 20px;
     height: 10px;
     border-radius: 20px;

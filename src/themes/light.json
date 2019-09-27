@@ -4,6 +4,13 @@
   "primaryButtonColor": "hsl(220, 13%, 18%)",
   "primaryButtonFontColor": "hsl(0, 0%, 90%)",
   "primaryButtonHoverColor": "hsl(220, 13%, 28%)",
+  "inputBackgroundColor": "hsl(0, 0%, 5%)",
+  "inputForegroundColor": "hsl(0, 0%, 90%)",
+  "inputBorderColor": "hsl(0, 0%, 5%)",
+  "inputDisabledColor": "hsl(0, 0%, 25%)",
+  "checkboxBackgroundColor": "hsl(220, 13%, 18%)",
+  "checkboxForegroundColor": "hsl(0, 0%, 90%)",
+  "checkboxDisabledColor": "hsl(220, 13%, 34%)",
   "gameScreen": {
     "headerBackgroundColor": "hsl(220, 13%, 18%)",
     "headerFontColor": "hsl(0, 0%, 90%)",
