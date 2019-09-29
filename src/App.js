@@ -6,18 +6,38 @@ import { FlagsProvider } from 'flags/FlagsContext'
 import { AssetsProvider } from 'assets/AssetsContext'
 import { SoundProvider } from 'sound-manager/SoundContext'
 import useAssets from 'assets/useAssets'
+import useGameState from 'game-state/useGameState'
 import MainMenuScreen from 'screens/MainMenuScreen'
 import GameScreen from 'screens/GameScreen'
 import OptionsScreen from 'screens/OptionsScreen'
 import LoadingScreen from 'screens/LoadingScreen'
 
-const AppWrapper = styled.div`
+const AppWrapperStyles = styled.div`
   text-align: center;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
   position: relative;
+  font-family: ${({ ui }) => ui};
+  @import url('https://fonts.googleapis.com/css?family=${({ ui }) => ui}|${({ wordDisplay }) => wordDisplay}|${({ title }) => title}&display=swap');
 `
+
+const AppWrapper = ({ children }) => {
+  const {
+    fonts,
+    fonts: {
+      title,
+      wordDisplay,
+      ui
+    }
+  } = useGameState()
+
+  return (
+    <AppWrapperStyles { ...fonts }>
+      { children }
+    </AppWrapperStyles>
+  )
+}
 
 function App() {
   const [ loading, setLoading ] = useState(true)

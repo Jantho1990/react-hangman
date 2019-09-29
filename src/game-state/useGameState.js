@@ -151,6 +151,9 @@ const useGameState = () => {
   return {
     theme: state.theme,
     changeTheme,
+    fonts: {
+      ...state.fonts
+    },
     word: state.word,
     previousGame: state.previousGame,
     changeWord,

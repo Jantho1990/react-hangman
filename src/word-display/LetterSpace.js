@@ -106,6 +106,8 @@ const LetterSpaceWrapper = styled.span.attrs(({ scale = 1, wordLength }) => ({
   text-transform: capitalize;
   user-select: none;
   position: relative;
+  font-family: ${({ wordDisplay }) => wordDisplay};
+  font-weight: bold;
   @media screen and (min-width: 568px) {
     font-size: ${({ fontSizeTablet }) => fontSizeTablet};
     width: ${({ fontSizeTablet }) => fontSizeTablet};
@@ -119,7 +121,12 @@ const LetterSpaceWrapper = styled.span.attrs(({ scale = 1, wordLength }) => ({
 `
 
 export default function LetterSpace({ display = false, word, guessed = false, children, scale = true }) {
-  const { theme } = useGameState()
+  const {
+    theme,
+    fonts: {
+      wordDisplay
+    }
+  } = useGameState()
 
   const wordLength = word.length
 
@@ -132,7 +139,7 @@ export default function LetterSpace({ display = false, word, guessed = false, ch
   }
 
   return (
-    <LetterSpaceWrapper scale={scale} theme={theme} wordLength={wordLength}>
+    <LetterSpaceWrapper scale={scale} theme={theme} wordLength={wordLength} wordDisplay={wordDisplay}>
       {renderSpace()}
     </LetterSpaceWrapper>
   )

@@ -49,6 +49,8 @@ const ListItem = styled.li`
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: ${({ wordDisplay }) => wordDisplay};
+  font-weight: bold;
   &.guessed {
     color: ${({ theme }) => theme.gameScreen.keyboard.keys.color.guessed};
   }
@@ -64,7 +66,15 @@ const ListItem = styled.li`
 export default function LetterSelector(props) {
   const { className, gameOver } = props
   
-  const { word, theme, guessedLetters, changeGuessedLetters } = useGameState()
+  const {
+    word,
+    theme,
+    guessedLetters,
+    changeGuessedLetters,
+    fonts: {
+      wordDisplay
+    }
+  } = useGameState()
 
   const { play } = useSound()
   
@@ -100,6 +110,7 @@ export default function LetterSelector(props) {
               onClick={() => !gameOver ? handleLetterGuess(letter) : null}
               key={`key-letter-${i}`}
               theme={theme}
+              wordDisplay={wordDisplay}
             >
               {letter}
             </ListItem>

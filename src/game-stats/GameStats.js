@@ -19,15 +19,32 @@ const GameStateItem = styled.div`
   justify-content: flex-start;
 `
 
-const StatLetter = styled.span.attrs(props => ({
+const StatLetterStyles = styled.span.attrs(props => ({
   className: `${!props.correct ? 'wrong' : ''}`
 }))`
   color: ${({ theme }) => theme.endgameModal.correctGuesses};
   text-transform: capitalize;
+  font-family: ${({ wordDisplay }) => wordDisplay};
+  font-weight: bold;
   &.wrong {
     color: ${({ theme }) => theme.endgameModal.wrongGuesses};
   }
 `
+
+const StatLetter = ({ children }) => {
+  const {
+    theme,
+    fonts: {
+      wordDisplay
+    }
+  } = useGameState()
+
+  return (
+    <StatLetterStyles theme={theme} wordDisplay={wordDisplay}>
+      { children }
+    </StatLetterStyles>
+  )
+}
 
 export default function GameStats({ word, guessedLetters }) {
   const {

@@ -21,6 +21,7 @@ const OptionsMenuWrapper = styled(MenuWrapper)`
 const OptionsMenuTitle = styled.h2`
   color: ${props => props.theme.primaryFontColor};
   font-size: 20vmin;
+  font-family: ${({ title }) => title};
   @media screen and (min-width: 768px) {
     font-size: 3rem;
   }
@@ -60,7 +61,7 @@ class SubmenuWrapper extends Component {
   Title = styled.span`
     color: ${props => props.theme.primaryFontColor};
     font-weight: bold;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
     display: inline-block;
     &::after {
       content: ':';
@@ -126,7 +127,13 @@ const SubmenuVolume = ({ theme }) => {
 }
 
 export default function OptionsMenu({ onExitMenu }) {
-  const { theme, changeTheme } = useGameState()
+  const {
+    theme,
+    changeTheme,
+    fonts: {
+      title
+    }
+  } = useGameState()
 
   const handleChangeTheme = (value) => {
     changeTheme(value)
@@ -137,7 +144,7 @@ export default function OptionsMenu({ onExitMenu }) {
   }
 
   return (
-    <OptionsMenuWrapper theme={theme}>
+    <OptionsMenuWrapper theme={theme} title={title}>
       <OptionsMenuTitle theme={theme}>Options</OptionsMenuTitle>
       <OptionsMenuScroll handleChangeTheme={handleChangeTheme}>
         <SubmenuTheme onsubmit={handleChangeTheme} currentValue={theme.name}/>

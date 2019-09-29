@@ -12,6 +12,9 @@ const GameStateProvider = (props) => {
       name: config.theme,
       ...themes[config.theme]
     },
+    fonts: {
+      ...config.fonts
+    },
     word: '',
     previousGame: {
       word: '',
@@ -30,6 +33,7 @@ const GameStateProvider = (props) => {
       name: defaultValues.theme.name,
       ...themes[defaultValues.theme.name]
     },
+    fonts: defaultValues.fonts,
     word: defaultValues.word,
     previousGame: defaultValues.previousGame,
     maxGuesses: defaultValues.maxGuesses,

@@ -25,6 +25,7 @@ const PauseMenuButton = styled(MenuButton)`
 const PauseMenuTitle = styled.h2`
   color: ${props => props.theme.primaryFontColor};
   font-size: 20vmin;
+  font-family: ${({ title }) => title};
   @media screen and (min-width: 768px) {
     font-size: 3rem;
   }
@@ -39,7 +40,12 @@ const PauseMenuScroll = styled.div`
 `
 
 export default function PauseMenu({ onChangeActiveMenu, onCloseMenu, onRestartGame, onSwitchScreen }) {
-  const { theme } = useGameState()
+  const {
+    theme,
+    fonts: {
+      title
+    }
+  } = useGameState()
 
   const onOptions = () => {
     onChangeActiveMenu('OptionsMenu')
@@ -56,7 +62,7 @@ export default function PauseMenu({ onChangeActiveMenu, onCloseMenu, onRestartGa
 
   return (
     <PauseMenuWrapper theme={theme}>
-      <PauseMenuTitle theme={theme}>Paused</PauseMenuTitle>
+      <PauseMenuTitle theme={theme} title={title}>Paused</PauseMenuTitle>
       <PauseMenuScroll>
         <PauseMenuButton theme={theme} onClick={onRestart}>Restart</PauseMenuButton>
         <PauseMenuButton theme={theme} onClick={onOptions}>Options</PauseMenuButton>
