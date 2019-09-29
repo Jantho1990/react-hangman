@@ -144,8 +144,8 @@ export default function OptionsMenu({ onExitMenu }) {
   }
 
   return (
-    <OptionsMenuWrapper theme={theme} title={title}>
-      <OptionsMenuTitle theme={theme}>Options</OptionsMenuTitle>
+    <OptionsMenuWrapper theme={theme}>
+      <OptionsMenuTitle theme={theme} title={title}>Options</OptionsMenuTitle>
       <OptionsMenuScroll handleChangeTheme={handleChangeTheme}>
         <SubmenuTheme onsubmit={handleChangeTheme} currentValue={theme.name}/>
         <SubmenuVolume theme={theme}/>
