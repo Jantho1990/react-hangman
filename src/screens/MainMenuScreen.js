@@ -18,7 +18,7 @@ const GameTitle = styled.h1`
   font-size: 10vmin;
   font-weight: bold;
   color: ${ props => props.theme.primaryFontColor };
-  font-family: ${({ title }) => title};
+  font-family: ${({ titleDisplay }) => titleDisplay};
 `
 
 const MenuButtonContainer = styled.div`
@@ -61,7 +61,7 @@ export default function MainMenuScreen (props) {
     gameOver,
     resetGame,
     fonts: {
-      title
+      titleDisplay
     }
   } = useGameState()
   const { gameLoading, isFirstLoad, firstLoadFinished, isOngoingGame, setIsOngoingGame } = useFlags()
@@ -92,7 +92,7 @@ export default function MainMenuScreen (props) {
 
   return (
     <MainMenuWrapper theme={theme}>
-      <GameTitle theme={theme} title={title}>React Hangman</GameTitle>
+      <GameTitle theme={theme} titleDisplay={titleDisplay}>React Hangman</GameTitle>
       <MenuButtonContainer>
         { isOngoingGame && !gameLoading && <MainMenuButton theme={theme} onClick={onResumeGame}>Resume Game</MainMenuButton> }
         <MainMenuButton theme={theme} onClick={onStartGame}>New Game</MainMenuButton>

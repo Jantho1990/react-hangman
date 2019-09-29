@@ -5,18 +5,18 @@ import useGameState from 'game-state/useGameState'
 const GameScreenTitleStyles = styled.h1`
   font-size: 1.5rem;
   margin-left: 1rem;
-  font-family: ${({ title }) => title};
+  font-family: ${({ titleDisplay }) => titleDisplay};
 `
 
 export default function GameScreenTitle({ children }) {
   const {
     fonts: {
-      title
+      titleDisplay
     }
   } = useGameState()
 
   return (
-    <GameScreenTitleStyles title={title}>
+    <GameScreenTitleStyles titleDisplay={titleDisplay}>
       { children }
     </GameScreenTitleStyles>
   )

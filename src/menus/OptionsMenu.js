@@ -21,7 +21,7 @@ const OptionsMenuWrapper = styled(MenuWrapper)`
 const OptionsMenuTitle = styled.h2`
   color: ${props => props.theme.primaryFontColor};
   font-size: 20vmin;
-  font-family: ${({ title }) => title};
+  font-family: ${({ titleDisplay }) => titleDisplay};
   @media screen and (min-width: 768px) {
     font-size: 3rem;
   }
@@ -131,7 +131,7 @@ export default function OptionsMenu({ onExitMenu }) {
     theme,
     changeTheme,
     fonts: {
-      title
+      titleDisplay
     }
   } = useGameState()
 
@@ -145,7 +145,7 @@ export default function OptionsMenu({ onExitMenu }) {
 
   return (
     <OptionsMenuWrapper theme={theme}>
-      <OptionsMenuTitle theme={theme} title={title}>Options</OptionsMenuTitle>
+      <OptionsMenuTitle theme={theme} titleDisplay={titleDisplay}>Options</OptionsMenuTitle>
       <OptionsMenuScroll handleChangeTheme={handleChangeTheme}>
         <SubmenuTheme onsubmit={handleChangeTheme} currentValue={theme.name}/>
         <SubmenuVolume theme={theme}/>

@@ -19,18 +19,14 @@ const AppWrapperStyles = styled.div`
   overflow: hidden;
   position: relative;
   font-family: ${({ ui }) => ui};
-  @import url('https://fonts.googleapis.com/css?family=${({ ui }) => ui}|${({ wordDisplay }) => wordDisplay}|${({ title }) => title}&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=${({ ui }) => ui}|${({ wordDisplay }) => wordDisplay}|${({ titleDisplay }) => titleDisplay}&display=swap');
 `
 
 const AppWrapper = ({ children }) => {
   const {
-    fonts,
-    fonts: {
-      title,
-      wordDisplay,
-      ui
-    }
+    fonts
   } = useGameState()
+  console.log(fonts)
 
   return (
     <AppWrapperStyles { ...fonts }>

@@ -2,7 +2,7 @@
   "guesses": 10,
   "theme": "light",
   "fonts": {
-    "title": "Kaushan Script",
+    "titleDisplay": "Kaushan Script",
     "wordDisplay": "Questrial",
     "ui": "Josefin Sans"
   }
