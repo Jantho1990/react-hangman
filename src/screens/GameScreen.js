@@ -153,6 +153,13 @@ function GameScreen({ onSwitchScreen }) {
 
   if (!gameOver && (guessesRemaining <= 0 || wordGuessed)) {
     declareGameOver(wordGuessed)
+
+    // Play victory or defeat.
+    if (wordGuessed) {
+      play('Victory')
+    } else {
+      play('Defeat')
+    }
   }
 
   // Pause menu enter/leave animation.

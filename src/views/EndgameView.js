@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import useGameState from 'game-state/useGameState'
+import useSound from 'sound-manager/useSound'
 import GallowsView from 'views/GallowsView'
 import WordDisplay from 'word-display/WordDisplay'
 import MenuButton from 'inputs/MenuButton'
@@ -84,6 +85,8 @@ export default function EndgameView({ onRestartGame, onSwitchScreen }) {
     maxGuesses,
     getNumberOfWrongGuesses 
   } = useGameState()
+
+  const { play } = useSound()
 
   const onPlayAgain = () => {
     onRestartGame()

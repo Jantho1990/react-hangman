@@ -23,5 +23,13 @@
   "WrongGuess": {
     "path": "/assets/sounds/wrong_guess.wav",
     "channel": "sfx"
+  },
+  "Defeat": {
+    "path": "/assets/sounds/defeat1.wav",
+    "channel": "sfx"
+  },
+  "Victory": {
+    "path": "/assets/sounds/victory2.wav",
+    "channel": "sfx"
   }
 }
