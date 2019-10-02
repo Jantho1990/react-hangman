@@ -1,4 +1,5 @@
 import React from 'react'
+import useSound from 'sound-manager/useSound'
 import styled from 'styled-components'
 import useGameState from 'game-state/useGameState'
 
@@ -19,6 +20,7 @@ const Button = styled.button`
 `
 
 export default function MenuButton (props) {
+  const { onClick } = props
   const {
     theme,
     fonts: {
@@ -26,5 +28,11 @@ export default function MenuButton (props) {
     }
   } = useGameState()
 
-  return <Button theme={theme} ui={ui} {...props} onClick={props.onClick}>{props.children}</Button>
+  const { play } = useSound()
+
+  const handleClick = () => {
+    onClick()
+  }
+
+  return <Button theme={theme} ui={ui} {...props} onClick={handleClick}>{props.children}</Button>
 }

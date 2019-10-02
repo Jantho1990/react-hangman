@@ -31,5 +31,13 @@
   "Victory": {
     "path": "/assets/sounds/victory2.wav",
     "channel": "sfx"
+  },
+  "MenuTransition": {
+    "path": "/assets/sounds/menuTransition.wav",
+    "channel": "sfx"
+  },
+  "UIInteraction": {
+    "path": "/assets/sounds/uiInteraction.wav",
+    "channel": "sfx"
   }
 }

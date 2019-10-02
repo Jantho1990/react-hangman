@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import useGameState from 'game-state/useGameState'
+import useSound from 'sound-manager/useSound'
 import OptionsMenu from 'menus/OptionsMenu'
 
 const OptionsScreenWrapper = styled.div`
@@ -14,7 +15,10 @@ export default function OptionsScreen(props) {
 
   const { theme } = useGameState()
 
+  const { play } = useSound()
+
   const onBackClick = () => {
+    play('MenuTransition')
     onSwitchScreen('MainMenuScreen')
   }
 

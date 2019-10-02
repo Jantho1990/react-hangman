@@ -129,6 +129,8 @@ function GameScreen({ onSwitchScreen }) {
   const { guesses: maxGuesses } = config
 
   const showPauseModal = () => {
+    play('MenuTransition')
+
     setPaused(true)
   }
 

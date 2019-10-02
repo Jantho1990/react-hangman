@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import useGameState from 'game-state/useGameState'
+import useSound from 'sound-manager/useSound'
 import MenuWrapper from 'menus/MenuWrapper'
 import MenuButton from 'inputs/MenuButton'
 
@@ -47,11 +48,17 @@ export default function PauseMenu({ onChangeActiveMenu, onCloseMenu, onRestartGa
     }
   } = useGameState()
 
+  const { play } = useSound()
+
   const onOptions = () => {
+    play('MenuTransition')
+
     onChangeActiveMenu('OptionsMenu')
   }
 
   const onQuit = () => {
+    play('MenuTransition')
+
     onSwitchScreen('MainMenuScreen')
   }
 

@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import MenuButton from 'inputs/MenuButton'
 import useGameState from 'game-state/useGameState'
+import useSound from 'sound-manager/useSound'
 import useFlags from 'flags/useFlags'
 
 const MainMenuWrapper = styled.div`
@@ -65,6 +66,7 @@ export default function MainMenuScreen (props) {
     }
   } = useGameState()
   const { gameLoading, isFirstLoad, firstLoadFinished, isOngoingGame, setIsOngoingGame } = useFlags()
+  const { play } = useSound()
 
   if (isFirstLoad && !gameOver) {
     setIsOngoingGame(true)
@@ -78,15 +80,21 @@ export default function MainMenuScreen (props) {
     if (isFirstLoad) firstLoadFinished()
 
     resetGame()
-    
+
+    play('MenuTransition')
+  
     onSwitchScreen('GameScreen')
   }
 
   const onResumeGame = () => {
+    play('MenuTransition')
+    
     onSwitchScreen('GameScreen')
   }
 
   const onShowOptions = () => {
+    play('MenuTransition')
+
     onSwitchScreen('OptionsScreen')
   }
 

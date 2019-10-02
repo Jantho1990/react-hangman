@@ -26,7 +26,7 @@ const AppWrapper = ({ children }) => {
   const {
     fonts
   } = useGameState()
-  console.log(fonts)
+  console.log('fonts', fonts)
 
   return (
     <AppWrapperStyles { ...fonts }>
