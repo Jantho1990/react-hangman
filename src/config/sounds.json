@@ -15,5 +15,13 @@
       "baseVolume": 0.6
     },
     "channel": "music"
+  },
+  "CorrectGuess2": {
+    "path": "/assets/sounds/correct_guess_2.wav",
+    "channel": "sfx"
+  },
+  "WrongGuess": {
+    "path": "/assets/sounds/wrong_guess.wav",
+    "channel": "sfx"
   }
 }
