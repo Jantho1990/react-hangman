@@ -1,0 +1,62 @@
+{
+  "sounds": {
+    "sounds": [
+      {
+        "source": "https://objects.koji-cdn.com/f9b19db4-7f4f-465c-a55e-23e100e66a8a/wcbuj-whoosh1.wav",
+        "name": "Whoosh",
+        "pool": 3,
+        "channel": "sfx"
+      },
+      {
+        "name": "BackgroundMusic",
+        "channel": "music"
+      }
+    ]
+  },
+  "@@editor": [
+    {
+      "key": "sounds",
+      "name": "Sounds",
+      "icon": "📚",
+      "source": "sounds.json",
+      "fields": [
+        {
+          "key": "sounds",
+          "name": "Sounds",
+          "description": "List of sounds in the game",
+          "type": "object<Sound>[]",
+          "typeOptions": {
+            "Sound": {
+              "name": {
+                "name": "Sound Name",
+                "description": "The name of the sound.",
+                "type": "text"
+              },
+              "source": {
+                "name": "Sound Source",
+                "description": "The source of the sound file.",
+                "type": "sound"
+              },
+              "pool": {
+                "name": "Pool",
+                "description": "How large to make the sound pool. If you don't know what this is, you should leave it alone.",
+                "type": "range",
+                "typeOptions": {
+                  "min": 1,
+                  "max": 10,
+                  "step": 1
+                }
+              },
+              "channel": {
+                "name": "Sound Channel",
+                "description": "The sound channel which controls this sound's volume.",
+                "type": "text",
+                "default": "sfx"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

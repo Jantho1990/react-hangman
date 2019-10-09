@@ -1,0 +1,35 @@
+{
+    "fonts": {
+        "titleDisplay": "Kaushan Script",
+        "wordDisplay": "Questrial",
+        "ui": "Josefin Sans"
+    },
+    "@@editor": [
+    {
+      "key": "fonts",
+      "name": "Fonts (pulled from Google Fonts)",
+      "icon": "📚",
+      "source": "fonts.json",
+      "fields": [
+        {
+          "key": "titleDisplay",
+          "name": "Title",
+          "description": "Game title and menu headers.",
+          "type": "text"
+        },
+        {
+          "key": "wordDisplay",
+          "name": "Word Display",
+          "description": "The letters shown for the word being guessed.",
+          "type": "text"
+        },
+        {
+          "key": "ui",
+          "name": "User Interface",
+          "description": "The user interface font. Most of the game uses this font.",
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}

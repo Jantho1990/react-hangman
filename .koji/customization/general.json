@@ -1,0 +1,47 @@
+{
+  "general": {
+    "gameTitle": "React Hangman",
+    "guesses": 10,
+    "defaultTheme": "light",
+    "wordListPath": "/assets/data/word_list_combined.json"
+  },
+  "@@editor": [
+    {
+      "key": "general",
+      "name": "General",
+      "icon": "📚",
+      "source": "general.json",
+      "fields": [
+        {
+          "key": "gameTitle",
+          "name": "Game Title",
+          "description": "The name of the game, displayed in various places.",
+          "type": "text"
+        },
+        {
+          "key": "guesses",
+          "name": "Guesses",
+          "description": "How many guesses a player gets before they lose.",
+          "type": "range",
+          "typeOptions": {
+            "min": 1,
+            "max": 26,
+            "step": 1
+          }
+        },
+        {
+          "key": "defaultTheme",
+          "name": "Default Theme",
+          "description": "The theme which is used when a player first starts your game. This is overwritten in all future app loads by whatever theme the player chooses.",
+          "type": "text"
+        },
+        {
+          "key": "wordListPath",
+          "name": "Word List Path",
+          "description": "The path to the JSON file holding your word list.",
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}
