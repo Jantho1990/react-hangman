@@ -2,7 +2,7 @@
     "develop": {
       "frontend": {
         "path": ".",
-        "port": 8080,
+        "port": 3000,
         "events": {},
         "startCommand": "npm start"
       }
@@ -10,6 +10,6 @@
     "pages": [{
         "name": "Index",
         "route": "/",
-        "path": "."
+        "path": "public/index.html"
     }]
   }
