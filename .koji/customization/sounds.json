@@ -1,6 +1,6 @@
 {
   "sounds": {
-    "sounds": [
+    "list": [
       {
         "source": "https://objects.koji-cdn.com/f9b19db4-7f4f-465c-a55e-23e100e66a8a/wcbuj-whoosh1.wav",
         "name": "Whoosh",
@@ -9,19 +9,49 @@
       },
       {
         "name": "BackgroundMusic",
-        "channel": "music"
+        "channel": "music",
+        "options": {
+          "loop": true,
+          "baseVolume": 0.6
+        },
+        "source": "https://objects.koji-cdn.com/f9b19db4-7f4f-465c-a55e-23e100e66a8a/kpfc5-BlackoutKnockdown.mp3"
+      },
+      {
+        "name": "CorrectGuess2",
+        "source": "https://objects.koji-cdn.com/f9b19db4-7f4f-465c-a55e-23e100e66a8a/jc5wo-correct_guess_2.wav",
+        "channel": "sfx"
+      },
+      {
+        "name": "WrongGuess",
+        "channel": "sfx",
+        "source": "https://objects.koji-cdn.com/f9b19db4-7f4f-465c-a55e-23e100e66a8a/hc22p-wrong_guess.wav"
+      },
+      {
+        "name": "Defeat",
+        "channel": "sfx",
+        "source": "https://objects.koji-cdn.com/f9b19db4-7f4f-465c-a55e-23e100e66a8a/bmfwc-defeat1.wav"
+      },
+      {
+        "name": "Victory",
+        "channel": "sfx",
+        "source": "https://objects.koji-cdn.com/f9b19db4-7f4f-465c-a55e-23e100e66a8a/eq4cv-victory2.wav"
+      },
+      {
+        "name": "UIInteraction",
+        "channel": "sfx",
+        "source": "https://objects.koji-cdn.com/f9b19db4-7f4f-465c-a55e-23e100e66a8a/6r2lg-uiInteraction.wav"
       }
     ]
   },
   "@@editor": [
     {
       "key": "sounds",
-      "name": "Sounds",
+      "name": "Game Sounds",
       "icon": "📚",
       "source": "sounds.json",
       "fields": [
         {
-          "key": "sounds",
+          "key": "list",
           "name": "Sounds",
           "description": "List of sounds in the game",
           "type": "object<Sound>[]",
@@ -52,6 +82,30 @@
                 "description": "The sound channel which controls this sound's volume.",
                 "type": "text",
                 "default": "sfx"
+              },
+              "options": {
+                "name": "Options",
+                "description": "Other sound options.",
+                "type": "object<SoundOptions>",
+                "typeOptions": {
+                  "SoundOptions": {
+                    "loop": {
+                      "name": "Loop",
+                      "description": "Loop the sound.",
+                      "type": "boolean"
+                    },
+                    "baseVolume": {
+                      "name": "Base Volume",
+                      "description": "Set the base volume of the sound. It will not play louder than this.",
+                      "type": "range",
+                      "typeOptions": {
+                        "min": 0,
+                        "max": 1,
+                        "step": 0.01
+                      }
+                    }
+                  }
+                }
               }
             }
           }
