@@ -1,15 +1,13 @@
 import React, { useState } from 'react'
-import { loadFromManifest } from 'assets/AssetsLoader'
 import AssetManifest from 'assets/AssetManifest'
+import { loadFromManifest } from 'assets/AssetsLoader'
+import { createManifest } from 'assets/KojiAssets'
 import soundsList from 'config/sounds.json'
 import dataList from 'config/data.json'
 
 const AssetsContext = React.createContext([{}, () => {}])
 
-const assetManifest = new AssetManifest(
-  [ 'sound', soundsList ],
-  [ 'data', dataList ]
-)
+const assetManifest = createManifest()
 
 let loaded = false
 let loading = false

@@ -37,9 +37,9 @@
         "source": "https://objects.koji-cdn.com/f9b19db4-7f4f-465c-a55e-23e100e66a8a/eq4cv-victory2.wav"
       },
       {
-        "name": "UIInteraction",
+        "name": "MenuTransition",
         "channel": "sfx",
-        "source": "https://objects.koji-cdn.com/f9b19db4-7f4f-465c-a55e-23e100e66a8a/6r2lg-uiInteraction.wav"
+        "source": "https://objects.koji-cdn.com/f9b19db4-7f4f-465c-a55e-23e100e66a8a/1rjwg-menuTransition.wav"
       }
     ]
   },

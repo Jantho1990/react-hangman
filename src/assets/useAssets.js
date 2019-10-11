@@ -34,6 +34,7 @@ const useAssets = () => {
     if (!isReady(key)) return
 
     if (state.sound[key] === undefined) {
+        console.log(state)
       throw new Error(`Sound "${key}" is not a loaded asset.`)
     }
 
