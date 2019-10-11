@@ -1,8 +1,8 @@
 {
   "general": {
     "gameTitle": "React Hangman",
-    "guesses": 10,
-    "defaultTheme": "light",
+    "guesses": 8,
+    "theme": "dark",
     "wordListPath": "/assets/data/word_list_combined.json"
   },
   "@@editor": [
@@ -30,7 +30,7 @@
           }
         },
         {
-          "key": "defaultTheme",
+          "key": "theme",
           "name": "Default Theme",
           "description": "The theme which is used when a player first starts your game. This is overwritten in all future app loads by whatever theme the player chooses.",
           "type": "text"

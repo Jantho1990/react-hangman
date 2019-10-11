@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import useLocalStorage from 'local-storage/useLocalStorage'
-import config from 'config.json'
+// import config from 'config.json'
+import config from 'game-state/KojiGameState'
 import themes from 'themes'
+
+console.log('config', config)
 
 const GameStateContext = React.createContext([{}, () => {}])
 
@@ -27,6 +30,7 @@ const GameStateProvider = (props) => {
     victory: false,
     gameLoading: false
   })
+  console.log('defaults', defaultValues)
 
   const [state, setState] = useState({
     theme: {
