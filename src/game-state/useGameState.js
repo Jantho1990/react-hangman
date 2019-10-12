@@ -138,16 +138,6 @@ const useGameState = () => {
     window.setTimeout(finishGameLoading, 1500)
   }
 
-  // Set the random word once data is loaded.
-  if (!isLoaded()) {
-    onReady(assets => {
-      setState(state => ({
-        ...state,
-        word: createRandomWord(assets.data['wordList']) // Accessed as an array here because assets is just the whole list of assets, not the access functions.
-      }))
-    })
-  }
-
   return {
     theme: state.theme,
     changeTheme,
