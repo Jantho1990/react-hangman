@@ -116,6 +116,7 @@ function GameScreen({ onSwitchScreen }) {
     guessedLetters,
     getNumberOfWrongGuesses,
     gameOver,
+    maxGuesses,
     declareGameOver,
     resetGame
   } = useGameState()
@@ -126,7 +127,6 @@ function GameScreen({ onSwitchScreen }) {
   }
 
   const [paused, setPaused] = useState(false)
-  const { guesses: maxGuesses } = config
 
   const showPauseModal = () => {
     play('MenuTransition')
