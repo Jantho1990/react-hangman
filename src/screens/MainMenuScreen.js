@@ -102,7 +102,7 @@ export default function MainMenuScreen (props) {
     <MainMenuWrapper theme={theme}>
       <GameTitle theme={theme} titleDisplay={titleDisplay}>React Hangman</GameTitle>
       <MenuButtonContainer>
-        { isOngoingGame && !gameLoading && <MainMenuButton theme={theme} onClick={onResumeGame}>Resume Game</MainMenuButton> }
+        { isOngoingGame && <MainMenuButton theme={theme} onClick={onResumeGame}>Resume Game</MainMenuButton> }
         <MainMenuButton theme={theme} onClick={onStartGame}>New Game</MainMenuButton>
         <MainMenuButton theme={theme} onClick={onShowOptions}>Options</MainMenuButton>
       </MenuButtonContainer>
