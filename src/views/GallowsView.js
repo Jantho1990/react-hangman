@@ -4,7 +4,6 @@ import { useSpring, animated } from 'react-spring'
 import useGameState from 'game-state/useGameState'
 
 const GallowsViewWrapper = styled.div`
-  height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
@@ -68,14 +67,14 @@ const FigureHead = ({ center, radius }) => {
   return <animated.circle style={spring} cx={cx} cy={cy} r={radius} fill="none" stroke={theme.primaryFontColor}/>
 }
 
-export default function GallowsView({ maxGuesses, wrongGuesses, gameOver, victory }) {
+export default function GallowsView({ className, maxGuesses, wrongGuesses, gameOver, victory }) {
   const piecesArray = piecesConfiguration[maxGuesses]
 
   const width = 70
   const height = 80
 
   return (
-    <GallowsViewWrapper>
+    <GallowsViewWrapper className={className}>
       <SvgEl viewBox={`0, 0, ${width}, ${height}`}>
         {Object.values(piecesArray).reduce((carry, piece, i) => {
           if (i < wrongGuesses) {

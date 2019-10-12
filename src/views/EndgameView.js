@@ -43,6 +43,10 @@ const EndgameItem = styled.div`
   }
 `
 
+const EndgameGallowsView = styled(GallowsView)`
+  height: 100%;
+`
+
 const EndgameGallowsWrapper = styled.div`
   height: 200px;
   @media screen and (min-width: 568px) {
@@ -106,7 +110,7 @@ export default function EndgameView({ onRestartGame, onSwitchScreen }) {
     <EndgameViewWrapper theme={theme}>
       <EndgameItem>
         <EndgameGallowsWrapper>
-          <GallowsView
+          <EndgameGallowsView
             wrongGuesses={wrongGuesses}
             maxGuesses={maxGuesses}
             gameOver={gameOver}
