@@ -8,6 +8,9 @@ const GallowsViewWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @-moz-document url-prefix() {
+    height: 100%;
+  }
   @media screen and (min-width: 568px) {
     height: 30vh;
   }
