@@ -36,7 +36,12 @@ const PauseMenuScroll = styled.div`
   overflow-y: auto;
   width: 100%;
   & > * {
-    margin: 0.5rem;
+    margin: 0.5rem 0;
+  }
+  @media screen and (min-width: 768px) {
+      & > * {
+          margin: 0.5rem;
+      }
   }
 `
 
