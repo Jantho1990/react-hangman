@@ -1,9 +1,0 @@
-{
-  "guesses": 10,
-  "theme": "light",
-  "fonts": {
-    "titleDisplay": "Kaushan Script",
-    "wordDisplay": "Questrial",
-    "ui": "Josefin Sans"
-  }
-}
