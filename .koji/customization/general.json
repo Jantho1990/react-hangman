@@ -1,7 +1,7 @@
 {
   "general": {
     "gameTitle": "React Hangman",
-    "guesses": 2,
+    "guesses": 6,
     "theme": "dark",
     "wordListPath": "/assets/data/word_list_combined.json"
   },
