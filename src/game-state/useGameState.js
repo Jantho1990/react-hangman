@@ -6,14 +6,31 @@ import useLocalStorage from 'local-storage/useLocalStorage'
 import { createRandomWord } from 'lib/randomWord'
 import themes from 'themes'
 
+const saveGameStateToLocalStorage = (gameState, setItem) => {
+  // Values to save to local storage
+  const saveKeys = [
+    'word',
+    'guessedLetters',
+    'gameOver',
+    'victory',
+    'previousGame'
+  ]
+
+  // Update local storage
+  const localStorageState = Object.entries(gameState)
+    .filter(([key]) => {
+      return saveKeys.indexOf(key) > -1
+    })
+    .forEach(([key, value]) => setItem(key, value))
+}
+
 const useGameState = () => {
   const { isLoaded, data, onReady } = useAssets()
   const { setItem } = useLocalStorage()
   const { startGameLoading, finishGameLoading, setIsOngoingGame }  = useFlags()
   const [state, setState] = useContext(GameStateContext)
 
-  // Update local storage
-  Object.entries(state).forEach(([key, value]) => setItem(key, value))
+  saveGameStateToLocalStorage(state, setItem)
 
   /**
    * Change the application visual theme.
