@@ -75,7 +75,7 @@ export default function GameStats({ word, guessedLetters }) {
             .sort()
             .map((letter, i, wrongGuesses) => {
               return (
-                <span>
+                <span key={`sl-${i}`}>
                   <StatLetter correct={false} theme={theme}>{letter}</StatLetter>{i < wrongGuesses.length - 1 ? ' ' : ''}
                 </span>
               )
