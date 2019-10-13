@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import useAssets from 'assets/useAssets'
+import useGameState from 'game-state/useGameState'
 
 const LoadingScreenWrapper = styled.div`
-  background-color: ${ props => props.theme.primaryBackgroundColor };
-  color: ${ props => props.theme.primaryFontColor };
+  background-color: ${ ({ theme }) => theme.primaryBackgroundColor };
+  color: ${ ({ theme }) => theme.primaryFontColor };
   width: 100vw;
   height: 100vh;
 `
@@ -21,6 +22,7 @@ let loading = false
 
 export default function LoadingScreen({ onSwitchScreen }) {
   const { onReady } = useAssets()
+  const { theme } = useGameState()
 
   if (!loaded && !loading) {
     loading = true

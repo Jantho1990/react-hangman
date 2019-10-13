@@ -19,8 +19,8 @@ const EndgameViewWrapper = styled.div`
   align-items: center;
   justify-content: space-evenly;
   padding: 1rem;
-  color: ${props => props.theme.primaryFontColor};
-  background-color: ${props => props.theme.primaryBackgroundColor};
+  color: ${({ theme }) => theme.primaryFontColor};
+  background-color: ${({ theme }) => theme.primaryBackgroundColor};
   & > * {
     margin: 0.5rem 0;
   }

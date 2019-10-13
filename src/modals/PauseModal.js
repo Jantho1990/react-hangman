@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { useTransition, animated } from 'react-spring'
+import useGameState from 'game-state/useGameState'
 import useSound from 'sound-manager/useSound'
 import ModalWrapper from 'modals/ModalWrapper'
 import PauseMenu from 'menus/PauseMenu'
 import OptionsMenu from 'menus/OptionsMenu'
 
 export default function PauseModal({ show, onCloseMenu, onRestartGame, onSwitchScreen }) {
+  const { theme } = useGameState()
   const { play } = useSound()
 
   const [ currentMenu, setCurrentMenu ] = useState('PauseMenu')
@@ -50,7 +52,7 @@ export default function PauseModal({ show, onCloseMenu, onRestartGame, onSwitchS
   }
 
   return (
-    <ModalWrapper visible={show}>
+    <ModalWrapper visible={show} theme={theme}>
       {renderCurrentMenu()}
     </ModalWrapper>
   )

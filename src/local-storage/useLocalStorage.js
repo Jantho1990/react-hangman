@@ -16,18 +16,14 @@ export default function useLocalStorage() {
   const hydrateState = keys => {
     const arr = Object.entries(keys).map(([key, defaultValue]) => {
       const rawValue = getItemUnsafe(key)
-      console.log('RAW VALUE', rawValue)
       
       let value
       if (rawValue !== null) {
         value = JSON.parse(rawValue)
-        console.log(typeof value)
         if (value === {} || value === [] || value === '') {
-            console.log('still used a default')
           value = defaultValue
         }
       } else {
-        console.log('used a default')
         value = defaultValue
       }
       

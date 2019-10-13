@@ -11,6 +11,7 @@
   "checkboxBackgroundColor": "hsl(0, 0%, 5%)",
   "checkboxForegroundColor": "hsl(0, 0%, 90%)",
   "checkboxDisabledColor": "hsl(0, 0%, 20%)",
+  "menuBackgroundColor": "hsla(0, 0%, 20%, 95%)",
   "gameScreen": {
     "headerBackgroundColor": "hsl(0, 0%, 5%)",
     "headerFontColor": "hsl(0, 0%, 90%)",

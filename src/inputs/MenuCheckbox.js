@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 const MenuCheckboxWrapper = styled.form`
   color: ${props => props.theme.primaryFontColor};
-  ${'' /* border: 1px solid ${props => props.theme.primaryButtonColor}; */}
   border-radius: 3px;
   padding: 0.5rem 0;
   display: flex;

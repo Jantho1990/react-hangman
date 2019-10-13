@@ -9,9 +9,6 @@ const LetterWrapper = styled.div`
   margin: auto;
   overflow-y: scroll;
   border-top: 1px solid ${({ theme: { gameScreen: { keyboard }} }) => keyboard.borderTop};
-  @media screen and (min-width: 568px) {
-    ${'' /* overflow-y: hidden; */}
-  }
   @media screen and (min-width: 768px) {
     overflow-y: auto;
   }
@@ -85,7 +82,7 @@ export default function LetterSelector(props) {
     if (!letterGuessed) {
       changeGuessedLetters(letter)
       if (isLetterGuessedCorrectly(letter)) {
-        play('CorrectGuess2')
+        play('CorrectGuess')
       } else {
         play('WrongGuess')
       }

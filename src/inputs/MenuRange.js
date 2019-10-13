@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 const MenuRangeWrapper = styled.form`
   color: ${props => props.theme.primaryFontColor};
-  ${'' /* border: 1px solid ${props => props.theme.primaryButtonColor}; */}
   border-radius: 3px;
   padding: 0.5rem 0;
   display: flex;
@@ -22,10 +21,6 @@ const Range = styled.input`
   background-color: transparent;
   color: ${props => props.theme.primaryButtonFontColor};
   outline: none;
-  &:hover {
-    ${'' /* background-color: ${props => props.theme.primaryButtonHoverColor}; */}
-    ${'' /* color: ${props => props.theme.primaryButtonFontHoverColor}; */}
-  }
   &:focus, &::-moz-focus-outer{
     outline: none;
     border: 0;

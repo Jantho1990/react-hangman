@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import useGameState from 'game-state/useGameState'
 
 const Option = styled.option`
-  background-color: orange;
   font-family: ${({ ui }) => ui}; /* System defaults somehow take precedence if you don't do this. */
 `
 

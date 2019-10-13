@@ -7,12 +7,10 @@ const WordDisplayWrapper = styled.div`
   flex-direction: row;
   align-items: end;
   justify-content: space-evenly;
-  ${'' /* min-height: 10rem; */}
   padding: 1vh 3vw;
 `
 
 export default function WordDisplay({ word, guessedLetters, gameOver, displayWord, scale = 1 }) {
-  
   let ct = 0
 
   const renderLetterSpace = letter => {

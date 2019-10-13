@@ -97,7 +97,6 @@ const useGameState = () => {
    * @return {number} The number of incorrectly-guessed letters.
    */
   const getNumberOfWrongGuesses = (word, guessedLetters) => {
-    // debugger
     return guessedLetters.reduce((carry, letter) => {
       return word.indexOf(letter) === -1 ? carry + 1 : carry
     }, 0)
@@ -144,7 +143,6 @@ const useGameState = () => {
    */
   const resetGame = () => {
     startGameLoading()
-    console.log('reset')
     setState({
       ...state,
       gameOver: false,

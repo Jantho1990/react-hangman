@@ -16,7 +16,6 @@ const allowedTypes = [
  */
 export default class AssetManifest {
   constructor(...lists) {
-    // debugger
     lists.forEach(([assetType, value]) => {
       if (allowedTypes.find(type => type === assetType) === undefined) {
         throw new Error(`Undefined asset type in manifest: ${assetType}`)

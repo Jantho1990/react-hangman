@@ -26,7 +26,6 @@ const AppWrapper = ({ children }) => {
   const {
     fonts
   } = useGameState()
-  console.log('fonts', fonts)
 
   return (
     <AppWrapperStyles { ...fonts }>
@@ -71,10 +70,6 @@ function App() {
   const screenTransitions = useTransition(activeScreen, item => item, springTransitions)
 
   const renderActiveScreen = () => {
-    /* if (loading) {
-      return <LoadingScreen/>
-    } */
-
     return screenTransitions.map(({ item, key, props }) => {
       return (
         <animated.div key={key} style={{...props, position: 'absolute', height: '100%', width: '100%'}}>
@@ -86,7 +81,6 @@ function App() {
 
   if (loading) {
     onReady(() => {
-      console.log('done loading')
       setLoading(false)
     })
   }

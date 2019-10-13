@@ -14,7 +14,6 @@ import GameScreenHeader from 'game-screen-header/GameScreenHeader'
 import GameScreenTitle from 'game-screen-header/GameScreenTitle'
 import PauseModal from 'modals/PauseModal'
 import EndgameModal from 'modals/EndgameModal'
-import config from 'config'
 
 library.add(faBars)
 

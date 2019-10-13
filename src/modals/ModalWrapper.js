@@ -1,9 +1,7 @@
 import styled from 'styled-components'
 
-import config from 'config.json'
-
 export default styled.div`
-  background-color: ${config.menuBackgroundColor || 'hsla(0, 0%, 50%, 95%)'};
+  background-color: ${({ theme }) => theme.menuBackgroundColor || 'hsla(0, 0%, 50%, 95%)'};
   display: none;
   display: flex;
   position: fixed;

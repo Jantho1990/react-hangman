@@ -11,14 +11,14 @@ const MainMenuWrapper = styled.div`
   align-item: center;
   justify-content: center;
   height: 100%;
-  background-color: ${ props => props.theme.primaryBackgroundColor };
-  color: ${ props => props.theme.primaryFontColor };
+  background-color: ${ ({ theme }) => theme.primaryBackgroundColor };
+  color: ${ ({ theme }) => theme.primaryFontColor };
 `
 
 const GameTitle = styled.h1`
   font-size: 10vmin;
   font-weight: bold;
-  color: ${ props => props.theme.primaryFontColor };
+  color: ${ ({ theme }) => theme.primaryFontColor };
   font-family: ${({ titleDisplay }) => titleDisplay};
 `
 
@@ -36,7 +36,6 @@ const MenuButtonContainer = styled.div`
   @media screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: center;
-    max-width: 50vw;
     margin: 0 auto;
     & > * {
       width: 20vw;
@@ -46,12 +45,12 @@ const MenuButtonContainer = styled.div`
 `
 
 const MainMenuButton = styled(MenuButton)`
-  background-color: ${props => props.theme.primaryButtonColor};
-  color: ${props => props.theme.primaryButtonFontColor};
-  border: 1px solid ${props => props.theme.primaryButtonColor};
+  background-color: ${({ theme }) => theme.primaryButtonColor};
+  color: ${({ theme }) => theme.primaryButtonFontColor};
+  border: 1px solid ${({ theme }) => theme.primaryButtonColor};
   transition: all ease-in 0.125s;
   &:hover {
-    background-color: ${props => props.theme.primaryButtonHoverColor};
+    background-color: ${({ theme }) => theme.primaryButtonHoverColor};
   }
 `
 

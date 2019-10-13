@@ -11,14 +11,13 @@ const useFlags = () => {
     setIsFirstLoad,
     setIsOngoingGame
   }] = useContext(FlagsContext)
-  console.log('game loading is', gameLoading)
 
   return {
     gameLoading,
     isFirstLoad,
     isOngoingGame,
-    startGameLoading: () => {console.log('start');setGameLoading(true);},
-    finishGameLoading: () => {console.log('finish');setGameLoading(false)},
+    startGameLoading: () => setGameLoading(true),
+    finishGameLoading: () => setGameLoading(false),
     firstLoadFinished: () => setIsFirstLoad(false),
     setIsOngoingGame
   }

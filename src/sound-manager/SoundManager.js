@@ -17,15 +17,7 @@ export default function SoundManager() {
   const { sound, onReady } = useAssets()
 
   onReady(assets => {
-    console.log('claims to be ready')
-    const promise = assets.sound['BackgroundMusic'].play()
-    if (promise !== undefined) {
-      promise.then(result => {
-        console.log('playing')
-      }).catch(e => {
-        console.log('not playing', e)
-      })
-    }
+    assets.sound['BackgroundMusic'].play()
   })
 
   const enableAudio = () => {
