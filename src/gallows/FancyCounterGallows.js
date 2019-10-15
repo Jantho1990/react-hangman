@@ -19,9 +19,7 @@ const Container = styled.div`
   }
 `
 
-export default function FancyCounterGallows(props) {
-  const { maxGuesses, wrongGuesses, gameOver, victory } = props
-
+export default function FancyCounterGallows({ className, maxGuesses, wrongGuesses, gameOver, victory }) {
   const remainingGuesses = () => maxGuesses - wrongGuesses
 
   const wrongGuessesRemaining = () => !gameOver

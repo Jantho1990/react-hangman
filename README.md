@@ -1,71 +1,75 @@
-## Sound Effect Attributions
-Additional sound effects from https://www.zapsplat.com
+# React Hangman
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Your traditional game of Hangman, built in React as a Koji template.
 
-## Available Scripts
+## Features
+The template makes extensive use of Koji configs to offer a wide variety of customization options out of the box. You can specify your own list of words, 
+change game sounds and fonts, how many guesses a player gets, and more.
 
-In the project directory, you can run:
+The game uses themes to customize game colors. Two themes are provided, `light` and `dark`, and more themes can be added by adding a new theme file and registering it in `themes.js`.
 
-### `npm start`
+Also included is a fully-functioning audio system, complete with volumn controls and individual sound channels.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Finally, the game includes save functionality. Game state is automatically saved as you play, and if you quit the game you can resume at a later time, right where you left off.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Code Customization
+React Hangman provides simple ways to change the code to add additional functionality.
 
-### `npm test`
+### Additional Gallows Components
+Gallows presentations are hosted in `src/gallows`. While `SvgGallows` is used by default, it is easy to create your own and substitute it. Some other examples are provided for you to 
+study as examples of how you can build your own gallows component.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+It is suggested that your gallows component accepts these four props, being passed in from GameScreen, as they are relevant to most logic used in in a gallows component:
+- maxGuesses: The limit on how many guesses a player gets.
+- wrongGuesses: How many guesses a player got wrong.
+- gameOver: A boolean indicating if the game is over.
+- victory: A boolean indicating whether the player has won.
 
-### `npm run build`
+> All of the above variables are available in GameScreen and are passed into `SvgGallows`, so you may reuse them easily.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To use a different gallows component, import it into `screens/GameScreen.js` and replace the existing gallows component with your custom gallows component.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### Add New Sounds
+Adding and using new sounds is simple. To make a new sound available, just add an entry to the sounds list in the `sounds` Koji config.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To play your new sound in the code, import the `useSound` hook, extract the `play` method in your functional component, and call `play('yourSoundName')` whenever 
+you want the sound to play.
 
-### `npm run eject`
+All sounds must be assigned a sound channel in the Koji config. Two channels are supported:
+- sfx
+- music
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The `master` channel controls overall volume level, and cannot be set as a sound channel for individual sounds.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+There are additional configuration options in the Koji config that you can use to further customize how your sound is used, such as a 
+loop toggle and base volume control. For examples of these configuration options, check out the default sounds.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Add New Themes
+All themes are stored as JSON files in the `themes` directory. They are then imported into the `themes.js` file in the root directory; this file is imported by the game code and used 
+to import the themes into the game styles.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+To add a new theme, copy an existing theme file, renaming it to whatever you want to call it. After making color changes as you see fit, open `themes.js` and import your new theme file 
+(you should see examples of this at the top of the file). Finally, in the `themes.js` export, add an entry for your new theme, `themeName: themeImportVariable`. Your theme can now be 
+selected by the player from the Options menu.
 
-## Learn More
+> You can set a default theme in the General config file, but this only applies when a player first loads the game; after that, the theme is whatever the player selects it to be.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## FAQ
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### If I change the number of guesses, how will SvgGallows render the number of pieces?
+The `SvgGallows` component utilizes 26 individual SVG parts, and its logic allows for those 26 parts to be rendered in many different configurations. When the number of guesses is 
+updated in the config from 9 to 10, then the component will use the configuration for 10 guesses. Some of the SVG parts will be rendered at the same time; for smaller guess numbers,
+the gallows scaffold uses three visible "pieces", but each of those three pieces is comprised of multiple SVG parts.
 
-### Code Splitting
+> If this is confusing, perhaps taking a look at the SvgGallows component itself will help make things clearer.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+#### Can I add another sound channel?
+You certainly can! However, it is not automatically displayed in the Options menu, nor stored in the SoundManager, so you will need to modify those parts of the code base to 
+accomodate that. You can look at how the other sound channels are implemented for an example on how to do this.
 
-### Analyzing the Bundle Size
+#### Can I add more theme variables?
+It is possible, but you will need to add those theme variables as passed-in props to the styled components where you want to use it, and you will need to provide values for this new 
+variable to the other game themes. See existing components for examples.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+#### Can I use the default sounds from this game in my own game?
+Yes, you may use the existing sounds (including the background music track) free of charge. While attribution is nice, it is not required.
