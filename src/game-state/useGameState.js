@@ -3,7 +3,7 @@ import { GameStateContext } from 'game-state/GameStateContext'
 import useAssets from 'assets/useAssets'
 import useFlags from 'flags/useFlags'
 import useLocalStorage from 'local-storage/useLocalStorage'
-import { createRandomWord } from 'lib/randomWord'
+import { createRandomWord } from 'helpers'
 import themes from 'themes'
 
 const saveGameStateToLocalStorage = (gameState, setItem) => {

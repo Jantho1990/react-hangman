@@ -23,3 +23,10 @@ export function objectFromEntries(arr) {
 export function randomInt(max) {
   return Math.floor(Math.random() * Math.floor(max))
 }
+
+/**
+ * Picks a random word from an array.
+ */
+export const createRandomWord = wordList => {
+  return wordList[randomInt(wordList.length - 1)]
+}
