@@ -4,6 +4,7 @@ import MenuButton from 'inputs/MenuButton'
 import useGameState from 'game-state/useGameState'
 import useSound from 'sound-manager/useSound'
 import useFlags from 'flags/useFlags'
+import Koji from '@withkoji/vcc'
 
 const MainMenuWrapper = styled.div`
   display: flex;
@@ -60,6 +61,7 @@ export default function MainMenuScreen (props) {
     theme,
     gameOver,
     resetGame,
+    gameTitle,
     fonts: {
       titleDisplay
     }
@@ -99,7 +101,9 @@ export default function MainMenuScreen (props) {
 
   return (
     <MainMenuWrapper theme={theme}>
-      <GameTitle theme={theme} titleDisplay={titleDisplay}>React Hangman</GameTitle>
+      <GameTitle theme={theme} titleDisplay={titleDisplay}>
+        { Koji.config.general.gameTitle }
+      </GameTitle>
       <MenuButtonContainer>
         { isOngoingGame && <MainMenuButton theme={theme} onClick={onResumeGame}>Resume Game</MainMenuButton> }
         <MainMenuButton theme={theme} onClick={onStartGame}>New Game</MainMenuButton>

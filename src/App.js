@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import { useTransition, animated } from 'react-spring'
 import { GameStateProvider } from 'game-state/GameStateContext'
@@ -11,6 +11,7 @@ import MainMenuScreen from 'screens/MainMenuScreen'
 import GameScreen from 'screens/GameScreen'
 import OptionsScreen from 'screens/OptionsScreen'
 import LoadingScreen from 'screens/LoadingScreen'
+import Koji from '@withkoji/vcc'
 
 const AppWrapperStyles = styled.div`
   text-align: center;
@@ -38,6 +39,10 @@ function App() {
   const [ loading, setLoading ] = useState(true)
 
   const { onReady } = useAssets()
+
+  useEffect(() => {
+      document.querySelector('title').innerHTML = Koji.config.general.gameTitle
+  })
 
   const handleSwitchScreen = screen => {
     setActiveScreen(screen)

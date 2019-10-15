@@ -14,6 +14,7 @@ import GameScreenHeader from 'game-screen-header/GameScreenHeader'
 import GameScreenTitle from 'game-screen-header/GameScreenTitle'
 import PauseModal from 'modals/PauseModal'
 import EndgameModal from 'modals/EndgameModal'
+import Koji from '@withkoji/vcc'
 
 library.add(faBars)
 
@@ -213,7 +214,7 @@ function GameScreen({ onSwitchScreen }) {
     <GameScreenWrapper className="GameScreen">
       <GameScreenMain theme={theme} className="GameScreen-main">
         <GameScreenHeader theme={theme} className="GameScreen-header">
-          <GameScreenTitle>React Hangman</GameScreenTitle>
+          <GameScreenTitle>{Koji.config.general.gameTitle}</GameScreenTitle>
           <PauseModalButton
             onClick={() => showPauseModal()}
           >
