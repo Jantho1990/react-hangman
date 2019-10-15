@@ -5,7 +5,7 @@ const GuessCounter = styled.span`
   font-size: 3rem;
 `
 
-export default class CounterView extends Component {
+export default class CounterGallows extends Component {
   static defaultProps = {
     maxGuesses: 8,
     wrongGuesses: 0,

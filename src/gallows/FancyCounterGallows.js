@@ -19,7 +19,7 @@ const Container = styled.div`
   }
 `
 
-export default function FancyCounterView(props) {
+export default function FancyCounterGallows(props) {
   const { maxGuesses, wrongGuesses, gameOver, victory } = props
 
   const remainingGuesses = () => maxGuesses - wrongGuesses
