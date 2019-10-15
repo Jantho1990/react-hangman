@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useSpring, animated } from 'react-spring'
 import useGameState from 'game-state/useGameState'
 import ModalWrapper from 'modals/ModalWrapper'
-import EndgameView from 'views/EndgameView'
+import EndgameMenu from 'menus/EndgameMenu'
 
 const ViewContainer = styled.div`
   height: 100%;
@@ -22,7 +22,7 @@ export default function EndgameModal({ show, onCloseMenu, onRestartGame, onSwitc
     return (
       <animated.div style={{...spring, height: '100%', width: '100%', position: 'fixed'}}>
         <ViewContainer>
-          <EndgameView
+          <EndgameMenu
             onRestartGame={onRestartGame}
             onSwitchScreen={onSwitchScreen}
           />

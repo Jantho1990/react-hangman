@@ -7,7 +7,7 @@ import WordDisplay from 'word-display/WordDisplay'
 import MenuButton from 'inputs/MenuButton'
 import GameStats from 'game-stats/GameStats'
 
-const EndgameViewWrapper = styled.div`
+const EndgameMenuWrapper = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
@@ -81,7 +81,7 @@ const ButtonWrapper = styled.div`
   }
 `
 
-export default function EndgameView({ onRestartGame, onSwitchScreen }) {
+export default function EndgameMenu({ onRestartGame, onSwitchScreen }) {
   const {
     theme,
     gameOver,
@@ -107,7 +107,7 @@ export default function EndgameView({ onRestartGame, onSwitchScreen }) {
   const scale = innerWidth > 768 ? 0.4 : 1
 
   return (
-    <EndgameViewWrapper theme={theme}>
+    <EndgameMenuWrapper theme={theme}>
       <EndgameItem>
         <EndgameGallowsWrapper>
           <EndgameGallowsView
@@ -132,6 +132,6 @@ export default function EndgameView({ onRestartGame, onSwitchScreen }) {
         <MenuButton onClick={onPlayAgain}>Play Again</MenuButton>
         <MenuButton onClick={onQuit}>Quit</MenuButton>
       </ButtonWrapper>
-    </EndgameViewWrapper>
+    </EndgameMenuWrapper>
   )
 }

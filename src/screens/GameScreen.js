@@ -8,7 +8,7 @@ import useGameState from 'game-state/useGameState'
 import useSound from 'sound-manager/useSound'
 import LetterSelector from 'letter-selector/LetterSelector'
 import WordDisplay from 'word-display/WordDisplay'
-import GallowsView from 'views/GallowsView'
+import SvgGallows from 'gallows/SvgGallows'
 import MenuButton from 'inputs/MenuButton'
 import GameScreenHeader from 'game-screen-header/GameScreenHeader'
 import GameScreenTitle from 'game-screen-header/GameScreenTitle'
@@ -223,7 +223,7 @@ function GameScreen({ onSwitchScreen }) {
         </GameScreenHeader>
 
         <GameScreenCenter className="GameScreen-center">
-          <GallowsView
+          <SvgGallows
             wrongGuesses={wrongGuesses}
             maxGuesses={maxGuesses}
             gameOver={gameOver}
