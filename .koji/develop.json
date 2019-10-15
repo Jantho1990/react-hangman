@@ -1,15 +1,17 @@
 {
-    "develop": {
-      "frontend": {
-        "path": ".",
-        "port": 3000,
-        "events": {},
-        "startCommand": "npm run kojistart"
-      }
-    },
-    "pages": [{
-        "name": "Index",
-        "route": "/",
-        "path": "public/index.html"
-    }]
-  }
+  "develop": {
+    "frontend": {
+      "path": ".",
+      "port": 3000,
+      "events": {},
+      "startCommand": "npm run start"
+    }
+  },
+  "pages": [
+    {
+      "name": "Index",
+      "route": "/",
+      "path": "public/index.html"
+    }
+  ]
+}

@@ -15,11 +15,8 @@
   },
   "scripts": {
     "prekojistart": "koji-vcc watch &",
-    "start": "react-scripts start",
-    "kojistart": "webpack-dev-server --config ./.internals/webpack.development.js --inline --hot",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "webpack-dev-server --config ./.internals/webpack.development.js --inline --hot",
+    "build": "NODE_ENV=production webpack --config ./.internals/webpack.production.js --color -p --progress --hide-modules --display-optimization-bailout"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -20,7 +20,7 @@ const { HashedModuleIdsPlugin } = require('webpack');
 
 module.exports = {
   mode: 'production',
-  entry: "./common/index.js",
+  entry: "./src/index.js",
   output: {
     path: path.resolve(process.cwd(), 'build'),
     filename: '[name].[chunkhash].js',
@@ -44,7 +44,11 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+            plugins: [
+                "@babel/plugin-syntax-dynamic-import",
+                "@babel/plugin-proposal-class-properties"
+            ]
           }
         }
       },
@@ -140,7 +144,7 @@ module.exports = {
         minifyURLs: true,
       },
       inject: true,
-      template: './common/index.html',
+      template: './public/index.html',
     }),
     new HashedModuleIdsPlugin({
       hashFunction: 'sha256',
@@ -149,8 +153,8 @@ module.exports = {
     }),
   ],
   resolve: {
-    modules: ['node_modules', 'frontend'],
-    extensions: ['.js', '.jsx', '.react.js'],
+    modules: ['node_modules', 'src'],
+    extensions: ['.js', '.jsx', '.react.js', '.json'],
     mainFields: ['browser', 'jsnext:main', 'main'],
   }
 };
